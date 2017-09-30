@@ -1,0 +1,7 @@
+*.iml
+
+/bin
+
+.settings
+
+/WebRoot/WEB-INF/classes

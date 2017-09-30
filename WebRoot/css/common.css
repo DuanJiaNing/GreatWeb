@@ -1,0 +1,150 @@
+body {
+	margin: 16px;
+	background-color: white;
+}
+
+body.black {
+	margin-bottom: 32px;
+	background-color: black;
+}
+
+div.content {
+	color: white;
+	font-family: sans-serif;
+}
+
+span.vice {
+	color: gray;
+	font-size: 0.7em;
+}
+
+button {
+	color: black;
+	text-decoration: none;
+	font-size: 1.0em;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	padding-left: 7px;
+	padding-right: 7px;
+	background-color: green;
+	border: 2px;
+	border-color: black;
+	outline-style: none;
+	width: auto;
+	min-width: 80px;
+	height: auto;
+}
+
+button.transparent {
+	background-color: transparent;
+}
+
+button.transparent_primary {
+	background-color: transparent;
+	color: dodgerblue;
+}
+
+button.transparent_primary:hover {
+	color: white;
+	background-color: dodgerblue;
+}
+
+button.transparent_modify {
+	background-color: transparent;
+	color: mediumvioletred;
+}
+
+button.transparent_modify:hover {
+	color: white;
+	background-color: mediumvioletred;
+}
+
+button.transparent:hover {
+	background-color: dodgerblue;
+	color: white;
+}
+
+button.danger {
+	background-color: red;
+	color: white;
+}
+
+button.primary {
+	background-color: green;
+	color: white;
+}
+
+button.primary:hover {
+	background-color: #006c18;
+}
+
+button.danger:hover {
+	background-color: #860000;
+}
+
+button:hover {
+	background-color: darkorange;
+}
+
+.red {
+	color: red;
+}
+
+a:link {
+	color: #0b66a4
+}
+
+a:visited {
+	color: #009f00
+}
+
+a:hover {
+	color: #E6575A
+}
+
+a:active {
+	color: #610E10
+}
+
+td.match, th.match {
+	text-align: left;
+	vertical-align: center;
+	min-width: 30px;
+	padding: 5px;
+	min-height: 70px;
+	width: 100%;
+}
+
+td, tr {
+	text-align: left;
+	vertical-align: center;
+	min-width: 30px;
+	padding: 5px;
+	min-height: 70px;
+	border: 1px solid lightsteelblue;
+}
+
+td.warp {
+	text-align: left;
+	vertical-align: center;
+	width: auto;
+}
+
+.line td, tr {
+	border: none;
+	border-bottom: 1px solid lightgrey;
+}
+
+table {
+	border-collapse: collapse;
+	width: auto;
+}
+
+table.match {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+div.content {
+	margin: 1%;
+}
