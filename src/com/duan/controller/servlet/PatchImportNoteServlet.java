@@ -91,6 +91,12 @@ public class PatchImportNoteServlet extends HttpServlet {
 				String content = ds[1];
 				Integer uid = Integer.valueOf(ds[2]);
 
+				title.replaceAll("\r", "");
+				title.replaceAll("\n", "");
+
+				content.replaceAll("\r", "");
+				content.replaceAll("\n", "");
+
 				if (Utils.isReal(title) && Utils.isReal(content) && uid != null) {
 					Note note = new Note(title, content, System.currentTimeMillis(), uid);
 					notes.add(note);

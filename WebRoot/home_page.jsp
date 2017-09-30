@@ -17,6 +17,7 @@
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
 <link rel="stylesheet" type="text/css" href="css/home_page.css">
+<script type="text/javascript" src="js/common.js"></script>
 <title>首页</title>
 </head>
 
@@ -50,9 +51,10 @@
 			<div class="foot_right">
 				<div style="height: 20px;padding-top: 5px">
 					<font style="font-weight: bold;margin-left: 10px">留言列表</font><br />
-
 				</div>
 				<hr style="border-top: 1px solid #C3C3C3" />
+				<table id="notes">
+				</table>
 			</div>
 			<div style="height: 20px;width: 73%;float: right"></div>
 			<div class="foot_right_botttom">
@@ -61,5 +63,9 @@
 			</div>
 		</div>
 	</div>
+
+	<script type="text/javascript">
+		loadNotes('1');
+	</script>
 </body>
 </html>

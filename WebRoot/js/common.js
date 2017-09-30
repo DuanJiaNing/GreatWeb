@@ -1,3 +1,35 @@
+function loadNotes(cate) {
+	var xmlRequest = new XMLHttpRequest();
+	xmlRequest.open("post", 'notesObtain.do?category=' + cate);
+	xmlRequest.send();
+	xmlRequest.onreadystatechange = function() {
+		if (xmlRequest.readyState == 4) {
+			var state = xmlRequest.status;
+			switch (state) {
+			case 200: // 接收到结果
+				var jsonRes = xmlRequest.responseText;
+				var res = JSON.parse(jsonRes);
+				var len = res.length;
+				alert(jsonRes);
+				//				for (var i = 0; i < len; i++) {
+				//					addRow(res[i]);
+				//				}
+				break;
+			default:
+				break;
+			}
+		}
+	}
+}
+
+function addRow(item) {
+	var id = item.title;
+	var title = item.content;
+	var datetime = item.dateTime; // 服务器端使用 gson 转换对应实体类的字段名
+	var uid = item.userId
+
+}
+
 function verifyIdentfyCode() {
 	var inputCode = document.getElementById("identifyCode").value;
 	var cookie = document.cookie.split(";");

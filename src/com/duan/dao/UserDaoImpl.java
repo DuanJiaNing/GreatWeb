@@ -24,9 +24,8 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public User queryById(int id) {
-		// TODO
-		User[] users = dataBase.query(User.class, "");
-		return users.length >= 1 ? users[0] : null;
+		User[] users = dataBase.query(User.class, new String[] { "id" }, new String[] { id + "" });
+		return (users != null && users.length >= 1) ? users[0] : null;
 	}
 
 	@Override
