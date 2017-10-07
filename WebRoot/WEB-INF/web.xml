@@ -21,20 +21,20 @@
 
 	<!--配置监听器 -->
 	<listener>
-		<listener-class>com.duan.util.listener.SessionListener</listener-class>
+		<listener-class>com.duan.greatweb.util.listener.SessionListener</listener-class>
 	</listener>
 	<listener>
-		<listener-class>com.duan.util.listener.ApplicationListener</listener-class>
+		<listener-class>com.duan.greatweb.util.listener.ApplicationListener</listener-class>
 	</listener>
 	<listener>
-		<listener-class>com.duan.util.listener.AttributeListener</listener-class>
+		<listener-class>com.duan.greatweb.util.listener.AttributeListener</listener-class>
 	</listener>
 	<!--配置监听器 -->
 
 	<!-- 配置过滤器 过滤器链顺序由这里的顺序决定 -->
 	<filter>
 		<filter-name>encodingFilter</filter-name>
-		<filter-class>com.duan.util.filter.EncodingFilter</filter-class>
+		<filter-class>com.duan.greatweb.util.filter.EncodingFilter</filter-class>
 		<init-param>
 			<param-name>charset</param-name>
 			<param-value>utf-8</param-value>
@@ -50,7 +50,7 @@
 	</filter-mapping>
 	<filter>
 		<filter-name>loginFilter</filter-name>
-		<filter-class>com.duan.util.filter.LoginFilter</filter-class>
+		<filter-class>com.duan.greatweb.util.filter.LoginFilter</filter-class>
 	</filter>
 	<filter-mapping>
 		<filter-name>loginFilter</filter-name>
@@ -61,7 +61,7 @@
 	<!-- 配置 servlet，url-pattern 统一小写开头 -->
 	<servlet>
 		<servlet-name>LoginSuccess</servlet-name>
-		<servlet-class>com.duan.controller.servlet.LoginSuccess</servlet-class>
+		<servlet-class>com.duan.greatweb.controller.servlet.LoginSuccess</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>LoginSuccess</servlet-name>
@@ -70,7 +70,7 @@
 
 	<servlet>
 		<servlet-name>TestServlet</servlet-name>
-		<servlet-class>com.duan.controller.servlet.TestServlet</servlet-class>
+		<servlet-class>com.duan.greatweb.controller.servlet.TestServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>TestServlet</servlet-name>
@@ -79,7 +79,7 @@
 
 	<servlet>
 		<servlet-name>RegisterServlet</servlet-name>
-		<servlet-class>com.duan.controller.servlet.RegisterServlet</servlet-class>
+		<servlet-class>com.duan.greatweb.controller.servlet.RegisterServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>RegisterServlet</servlet-name>
@@ -88,7 +88,7 @@
 
 	<servlet>
 		<servlet-name>UploadServlet</servlet-name>
-		<servlet-class>com.duan.controller.servlet.UploadServlet</servlet-class>
+		<servlet-class>com.duan.greatweb.controller.servlet.UploadServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>UploadServlet</servlet-name>
@@ -97,7 +97,7 @@
 
 	<servlet>
 		<servlet-name>IdentifyCodeServlet</servlet-name>
-		<servlet-class>com.duan.controller.servlet.IdentifyCodeServlet</servlet-class>
+		<servlet-class>com.duan.greatweb.controller.servlet.IdentifyCodeServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>IdentifyCodeServlet</servlet-name>
@@ -106,11 +106,11 @@
 
 	<servlet>
 		<servlet-name>PatchImportNoteServlet</servlet-name>
-		<servlet-class>com.duan.controller.servlet.PatchImportNoteServlet</servlet-class>
+		<servlet-class>com.duan.greatweb.controller.servlet.PatchImportNoteServlet</servlet-class>
 	</servlet>
   <servlet>
     <servlet-name>NotesObtainServlet</servlet-name>
-    <servlet-class>com.duan.controller.servlet.NotesObtainServlet</servlet-class>
+    <servlet-class>com.duan.greatweb.controller.servlet.NotesObtainServlet</servlet-class>
   </servlet>
 
 	<servlet-mapping>

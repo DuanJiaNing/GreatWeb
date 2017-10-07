@@ -1,8 +1,6 @@
-<%@page import="com.duan.dao.UserDaoImpl"%>
-<%@page import="com.duan.util.Utils"%>
-<%@page import="com.duan.other.UserTable"%>
-<%@page import="javax.swing.text.Document"%>
-<%@page import="com.duan.entitly.User"%>
+<%@page import="com.duan.greatweb.dao.UserDaoImpl"%>
+<%@page import="com.duan.greatweb.util.Utils"%>
+<%@page import="com.duan.greatweb.entitly.User"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 	String path = request.getContextPath();

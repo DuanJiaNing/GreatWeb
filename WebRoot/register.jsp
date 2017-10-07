@@ -1,4 +1,4 @@
-<%@page import="com.duan.util.Utils"%>
+<%@page import="com.duan.greatweb.util.Utils"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 	String path = request.getContextPath();

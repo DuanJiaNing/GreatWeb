@@ -1,6 +1,6 @@
-<%@page import="com.duan.entitly.User"%>
+<%@page import="com.duan.greatweb.entitly.User"%>
 <%@page import="java.io.PrintWriter"%>
-<%@page import="com.duan.util.Utils"%>
+<%@page import="com.duan.greatweb.util.Utils"%>
 <%@page import="javax.swing.text.Document"%>
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%

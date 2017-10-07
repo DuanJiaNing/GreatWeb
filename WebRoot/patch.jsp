@@ -1,4 +1,4 @@
-<%@page import="com.duan.entitly.Note"%>
+<%@page import="com.duan.greatweb.entitly.Note"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 
 <%
