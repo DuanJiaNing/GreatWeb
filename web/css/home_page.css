@@ -31,13 +31,18 @@
 }
 
 .a {
-	background-image: url("../img/left_top.png");
-	height: 20px;
+	/*background-image: url("../img/left_top.png");*/
+	height: 40px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	padding-top: 10px;
+	background-color: #f8f8f7;
 }
 
 .b {
 	background-image: url("../img/left.gif");
 	height: 360px;
+	overflow-y: scroll;
 }
 
 .c {
@@ -62,4 +67,13 @@
 	height: 70px;
 	text-align: center;
 	font-size: 5px;
+}
+
+.avatar-color {
+	float: left;
+	width: 60px;
+	height: 60px;
+	margin: 0 5px;
+	border-radius: 3px;
+	background-color: #337ab7;
 }

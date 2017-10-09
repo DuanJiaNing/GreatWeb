@@ -1,5 +1,7 @@
 package com.duan.greatweb.util.filter;
 
+import com.duan.greatweb.util.Utils;
+
 import java.io.IOException;
 
 import javax.servlet.FilterChain;
@@ -23,7 +25,6 @@ public class EncodingFilter extends RootFilter {
 
 	@Override
 	public void destroy() {
-		// TODO Auto-generated method stub
 		super.destroy();
 	}
 
@@ -34,8 +35,9 @@ public class EncodingFilter extends RootFilter {
 
 		if (enable && characterEncoding != null) {
 			response.setContentType("text/html");
-			request.setCharacterEncoding("utf-8");
-			response.setCharacterEncoding("utf-8");
+			request.setCharacterEncoding(characterEncoding);
+			response.setCharacterEncoding(characterEncoding);
+			Utils.log(this.getClass().getName()+" "+"charset is "+characterEncoding);
 		}
 
 		chain.doFilter(request, response);

@@ -1,22 +1,6 @@
 //--------------------------------------------------------------------------home_page:data load
-var Note = {
-    id: -1,
-    title: '',
-    content: '',
-    dateTime: '',
-    userId: -1
-}
-
-var User = {
-    id: -1,
-    name: '',
-    password: '',
-    state: -1,
-    age: -1
-}
-
-var notes;
-var users;
+var jsonNotes;
+var jsonUsers;
 
 // 从后台异步加载数据
 function loadData(cate, callback) {
@@ -41,57 +25,111 @@ function loadData(cate, callback) {
 // 加载所有留言
 function loadAllNotes() {
     loadData(1, function (jsonText) {
-        var json = JSON.parse(jsonText);
+        jsonNotes = JSON.parse(jsonText);
 
+        // ajax 同时请求时结果会被合并，用这种方式串行获取
+        loadAllUsers();
     })
 }
 
 // 加载所有用户
 function loadAllUsers() {
     loadData(2, function (jsonText) {
-        var json = JSON.parse(jsonText);
+        jsonUsers = JSON.parse(jsonText);
 
+        // 显示【全部】
+        showAllUsers();
+        filterAndShowNotes(-1);
     });
+}
+
+// 显示所有用户
+function showAllUsers() {
+
+    addRow('全部留言', jsonNotes.length,-1);
+    for (var i = 0; i < jsonUsers.length; i++) {
+        var name = jsonUsers[i].name;
+        var count = getUserNotesCount(jsonUsers[i].id);
+        addRow(name, count,jsonUsers[i].id);
+    }
+
+    function addRow(name, count,userId) {
+        var userTable = document.getElementById("userTable");
+        var newRaw = userTable.insertRow(userTable.rows.length);
+        var cellName = newRaw.insertCell(0);
+        var cellCount = newRaw.insertCell(1);
+
+        newRaw.onclick = function () {
+            filterAndShowNotes(userId);
+        };
+
+        cellName.innerHTML = "<h5><b>" + name + "</b></h5>"
+        cellCount.innerHTML = "<h6>" + count + "条</h6>"
+    }
+}
+
+// 获得指定用户发表的留言条数
+function getUserNotesCount(userId) {
+    var count = 0;
+    for (var i = 0; i < jsonNotes.length; i++) {
+        var note = jsonNotes[i];
+        if (userId === note.userId) {
+            count++;
+        }
+    }
+    return count;
+}
+
+function getUserName(userId) {
+    for (var i = 0; i < jsonUsers.length; i++) {
+        var user = jsonUsers[i];
+        if (userId === user.id) {
+            return user.name;
+        }
+    }
+
+    return "";
+}
+
+// 过滤留言并刷新页面(留言列表)
+function filterAndShowNotes(userId) {
+    clearTable('notesTable');
+
+    var tit = document.getElementById("notesTitle");
+    var des = userId === -1 ? "全部留言" : getUserName(userId);
+    var count = userId === -1 ? jsonNotes.length : getUserNotesCount(userId);
+    tit.innerHTML = "<h5><b>&nbsp;&nbsp;" + des + "</b><small>&nbsp;&nbsp;(" + count + "条)</small></h5>";
+
+    for (var i = 0; i < jsonNotes.length; i++) {
+        var note = jsonNotes[i];
+        if (userId === note.userId || userId === -1) {
+            addRow(
+                note.title,
+                note.content,
+                getDate(note.dateTime));
+        }
+    }
+
+    function addRow(title, content, date) {
+        var table = document.getElementById("notesTable");
+        var newRaw = table.insertRow(table.rows.length);
+        var cell = newRaw.insertCell(0);
+
+        newRaw.style.paddingLeft = 30;
+        newRaw.style.paddingRight = 30;
+
+        cell.innerHTML = "<h5><b>" + title + "</b></h5>" +
+            "<p><h5>&nbsp;&nbsp;&nbsp;&nbsp;" + content + "</h5></p>" +
+            "<p class=\"text-right\" style='font-size: 0.65em;color: #bcbcbc'>" + date + "</p>";
+    }
 }
 
 // 加载所有的留言和用户
 function loadAllNotesAndUsers() {
+    clearTable('userTable');
+    clearTable('notesTable');
+
     loadAllNotes();
-    loadAllUsers();
-}
-
-// 获得指定用户的所有留言
-function getUserNotes(uid) {
-
-}
-
-// 将指定留言显示到列表中
-function loadNotesTable(notes) {
-
-}
-
-// 清空表格
-function clearNotesTable() {
-
-}
-
-// 过滤留言并刷新页面(留言列表)
-function filterNotes(uid) {
-    clearNotesTable();
-
-    if (uid === -1) { // 显示所有留言
-        loadNotesTable(notes);
-    } else {
-        var ns = getUserNotes(uid);
-        loadNotesTable(ns);
-    }
-}
-
-// 修改选中的用户(参与人员)
-function setUserSelected(uid) {
-    if (uid === -1) { // 全部
-    } else {
-    }
 }
 
 //---------------------------------------------------------------------------login & register:verify
@@ -307,4 +345,25 @@ function addRowClass(index, name) {
 
 function isEmpty(str) {
     return str === null || str === undefined || str === '' || str === 'null';
+}
+
+function isNull(obj) {
+    return obj === null || obj === undefined;
+}
+
+function clearTable(tableId) {
+    var table = document.getElementById(tableId);
+    if (isNull(table)) {
+        return
+    }
+
+    while (table.rows.length > 0) {
+        table.deleteRow(0);
+    }
+}
+
+// long 转为 yyyy/mm/dd
+function getDate(data) {
+    var date = new Date(data);
+    return date.getFullYear() + "/" + date.getMonth() + "/" + date.getDay();
 }

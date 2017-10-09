@@ -43,56 +43,44 @@ public class NotesObtainServlet extends HttpServlet {
             return;
         }
 
+        String errorInfo = "没有获取到数据";
+        boolean error = false;
+        String jsonString;
+
         int cate = Integer.valueOf(str);
         switch (cate) {
-            case CATEGORY_ALL_NOTES: {
-                String jsonNotes = queryAllNotes();
-                if (Utils.isReal(jsonNotes)) {
-                    out(jsonNotes);
-                } else {
-                    LogErrorRequest("没有获取到数据");
-                    return;
-                }
+            case CATEGORY_ALL_NOTES:
+                jsonString = queryAllNotes();
                 break;
-            }
-            case CATEGORY_ALL_USERS:{
-                String jsonNotes = queryAllUsers();
-                if (Utils.isReal(jsonNotes)) {
-                    out(jsonNotes);
-                } else {
-                    LogErrorRequest("没有获取到数据");
-                    return;
-                }
+            case CATEGORY_ALL_USERS:
+                jsonString = queryAllUsers();
                 break;
-            }
             default:
-                LogErrorRequest("请求的数据类型不存在,category=?");
+                error = true;
+                jsonString = "请求的数据类型不存在,category=?";
                 break;
         }
+
+//        Utils.log(jsonString);
+        if (error) {
+            LogErrorRequest(errorInfo);
+        } else {
+            out(jsonString);
+        }
+
     }
 
     private String queryAllUsers() {
-
-        return null;
+        UserDao ud = new UserDaoImpl();
+        List<User> users = ud.queryAll(0);
+        return new Gson().toJson(users);
     }
 
     private String queryAllNotes() {
         NoteDao nd = new NoteDaoImpl();
-        UserDao ud = new UserDaoImpl();
-
-
-        Map<Note, User> data = new HashMap<Note, User>();
-
         List<Note> notes = nd.queryAll();
-//		List<Map<>>
-        for (Note note : notes) {
-            int uid = note.getUserId();
-            User u = ud.queryById(uid);
-            data.put(note, u);
-        }
-
         Gson gson = new Gson();
-        return gson.toJson(data);
+        return gson.toJson(notes);
     }
 
     private void LogErrorRequest(String msg) {
@@ -111,12 +99,13 @@ public class NotesObtainServlet extends HttpServlet {
     }
 
     private void out(String str) {
-        if (outStream == null) {
+        if (outStream == null || !Utils.isReal(str)) {
             return;
         }
 
         try {
-            outStream.write(str.getBytes());
+            // 中文乱码 ***** spend 2 hour
+            outStream.write(str.getBytes("utf-8"));
         } catch (IOException e) {
             e.printStackTrace();
         }

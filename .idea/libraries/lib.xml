@@ -8,6 +8,8 @@
       <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/mysql-connector-java-5.1.18-bin.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.ideaLibSources/gson-2.6.2-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>
