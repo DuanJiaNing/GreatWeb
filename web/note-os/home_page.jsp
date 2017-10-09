@@ -15,12 +15,12 @@
     <meta http-equiv="expires" content="0">
     <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 
-    <link rel="stylesheet" type="text/css" href="css/home_page.css">
+    <link rel="stylesheet" type="text/css" href="../css/home_page.css">
     <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-    <script type="text/javascript" charset="UTF-8" src="js/common.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="../js/common.js"></script>
     <title>首页</title>
 </head>
 
@@ -32,7 +32,7 @@
         <div class="top_bottom">
             <form action="">
                 <input type="button" value="刷新列表" onclick="loadAllNotesAndUsers()"/>
-                <input type="button" value="后台管理" onclick="javascript:document.location='login.jsp'"/>
+                <input type="button" value="后台管理" onclick="javascript:document.location='note-os/login.jsp'"/>
             </form>
         </div>
     </div>
@@ -61,16 +61,6 @@
                 <table id="notesTable" class="table table-hover">
                     <%-- 标题 内容 时间--%>
                     <tr style="padding-left: 30px;padding-right: 30px">
-                        <td>
-                            <h4>h4. Bootstrap heading
-                                <small>2016/03/05</small>
-                            </h4>
-                            <p>
-                            <h5>&nbsp;&nbsp;&nbsp;&nbsp;中国中产阶层壮大 人均财富排名升至全球第27位 undefined
-                                陆军司令员韩卫国给新兵写信 自述曾因吃罐头被批 熊猫滚滚寄出2.1万份邀请函 邀请重庆西安市民来过节
-                            </h5>
-                            </p>
-                        </td>
                     </tr>
                 </table>
             </div>
@@ -84,8 +74,7 @@
     </div>
 </div>
 <script type="text/javascript">
-    loadAllNotesAndUsers();//加载数据
-    filterNotes(-1); //显示所有留言
+    loadAllNotesAndUsers();//加载数据并显示【全部】
 </script>
 </body>
 </html>

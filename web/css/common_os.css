@@ -1,0 +1,185 @@
+.clear{
+	clear: both;
+}
+#page{
+	width: 1400px;
+	height: 700px;
+	background-color: aqua;
+	margin: auto;
+}
+#top{
+	width: 100%;
+	height: 9%;
+	background-color: #85C75D
+}
+#top_left{
+	width: 20%;
+	height: 100%;
+	float: left;
+}
+#top_right{
+	width: 80%;
+	height: 100%;
+	float: left;
+	text-align: right;
+}
+#top_right a{
+	color: black;
+}
+#top_right span{
+	font-size: 10px;
+}
+#center{
+	width: 100%;
+	height: 0.7%;
+	background-color: #226411;
+	border-top: 1px solid #B4E687;
+}
+#bottom{
+	width: 100%;
+	height: 90.3%;
+}
+#bottom_left{
+	height: 100%;
+	width: 13%;
+	float: left;
+	background-color: #9AD075
+}
+#bottom_right{
+	height: 100%;
+	width: 87%;
+	float: left;
+	background-color: gray;
+}
+#bottom_left .d1{
+	width: 83%;
+	margin-top: 10px;
+	text-align: right;
+	margin-left:1px;
+}
+#bottom_left .d11{
+	background-color: #E7F692;
+	border-radius: 8% 5% 0% 0%;
+}
+#bottom_left .d2{
+	height:5%;
+	width: 83%;
+	background-color: #E7F692;
+	margin-top: 10px;
+	margin-left:1px;
+	border-radius: 8% 5% 0% 0%;
+	text-align: right;
+}
+.td1{
+	width: 100px;
+}
+.td2{
+	width: 50px;
+}
+.d1 img{
+	width: 20px;
+	height: 20px;
+}
+.d2 img{
+	width: 20px;
+	height: 20px;
+}
+
+.d12{
+	/*height: ;*/
+	/*width: ;*/
+	background-color: white;
+	display: none;
+}
+#bottom_left ul{
+	margin: 0px;
+	padding-top: 5px;
+	padding-left: 30px;
+}
+#bottom_left li{
+	line-height: 25px;
+	text-align:left;
+	list-style-type: square;
+	color: #B0CFFF;
+}
+#bottom_left a{
+	font-size: 14px;
+	text-decoration: none;
+	color: black;
+	font-weight: bolder;
+}
+.d12 img{
+	width: 12px;
+	height: 12px;
+}
+.img1{
+	margin-left: 35px;
+}
+
+.img2{
+	margin-left: 20px;
+}
+.d22{
+	height: 70px;
+	background-color: white;
+	display: none;
+}
+
+.d1:HOVER div{
+	display: block;
+}
+.d2:HOVER div{
+	display: block;
+}
+
+#bottom_right{
+	height: 99.8%;
+	width: 86.85%;
+	float: left;
+	background-color: white;
+	border: 1px solid #ccc;
+}
+#bottom_right_content{
+	height: 40%;
+	width: 97%;
+	margin-top: 10px;
+	margin-left: 20px;
+	background-color: #FAFAF1;
+}
+.tr1{
+	height:5%;
+	background-color: #E7E7E7;
+}
+#bottom_right_content form{
+	height: 100%;
+	width: 100%;
+}
+#bottom_right_content table{
+	height: 100%;
+	width: 100%;
+}
+#bottom_right_content td {
+	border: 1px solid #ccc;
+}
+.td1{
+	size: 30px;
+	text-align: center;
+}
+#td_content{
+	height: 100px;
+}
+#input_content{
+	height: 95px;
+	width: 600px;
+}
+#input_title{
+	height: 10px;
+	width: 600px;
+}
+#bottom_right_content span{
+	font-weight: bolder;
+	font-size: 13px;
+}
+#span1{
+	margin-left: 22px;
+}

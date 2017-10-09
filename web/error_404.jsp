@@ -56,7 +56,7 @@
 	<hr>
 	<%@include file="welcome.html"%>
 
-	<jsp:include page="login.jsp">
+	<jsp:include page="note-os/login.jsp">
 	<jsp:param value="param test" name="jspParam" />
 	</jsp:include>
 

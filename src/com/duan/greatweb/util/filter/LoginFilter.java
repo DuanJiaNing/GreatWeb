@@ -59,7 +59,7 @@ public class LoginFilter extends RootFilter {
 			}
 		}
 
-		request.getRequestDispatcher("login.jsp?info=" + info).forward(request, response);
+		request.getRequestDispatcher("/note-os/login.jsp?info=" + info).forward(request, response);
 
 	}
 

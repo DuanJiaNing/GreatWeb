@@ -44,8 +44,8 @@
     <meta http-equiv="expires" content="0">
     <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 
-    <link rel="stylesheet" href="css/login.css"/>
-    <script src="js/common.js" charset="utf-8">
+    <link rel="stylesheet" href="../css/login.css"/>
+    <script src="../js/common.js" charset="utf-8">
     </script>
 
 </head>
@@ -90,7 +90,7 @@
                     <tr>
                         <td></td>
                         <td><input type="reset" name="re" value="重置" class="r"/> <a
-                                href="register.jsp">新用户注册</a></td>
+                                href="../register.jsp">新用户注册</a></td>
                     </tr>
 
                     <tr>

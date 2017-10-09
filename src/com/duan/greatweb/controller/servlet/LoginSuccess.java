@@ -14,41 +14,23 @@ import com.duan.greatweb.util.Utils;
 
 public class LoginSuccess extends HttpServlet {
 
-	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
-	}
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doPost(request, response);
+    }
 
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        countSuccessLoginUser(session);
 
-		PrintWriter out = response.getWriter();
+        request.getRequestDispatcher("/note-os/manage_os.jsp").forward(request,response);
+    }
 
-		HttpSession session = request.getSession();
-		countSuccessLoginUser(session);
-
-		StringBuilder builder = new StringBuilder();
-		Utils.append(builder, "用户信息", session.getAttribute("user").toString());
-
-		out(out, builder.toString());
-	}
-
-	private void countSuccessLoginUser(HttpSession session) {
-		Object count = session.getAttribute("success_login_user_count");
-		if (count == null) { // 第一个用户
-			session.setAttribute("success_login_user_count", 1);
-		} else {
-			session.setAttribute("success_login_user_count", (int) count + 1);
-		}
-	}
-
-	public void out(PrintWriter out, String msg) {
-		out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
-		out.println("<HTML>");
-		out.println("  <HEAD><TITLE>A Servlet</TITLE></HEAD>");
-		out.println("  <BODY>");
-		out.println("<h3>登录成功 " + msg + "</h3>");
-		out.println("  </BODY>");
-		out.println("</HTML>");
-		out.flush();
-		out.close();
-	}
+    private void countSuccessLoginUser(HttpSession session) {
+        Object count = session.getAttribute("success_login_user_count");
+        if (count == null) { // 第一个用户
+            session.setAttribute("success_login_user_count", 1);
+        } else {
+            session.setAttribute("success_login_user_count", (int) count + 1);
+        }
+    }
 }
