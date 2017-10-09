@@ -1,19 +1,35 @@
-function loadNotes(cate) {
+//--------------------------------------------------------------------------home_page:data load
+var Note = {
+    id: -1,
+    title: '',
+    content: '',
+    dateTime: '',
+    userId: -1
+}
+
+var User = {
+    id: -1,
+    name: '',
+    password: '',
+    state: -1,
+    age: -1
+}
+
+var notes;
+var users;
+
+// 从后台异步加载数据
+function loadData(cate, callback) {
+
     var xmlRequest = new XMLHttpRequest();
     xmlRequest.open("post", 'notesObtain.do?category=' + cate);
     xmlRequest.send();
     xmlRequest.onreadystatechange = function () {
-        if (xmlRequest.readyState == 4) {
+        if (xmlRequest.readyState === 4) {
             var state = xmlRequest.status;
             switch (state) {
                 case 200: // 接收到结果
-                    var jsonRes = xmlRequest.responseText;
-                    var res = JSON.parse(jsonRes);
-                    var len = res.length;
-                    alert(jsonRes);
-                    //				for (var i = 0; i < len; i++) {
-                    //					addRow(res[i]);
-                    //				}
+                    callback(xmlRequest.responseText);
                     break;
                 default:
                     break;
@@ -22,13 +38,63 @@ function loadNotes(cate) {
     }
 }
 
-function addRow(item) {
-    var id = item.title;
-    var title = item.content;
-    var datetime = item.dateTime; // 服务器端使用 gson 转换对应实体类的字段名
-    var uid = item.userId
+// 加载所有留言
+function loadAllNotes() {
+    loadData(1, function (jsonText) {
+        var json = JSON.parse(jsonText);
+
+    })
+}
+
+// 加载所有用户
+function loadAllUsers() {
+    loadData(2, function (jsonText) {
+        var json = JSON.parse(jsonText);
+
+    });
+}
+
+// 加载所有的留言和用户
+function loadAllNotesAndUsers() {
+    loadAllNotes();
+    loadAllUsers();
+}
+
+// 获得指定用户的所有留言
+function getUserNotes(uid) {
 
 }
+
+// 将指定留言显示到列表中
+function loadNotesTable(notes) {
+
+}
+
+// 清空表格
+function clearNotesTable() {
+
+}
+
+// 过滤留言并刷新页面(留言列表)
+function filterNotes(uid) {
+    clearNotesTable();
+
+    if (uid === -1) { // 显示所有留言
+        loadNotesTable(notes);
+    } else {
+        var ns = getUserNotes(uid);
+        loadNotesTable(ns);
+    }
+}
+
+// 修改选中的用户(参与人员)
+function setUserSelected(uid) {
+    if (uid === -1) { // 全部
+    } else {
+    }
+}
+
+//---------------------------------------------------------------------------login & register:verify
 
 function verifyIdentfyCode() {
     var inputCode = document.getElementById("identifyCode").value;
@@ -100,25 +166,15 @@ function verifyUsernameUsed(msgWhenUsed, msgWhenNotUse) {
     };
 }
 
-function splashInfo() {
-    var infoSpan = document.getElementById("info");
-    infoSpan.style.backgroundColor = 'red';
-    infoSpan.style.color = 'white';
-    setTimeout(function endSplash() {
-        infoSpan.style.backgroundColor = 'transparent'
-        infoSpan.style.color = 'red';
-    }, 200);
-}
-
 function register() {
     var errorInfo = document.getElementById("info").innerHTML;
     if (!isEmpty(errorInfo)) {
-        splashInfo();
+        splashInfo(info);
         return;
     }
 
     if (!verifyPassword() || !verifyAge()) {
-        splashInfo();
+        splashInfo(info);
         return;
     } else {
         var register = document.getElementById("register");
@@ -129,10 +185,8 @@ function register() {
 }
 
 function login() {
-    var test = document.getElementById('rememberMe').value;
-
     if (!verifyIdentfyCode() || !verifyUsername() || !verifyPassword()) {
-        splashInfo();
+        splashInfo(info);
         return;
     } else {
         var login = document.getElementById("login");
@@ -206,17 +260,6 @@ function verifyUsername() {
     }
 }
 
-function deleteRow(index) {
-    var tab = document.getElementById("table_book");
-    tab.deleteRow(index);
-}
-
-
-function addRowClass(index, name) {
-    var tab = document.getElementById("table_book");
-    tab.rows[index].className = name;
-}
-
 function verifyAge() {
     var text = document.getElementById("age").value;
     if (!isEmpty(text)) {
@@ -234,11 +277,34 @@ function verifyAge() {
     }
 }
 
-function isEmpty(str) {
-    return str === null || str === undefined || str === '' || str === 'null';
+//---------------------------------------------------------------------------common
+
+function splashInfo(elementId) {
+    var infoSpan = document.getElementById(elementId);
+    infoSpan.style.backgroundColor = 'red';
+    infoSpan.style.color = 'white';
+    setTimeout(function endSplash() {
+        infoSpan.style.backgroundColor = 'transparent'
+        infoSpan.style.color = 'red';
+    }, 200);
 }
 
 function info(info) {
     var e = document.getElementById("info");
     e.innerHTML = info;
+}
+
+function deleteRow(index) {
+    var tab = document.getElementById("table_book");
+    tab.deleteRow(index);
+}
+
+
+function addRowClass(index, name) {
+    var tab = document.getElementById("table_book");
+    tab.rows[index].className = name;
+}
+
+function isEmpty(str) {
+    return str === null || str === undefined || str === '' || str === 'null';
 }

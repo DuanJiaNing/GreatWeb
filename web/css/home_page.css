@@ -5,12 +5,12 @@
 	margin: auto;
 }
 
-.top_buttom {
+.top_bottom {
 	width: 900px;
 	height: 30px;
 }
 
-.top_buttom input {
+.top_bottom input {
 	float: right;
 	margin-right: 10px;
 }
@@ -54,7 +54,7 @@
 	text-align: left;
 }
 
-.foot_right_botttom {
+.foot_right_bottom {
 	float: right;
 	border: 1px #C3C3C3 solid;
 	background-color: #EFEFEF;

@@ -22,88 +22,105 @@ import com.google.gson.Gson;
 
 public class NotesObtainServlet extends HttpServlet {
 
-	private static final int CATEGORY_ALL_NOTES = 1;
+    private static final int CATEGORY_ALL_NOTES = 1;
+    private static final int CATEGORY_ALL_USERS = 2;
 
-	private OutputStream outStream;
+    private OutputStream outStream;
 
-	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
-	}
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doPost(request, response);
+    }
 
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		response.setContentType("text/html");
+        response.setContentType("text/html");
 
-		String str = request.getParameter("category");
-		String result = "";
-		outStream = response.getOutputStream();
-		int cate = Integer.valueOf(str);
+        String str = request.getParameter("category");
+        outStream = response.getOutputStream();
 
-		if (!Utils.isReal(str)) {
-			LogErrorRequest("需要在请求中指明请求笔记类别,category=?");
-			return;
-		}
+        if (!Utils.isReal(str)) {
+            LogErrorRequest("需要在请求中指明请求笔记类别,category=?");
+            return;
+        }
 
-		switch (cate) {
-		case CATEGORY_ALL_NOTES:
-			String jsonNotes = queryAllNotes();
-			if (Utils.isReal(jsonNotes)) {
-				out(jsonNotes);
-			} else {
-				LogErrorRequest("没有获取到数据");
-				return;
-			}
-			break;
-		default:
-			LogErrorRequest("请求的数据类型不存在,category=?");
-			break;
-		}
-	}
+        int cate = Integer.valueOf(str);
+        switch (cate) {
+            case CATEGORY_ALL_NOTES: {
+                String jsonNotes = queryAllNotes();
+                if (Utils.isReal(jsonNotes)) {
+                    out(jsonNotes);
+                } else {
+                    LogErrorRequest("没有获取到数据");
+                    return;
+                }
+                break;
+            }
+            case CATEGORY_ALL_USERS:{
+                String jsonNotes = queryAllUsers();
+                if (Utils.isReal(jsonNotes)) {
+                    out(jsonNotes);
+                } else {
+                    LogErrorRequest("没有获取到数据");
+                    return;
+                }
+                break;
+            }
+            default:
+                LogErrorRequest("请求的数据类型不存在,category=?");
+                break;
+        }
+    }
 
-	private String queryAllNotes() {
-		NoteDao nd = new NoteDaoImpl();
-		UserDao ud = new UserDaoImpl();
-		Map<Note, User> data = new HashMap<Note, User>();
-		
-		List<Note> notes = nd.queryAll();
+    private String queryAllUsers() {
+
+        return null;
+    }
+
+    private String queryAllNotes() {
+        NoteDao nd = new NoteDaoImpl();
+        UserDao ud = new UserDaoImpl();
+
+
+        Map<Note, User> data = new HashMap<Note, User>();
+
+        List<Note> notes = nd.queryAll();
 //		List<Map<>>
-		for (Note note : notes) {
-			int uid = note.getUserId();
-			User u = ud.queryById(uid);
-			data.put(note, u);
-		}
+        for (Note note : notes) {
+            int uid = note.getUserId();
+            User u = ud.queryById(uid);
+            data.put(note, u);
+        }
 
-		Gson gson = new Gson();
-		return gson.toJson(data);
-	}
+        Gson gson = new Gson();
+        return gson.toJson(data);
+    }
 
-	private void LogErrorRequest(String msg) {
-		Utils.log(msg);
-		close();
-	}
+    private void LogErrorRequest(String msg) {
+        Utils.log(msg);
+        close();
+    }
 
-	private void close() {
-		if (outStream != null) {
-			try {
-				outStream.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-	}
+    private void close() {
+        if (outStream != null) {
+            try {
+                outStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
-	private void out(String str) {
-		if (outStream == null) {
-			return;
-		}
+    private void out(String str) {
+        if (outStream == null) {
+            return;
+        }
 
-		try {
-			outStream.write(str.getBytes());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+        try {
+            outStream.write(str.getBytes());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-	}
+    }
 
 }
