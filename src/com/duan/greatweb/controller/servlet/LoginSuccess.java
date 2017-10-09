@@ -23,19 +23,21 @@ public class LoginSuccess extends HttpServlet {
 		PrintWriter out = response.getWriter();
 
 		HttpSession session = request.getSession();
+		countSuccessLoginUser(session);
+
+		StringBuilder builder = new StringBuilder();
+		Utils.append(builder, "用户信息", session.getAttribute("user").toString());
+
+		out(out, builder.toString());
+	}
+
+	private void countSuccessLoginUser(HttpSession session) {
 		Object count = session.getAttribute("success_login_user_count");
 		if (count == null) { // 第一个用户
 			session.setAttribute("success_login_user_count", 1);
-			count = 1;
 		} else {
 			session.setAttribute("success_login_user_count", (int) count + 1);
 		}
-
-		StringBuilder builder = new StringBuilder();
-		Utils.append(builder, "session 统计", "第" + count + "个成功登陆用户");
-		Utils.append(builder, "用户信息", ((User) session.getAttribute("user")).toString());
-
-		out(out, builder.toString());
 	}
 
 	public void out(PrintWriter out, String msg) {

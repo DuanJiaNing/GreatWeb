@@ -28,8 +28,7 @@ public class LoginFilter extends RootFilter {
 
 		String name = request.getParameter("username");
 		String password = request.getParameter("password");
-		boolean rember = "true".equals(request.getParameter("rember"));
-		Utils.log("rember " + rember);
+		boolean rememberMe = "on".equals(request.getParameter("rememberMe"));
 
 		String info = "输入格式错误！";
 		if (Utils.isReal(name) && Utils.isReal(password)) {
@@ -41,24 +40,26 @@ public class LoginFilter extends RootFilter {
 				HttpSession session = req.getSession();
 				session.setMaxInactiveInterval(60 * 5);
 				session.setAttribute("user", user);
-				session.setAttribute("rember", rember);
+				session.setAttribute("rememberMe", rememberMe);
 
 				chain.doFilter(request, response);
 
 				// 将用户信息保存到 cookie 中
 				Cookie cookie = new Cookie("user", user.getId() + "");
-				Cookie cookieRember = new Cookie("rember", rember ? "true" : "false");
+				Cookie cookieRememberMe = new Cookie("rememberMe", rememberMe ? "true" : "false");
+
 				cookie.setMaxAge(60 * 5);
-				cookieRember.setMaxAge(60 * 5);
+				cookieRememberMe.setMaxAge(60 * 5);
+
 				res.addCookie(cookie);
-				res.addCookie(cookieRember);
+				res.addCookie(cookieRememberMe);
 				return;
 			} else {// 验证失败
 				info = "用户不存在或密码错误！";
 			}
 		}
 
-		request.getRequestDispatcher("back/login.jsp?info=" + info).forward(request, response);
+		request.getRequestDispatcher("login.jsp?info=" + info).forward(request, response);
 
 	}
 

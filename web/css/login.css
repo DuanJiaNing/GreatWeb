@@ -5,9 +5,11 @@
 	margin: auto;
 }
 
-.info {
-	text-size: 2em;
+span.info_danger {
+	font-size: 0.65em;
 	color: red;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .top {
@@ -72,4 +74,9 @@ table tr td input {
 .r:hover {
 	color: red;
 	background-color: #d4d4d4;
+}
+
+.login_button_info {
+    background-color: rgba(255, 255, 255, 0.44);
+    padding: 5px;
 }

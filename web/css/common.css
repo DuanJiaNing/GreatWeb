@@ -86,8 +86,10 @@ button:hover {
 	background-color: darkorange;
 }
 
-.red {
+span.info_danger {
 	color: red;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 
 a:link {

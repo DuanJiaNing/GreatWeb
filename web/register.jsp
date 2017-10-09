@@ -39,7 +39,7 @@
 				<tr>
 					<td>用户名：</td>
 					<td><input type="text" id="username" name="username"
-						onblur="verifyUsernameUsed()"></td>
+						onblur="verifyUsernameUsed('用户名已经被使用','')"></td>
 				</tr>
 				<tr>
 					<td>密码：</td>
@@ -59,7 +59,7 @@
 			</table>
 		</form>
 		<button class="primary" onclick="register()">注册</button>
-		&nbsp;&nbsp;&nbsp;<span id="info" class="red"><%=info%></span>
+		&nbsp;&nbsp;&nbsp;<span id="info" class="info_danger"><%=info%>sssdf</span>
 	</div>
 
 </body>
