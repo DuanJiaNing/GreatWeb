@@ -21,13 +21,13 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public User queryById(int id) {
-		User[] users = dataBase.query(User.class, new String[] { "id" }, new String[] { id + "" });
+	public User query(int userId) {
+		User[] users = dataBase.query(User.class, new String[] { "id" }, new String[] { userId + "" });
 		return (users != null && users.length >= 1) ? users[0] : null;
 	}
 
 	@Override
-	public User queryByName(String name) {
+	public User query(String name) {
 		// TODO
 		User[] users = dataBase.query(User.class, new String[] { "name" }, new String[] { name });
 		return users != null && users.length >= 1 ? users[0] : null;
@@ -39,13 +39,13 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public int updateById(int id, String name, String password, int state, int age) {
-		return dataBase.update(new User(id, name, password, state, age));
+	public int update(int userId, String name, String password, int state, int age) {
+		return dataBase.update(new User(userId, name, password, state, age));
 	}
 
 	@Override
-	public int deleteById(int id) {
-		return dataBase.delete(User.class, id);
+	public int delete(int userId) {
+		return dataBase.delete(User.class, userId);
 	}
 
 }

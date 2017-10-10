@@ -1,16 +1,11 @@
 package com.duan.greatweb.controller.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import com.duan.greatweb.entitly.User;
-import com.duan.greatweb.util.Utils;
 
 public class LoginSuccess extends HttpServlet {
 
@@ -22,7 +17,7 @@ public class LoginSuccess extends HttpServlet {
         HttpSession session = request.getSession();
         countSuccessLoginUser(session);
 
-        request.getRequestDispatcher("/note-os/manage_os.jsp").forward(request,response);
+        request.getRequestDispatcher("/note-os/manage/manage_os.jsp").forward(request,response);
     }
 
     private void countSuccessLoginUser(HttpSession session) {

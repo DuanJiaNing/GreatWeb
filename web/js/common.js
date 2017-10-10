@@ -50,21 +50,28 @@ function showAllUsers() {
     for (var i = 0; i < jsonUsers.length; i++) {
         var name = jsonUsers[i].name;
         var count = getUserNotesCount(jsonUsers[i].id);
-        addRow(name, count,jsonUsers[i].id);
+        var randomAvatar = getRandomAvatar();
+
+        addRow(name, count,jsonUsers[i].id,randomAvatar);
     }
 
-    function addRow(name, count,userId) {
+    function addRow(name, count,userId,avatar) {
         var userTable = document.getElementById("userTable");
         var newRaw = userTable.insertRow(userTable.rows.length);
-        var cellName = newRaw.insertCell(0);
-        var cellCount = newRaw.insertCell(1);
+        var cellAvatar = newRaw.insertCell(0);
+        var cellName = newRaw.insertCell(1);
+        var cellCount = newRaw.insertCell(2);
 
         newRaw.onclick = function () {
             filterAndShowNotes(userId);
         };
 
+        cellAvatar.style.verticalAlign = 'center';
         cellName.innerHTML = "<h5><b>" + name + "</b></h5>"
         cellCount.innerHTML = "<h6>" + count + "条</h6>"
+        if (!isNull(avatar)){
+            cellAvatar.innerHTML = "<img src='"+avatar+"' class='avatar'>";
+        }
     }
 }
 
@@ -106,17 +113,21 @@ function filterAndShowNotes(userId) {
             addRow(
                 note.title,
                 note.content,
-                getDate(note.dateTime));
+                getDate(note.dateTime),
+                note.id);
         }
     }
 
-    function addRow(title, content, date) {
+    function addRow(title, content, date,noteID) {
         var table = document.getElementById("notesTable");
         var newRaw = table.insertRow(table.rows.length);
         var cell = newRaw.insertCell(0);
 
         newRaw.style.paddingLeft = 30;
         newRaw.style.paddingRight = 30;
+        newRaw.onclick = function () {
+            window.location.href = 'note-os/home_note_detail.jsp?noteID='+noteID;
+        };
 
         cell.innerHTML = "<h5><b>" + title + "</b></h5>" +
             "<p><h5>&nbsp;&nbsp;&nbsp;&nbsp;" + content + "</h5></p>" +
@@ -367,3 +378,35 @@ function getDate(data) {
     var date = new Date(data);
     return date.getFullYear() + "/" + date.getMonth() + "/" + date.getDay();
 }
+
+// 获得一个随机头像（图片）
+function getRandomAvatar() {
+    var rootPath = 'img/avatar/';
+    var avatars = [
+       'avatar01.png',
+       'avatar02.png',
+       'avatar03.png',
+       'avatar04.png',
+       'avatar05.png',
+       'avatar06.png',
+       'avatar07.png',
+       'avatar08.png',
+       'avatar09.png',
+       'avatar10.png',
+       'avatar11.png',
+       'avatar12.png',
+       'avatar13.png',
+       'avatar14.png'
+    ];
+
+    var random = Math.round(Math.random() * (avatars.length - 1));
+    return rootPath + avatars[random];
+}
+
+//---------------------------------------------------------------------------note-os: manage_os
+
+function switchIframe(des) {
+    var iframe = document.getElementById('noteOsIframe');
+    iframe.src = 'note-os/manage/'+des;
+}
+

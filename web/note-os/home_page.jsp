@@ -28,11 +28,11 @@
 
 <div class="all">
     <div class="top">
-        <img src="img\header.png" alt=""/>
+        <img src="../img/header.png" alt=""/>
         <div class="top_bottom">
             <form action="">
                 <input type="button" value="刷新列表" onclick="loadAllNotesAndUsers()"/>
-                <input type="button" value="后台管理" onclick="javascript:document.location='note-os/login.jsp'"/>
+                <input type="button" value="后台管理" onclick="document.location='note-os/login.jsp'"/>
             </form>
         </div>
     </div>

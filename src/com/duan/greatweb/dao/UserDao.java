@@ -9,12 +9,12 @@ public interface UserDao extends Dao{
 	/**
 	 * 用户账号状态为<b>冻结</b>，用户无法使用系统功能
 	 */
-	public static int STATE_FREEZE = -1;
+	  int STATE_FREEZE = -1;
 
 	/**
 	 * 用户账号状态为<b>正常</b>，用户可以使用系统功能
 	 */
-	public static int STATE_NORMAL = 0;
+	  int STATE_NORMAL = 0;
 
 	/**
 	 * 添加用户
@@ -25,16 +25,16 @@ public interface UserDao extends Dao{
 	 *         <li>STATE_ADD_SUCCESS
 	 *         <li>STATE_ADD_FAIL
 	 */
-	public int addUser(User user);
+	 int addUser(User user);
 
 	/**
 	 * 根据用户 id 查询用户信息
 	 * 
-	 * @param id
+	 * @param userId
 	 *            用户 id
 	 * @return 存在该用户返回用户，否则为 null
 	 */
-	public User queryById(int id);
+	User query(int userId);
 
 	/**
 	 * 根据用户名查询用户信息
@@ -43,7 +43,7 @@ public interface UserDao extends Dao{
 	 *            用户名
 	 * @return 存在该用户返回用户，否则为 null
 	 */
-	public User queryByName(String name);
+	 User query(String name);
 
 	/**
 	 * 返回指定状态下的用户信息
@@ -53,12 +53,12 @@ public interface UserDao extends Dao{
 	 *            <li>STATE_NORMAL
 	 * @return 满足状态的用户集合
 	 */
-	public List<User> queryAll(int state);
+	 List<User> queryAll(int state);
 
 	/**
 	 * 根据用户id更新用户信息
 	 * 
-	 * @param id
+	 * @param userId
 	 *            用户 id
 	 * @param name
 	 *            新的用户名，该项无需修改时传 null
@@ -74,16 +74,16 @@ public interface UserDao extends Dao{
 	 *         <li>STATE_UPDATE_FAIL
 	 *         <li>STATE_UPDATE_SUCCESS
 	 */
-	public int updateById(int id, String name, String password, int state, int age);
+	 int update(int userId, String name, String password, int state, int age);
 
 	/**
 	 * 根据用户id删除用户
 	 * 
-	 * @param id
+	 * @param userId
 	 *            用户id
 	 * @return 删除结果，
 	 *         <li>STATE_DELETE_SUCCESS
 	 *         <li>STATE_DELETE_FAIL
 	 */
-	public int deleteById(int id);
+	 int delete(int userId);
 }

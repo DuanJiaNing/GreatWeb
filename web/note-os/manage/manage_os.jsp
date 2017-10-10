@@ -19,7 +19,11 @@
 <html>
 <head>
     <title>留言内容管理系统</title>
-    <link rel="stylesheet" href="../css/common_os.css"/>
+    <link rel="stylesheet" href="../../css/manage/manage_os.css"/>
+    <script type="text/javascript" src="../../js/common.js"></script>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 </head>
 <body>
@@ -42,13 +46,13 @@
             <div class="d1">
                 <div class="d11">
                     <span>留言管理</span>
-                    <img src="../img/0.png">
+                    <img src="../../img/0.png">
                 </div>
                 <div class="d12">
                     <ul>
-                        <li><a href="#">新增留言</a><img src="../img/1.png" class="img1"></li>
-                        <li><a href="查询留言.html">查询留言</a></li>
-                        <li><a href="留言回收.html">留言回收站</a><img src="../img/2.png" class="img2"></li>
+                        <li><a href="javaScript:switchIframe('manage_note_new.jsp')">新增留言</a><img src="../../img/1.png" class="img1"></li>
+                        <li><a href="javaScript:switchIframe('manage_note_query.jsp')">查询留言</a></li>
+                        <li><a href="javaScript:switchIframe('manage_note_recycle_bin.jsp')">留言回收站</a><img src="../../img/2.png" class="img2"></li>
                     </ul>
                 </div>
             </div>
@@ -56,19 +60,19 @@
             <div class="d2">
                 <div class="d21">
                     <span>用户管理</span>
-                    <img src="../img/0.png">
+                    <img src="../../img/0.png">
                 </div>
                 <div class="d22">
                     <ul>
-                        <li><a href="#">用户添加</a></li>
-                        <li><a href="#">修改密码</a></li>
+                        <li><a href="javaScript:switchIframe('manage_user_add.jsp')">用户添加</a></li>
+                        <li><a href="javaScript:switchIframe('manage_user_modify.jsp')">修改密码</a></li>
                     </ul>
                 </div>
             </div>
         </div>
         <div id="bottom_right">
             <div id="bottom_right_content">
-                <iframe src="note_home.jsp"></iframe>
+                <iframe src="note-os/manage/manage_note_home.jsp" width="100%" height="100%" id="noteOsIframe"></iframe>
             </div>
         </div>
     </div>

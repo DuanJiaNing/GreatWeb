@@ -4,10 +4,13 @@ import java.util.List;
 
 import com.duan.greatweb.entitly.Note;
 
+// TODO 注释
 public interface NoteDao extends Dao {
 
-	public int addNote(Note note);
+	int addNote(Note note);
 
-	public List<Note> queryAll();
+	List<Note> queryAll();
+
+	Note query(int noteId);
 
 }

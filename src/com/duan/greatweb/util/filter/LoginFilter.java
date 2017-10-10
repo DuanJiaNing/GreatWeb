@@ -34,7 +34,7 @@ public class LoginFilter extends RootFilter {
 		if (Utils.isReal(name) && Utils.isReal(password)) {
 
 			UserDao userDao = new UserDaoImpl();
-			User user = userDao.queryByName(name);
+			User user = userDao.query(name);
 			if (user != null ) {
 				// 验证成功 将用户保存到 session 和 cookie 中
 				HttpSession session = req.getSession();

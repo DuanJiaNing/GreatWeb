@@ -135,4 +135,261 @@ public class Utils {
 		return obj == null ? defaulz : (T) obj;
 	}
 
+	/**
+	 * 格式化日期 YYYY-MM-dd-HH:MM:SS
+	 */
+	public static String getFormatedTime(long time) {
+		SimpleDateFormat f = new SimpleDateFormat("YYYY-MM-dd-HH:MM:SS");
+		return f.format(new Date(time));
+	}
+
+	public static String getFormatedTime(long time,String pattern) {
+		SimpleDateFormat f = new SimpleDateFormat(pattern);
+		return f.format(new Date(time));
+	}
+
+	public static boolean isUpperCaseByte(byte b) {
+		return b >= 65 && b <= 90;
+	}
+
+	public static boolean isLowerCaseByte(byte b) {
+		return b >= 97 && b <= 122;
+	}
+
+	public static boolean isNumberCaseByte(byte b) {
+		return b >= 48 && b <= 57;
+	}
+
+	public static boolean isLetterByte(byte b) {
+		return isUpperCaseByte(b) || isLowerCaseByte(b);
+	}
+
+	public static boolean isSpecialByte(byte b) {
+		return b < 48 || (b > 57 && b < 65) || (b > 90 && b < 97) || b > 122;
+	}
+
+	public static int parseStringToInt(String str) {
+		if (!isReal(str)) {
+			return -1;
+		}
+		try {
+			return Integer.valueOf(str);
+		} catch (NumberFormatException e) {
+			// NumberFormatException 异常继承 RuntimeException，抛出次异常一定是由于程序员的疏忽
+			// e.printStackTrace();
+			System.err.println("NumberFormatException has throwed");
+			return -1;
+		}
+	}
+
+	/**
+	 * 格式要求 YYYY-MM-dd hh:mm
+	 */
+	public static Calendar parseStringToDateMinute(String time) {
+
+		if (!isReal(time)) {
+			return null;
+		}
+
+		if (time.indexOf(" ") == -1 || time.indexOf(":") == -1) {
+			return null;
+		}
+
+		String[] spl = time.split(" ");
+		if (spl.length != 2) {
+			return null;
+		}
+
+		String[] spl2 = spl[0].split("-");
+		if (spl2.length != 3) {
+			return null;
+		}
+
+		String[] spl3 = spl[1].split(":");
+		if (spl3.length != 2) {
+			return null;
+		}
+
+		int year = Utils.parseStringToInt(spl2[0]);
+		int month = Utils.parseStringToInt(spl2[1]);
+		int day = Utils.parseStringToInt(spl2[2]);
+		int hour = Utils.parseStringToInt(spl3[0]);
+		int minute = Utils.parseStringToInt(spl3[1]);
+
+		if (year == -1 || month == -1 || day == -1 || hour == -1 || minute == -1) {
+			return null;
+		}
+
+		Calendar des = Calendar.getInstance();
+		des.set(year, month - 1, day, hour, minute);
+
+		return des;
+
+	}
+
+	/**
+	 * 格式要求 YYYY-MM-dd
+	 */
+	public static Calendar parseStringToDate(String time) {
+
+		if (!Utils.isReal(time)) {
+			return null;
+		}
+
+		String[] spl = time.split("-");
+		if (spl.length != 3) {
+			return null;
+		}
+
+		int year = Utils.parseStringToInt(spl[0]);
+		int month = Utils.parseStringToInt(spl[1]);
+		int day = Utils.parseStringToInt(spl[2]);
+
+		if (year == -1 || month == -1 || day == -1) {
+			return null;
+		}
+
+		Calendar des = Calendar.getInstance();
+		des.set(year, month - 1, day);
+
+		return des;
+
+	}
+
+	public static float parseStringToFloat(String str) {
+		if (!isReal(str)) {
+			return -1;
+		}
+		try {
+			return Float.valueOf(str);
+		} catch (NumberFormatException e) {
+			System.err.println("NumberFormatException has throwed");
+			return -1;
+		}
+	}
+
+	// FIXME
+	public static boolean isNumber(String str) {
+		if (!isReal(str)) {
+			return false;
+		}
+
+		int len = str.length();
+		boolean dot = false;
+		for (int i = 0; i < str.length(); i++) {
+			char r = str.charAt(i);
+			String c = r + "";
+			byte b = (byte) r;
+
+			if (!isNumberCaseByte(b)) { // 非数字
+				if (i == len - 1 && (c.equalsIgnoreCase("d") || c.equalsIgnoreCase("L") || c.equalsIgnoreCase("f"))) {
+					return true;
+				} else if (!dot && c.equals(".")) {
+					dot = true;
+				} else {
+					return false;
+				}
+			}
+		}
+
+		return true;
+
+	}
+
+	public static boolean isFloatNumber(String str) {
+		int l = str.length() - 1;
+		return isNumber(str) && (str.contains(".") || str.indexOf("f") == l || str.indexOf("F") == l);
+	}
+
+	public static boolean isIntNumber(String str) {
+		for (byte b : str.getBytes()) {
+			if (!isNumberCaseByte(b)) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	// 计算时间差，返回毫秒数，start 和 end 相差不能太大，相差很大时应使用 calcTimeGapOnMinute 方法
+	public static long calcTimeGapOnMillisecond(long start, long end) {
+
+		Calendar startC = Calendar.getInstance();
+		Calendar endC = Calendar.getInstance();
+
+		startC.setTime(new Date(start));
+		endC.setTime(new Date(end));
+
+		if (startC.after(end)) {
+			return -1;
+		}
+
+		long re = 0;
+		while (startC.get(Calendar.MILLISECOND) != endC.get(Calendar.MILLISECOND)
+				|| startC.get(Calendar.SECOND) != endC.get(Calendar.SECOND)
+				|| startC.get(Calendar.MINUTE) != endC.get(Calendar.MINUTE)
+				|| startC.get(Calendar.HOUR_OF_DAY) != endC.get(Calendar.HOUR_OF_DAY)
+				|| startC.get(Calendar.DAY_OF_MONTH) != endC.get(Calendar.DAY_OF_MONTH)
+				|| startC.get(Calendar.MONTH) != endC.get(Calendar.MONTH)
+				|| startC.get(Calendar.YEAR) != endC.get(Calendar.YEAR)) {
+			startC.add(Calendar.MILLISECOND, 1);
+			re++;
+		}
+
+		return re;
+	}
+
+	// 计算时间差，返回天数
+	public static int calcTimeGapOnDay(long start, long end) {
+
+		Calendar startC = Calendar.getInstance();
+		Calendar endC = Calendar.getInstance();
+
+		startC.setTime(new Date(start));
+		endC.setTime(new Date(end));
+
+		if (startC.after(end)) {
+			return -1;
+		}
+
+		int re = 0;
+		while (startC.get(Calendar.DAY_OF_MONTH) != endC.get(Calendar.DAY_OF_MONTH)
+				|| startC.get(Calendar.MONTH) != endC.get(Calendar.MONTH)
+				|| startC.get(Calendar.YEAR) != endC.get(Calendar.YEAR)) {
+
+			startC.add(Calendar.DAY_OF_MONTH, 1);
+			re++;
+		}
+
+		return re;
+
+	}
+
+	// 计算时间差，返回分钟数
+	public static int calcTimeGapOnMinute(long start, long end) {
+
+		Calendar startC = Calendar.getInstance();
+		Calendar endC = Calendar.getInstance();
+
+		startC.setTime(new Date(start));
+		endC.setTime(new Date(end));
+
+		if (startC.after(end)) {
+			return -1;
+		}
+
+		int re = 0;
+		while (startC.get(Calendar.MINUTE) != endC.get(Calendar.MINUTE)
+				|| startC.get(Calendar.HOUR_OF_DAY) != endC.get(Calendar.HOUR_OF_DAY)
+				|| startC.get(Calendar.DAY_OF_MONTH) != endC.get(Calendar.DAY_OF_MONTH)
+				|| startC.get(Calendar.MONTH) != endC.get(Calendar.MONTH)
+				|| startC.get(Calendar.YEAR) != endC.get(Calendar.YEAR)) {
+
+			startC.add(Calendar.MINUTE, 1);
+			re++;
+		}
+
+		return re;
+
+	}
 }

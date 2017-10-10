@@ -9,6 +9,14 @@
 <html>
 <head>
     <title>新增留言</title>
+
+    <link rel="stylesheet" href="../../css/manage/manage_note_home.css"/>
+    <script type="text/javascript" src="../../js/common.js"></script>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
 </head>
 <body>
 <div style="height: 30px;width: 700px;font-size: 5px;padding-top: 5px;padding-left: 30px">

@@ -26,7 +26,7 @@ public class RegisterServlet extends HttpServlet {
 		String name = request.getParameter("username");
 		if ("checkNameUsed".equals(method)) { // 检查用户名是否已经被使用
 
-			User user = uDao.queryByName(name);
+			User user = uDao.query(name);
 			boolean used = false;
 			if (user != null) {
 				used = true;
@@ -40,7 +40,7 @@ public class RegisterServlet extends HttpServlet {
 			int age = strAge == null ? 18 : Integer.valueOf(strAge);
 
 			User user = new User(name, password, 0, age);
-			User re = uDao.queryByName(name);
+			User re = uDao.query(name);
 			Utils.log(user.toString());
 
 			boolean suc = false;

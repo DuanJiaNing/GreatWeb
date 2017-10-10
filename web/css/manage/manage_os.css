@@ -45,12 +45,6 @@
 	float: left;
 	background-color: #9AD075
 }
-#bottom_right{
-	height: 100%;
-	width: 87%;
-	float: left;
-	background-color: gray;
-}
 #bottom_left .d1{
 	width: 83%;
 	margin-top: 10px;
@@ -140,10 +134,8 @@
 	border: 1px solid #ccc;
 }
 #bottom_right_content{
-	height: 40%;
-	width: 97%;
-	margin-top: 10px;
-	margin-left: 20px;
+	height: 100%;
+	width: 100%;
 	background-color: #FAFAF1;
 }
 .tr1{

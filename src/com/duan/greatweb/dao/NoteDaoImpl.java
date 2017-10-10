@@ -10,6 +10,7 @@ import com.duan.greatweb.entitly.Note;
 public class NoteDaoImpl implements NoteDao {
 
 	private final DataBase dataBase;
+	private static final Class<Note> sCLASS = Note.class;
 
 	public NoteDaoImpl() {
 		dataBase = DBHelper.getDataBase();
@@ -22,7 +23,13 @@ public class NoteDaoImpl implements NoteDao {
 
 	@Override
 	public List<Note> queryAll() {
-		return Arrays.asList(dataBase.queryAll(Note.class));
+		return Arrays.asList(dataBase.queryAll(sCLASS));
+	}
+
+	@Override
+	public Note query(int noteId) {
+		Note[] notes = dataBase.query(sCLASS, new String[]{"id"}, new String[]{noteId + ""});
+		return notes != null && notes.length > 0 ? notes[0] : null;
 	}
 
 }
