@@ -1,14 +1,15 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: DuanJiaNing
+  Date: 2017/10/9
+  Time: 20:13
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page import="com.duan.greatweb.entitly.Note" %>
 <%@ page import="com.duan.greatweb.dao.NoteDaoImpl" %>
 <%@ page import="com.duan.greatweb.util.Utils" %>
 <%@ page import="com.duan.greatweb.entitly.User" %>
-<%@ page import="com.duan.greatweb.dao.UserDaoImpl" %><%--
-  Created by IntelliJ IDEA.
-  User: DuanJiaNing
-  Date: 2017/10/10
-  Time: 10:07
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="com.duan.greatweb.dao.UserDaoImpl" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     String str = request.getParameter("noteID");

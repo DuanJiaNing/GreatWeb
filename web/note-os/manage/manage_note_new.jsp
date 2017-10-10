@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  User: Administrator
+  User: DuanJiaNing
   Date: 2017/10/9
   Time: 20:13
   To change this template use File | Settings | File Templates.
@@ -9,7 +9,6 @@
 <html>
 <head>
     <title>新增留言</title>
-    <link rel="stylesheet" href="../../css/manage/manage_note_new.css"/>
     <script type="text/javascript" src="../../js/common.js"></script>
     <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -20,30 +19,30 @@
 <body>
 
 <form action="#" method="post">
-    <table>
-        <tr class="tr1">
+    <table class="table table-bordered">
+        <tr >
             <td colspan="2">
-                <span id="span1">留言内容</span>
+                <b>留言内容</b>
             </td>
         </tr>
         <tr>
-            <td class="td1"><span>标题</span></td>
-            <td><input type="text" name="title" id="input_title"></td>
+            <td><span>标题</span></td>
+            <td><input type="text" class="form-control" name="title" style="width: 50%"></td>
         </tr>
         <tr>
-            <td class="td1" id="td_content"><span>内容</span></td>
-            <td><input type="text" name="content" id="input_content"></td>
+            <td><span>内容</span></td>
+            <td><textarea name="content" class="form-control" style="width: 90%;height: 100px;"></textarea></td>
         </tr>
         <tr>
-            <td class="td1"><span>日期</span></td>
+            <td><span>日期</span></td>
             <td></td>
         </tr>
         <tr>
-            <td class="td1"><span>留言人</span></td>
+            <td><span>留言人</span></td>
             <td>zy</td>
         </tr>
         <tr>
-            <td class="td1"></td>
+            <td></td>
             <td><input type="reset" value="取消填写">&nbsp;<input type="submit" value="保存填写"></td>
         </tr>
     </table>

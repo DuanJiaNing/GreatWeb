@@ -1,10 +1,12 @@
-<%@ page import="com.duan.greatweb.entitly.User" %><%--
+<%--
   Created by IntelliJ IDEA.
-  User: Administrator
+  User: DuanJiaNing
   Date: 2017/10/9
-  Time: 19:34
+  Time: 20:13
   To change this template use File | Settings | File Templates.
 --%>
+
+<%@ page import="com.duan.greatweb.entitly.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%
