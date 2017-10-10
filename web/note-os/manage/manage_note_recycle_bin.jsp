@@ -14,59 +14,83 @@
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
+    <style>
+        button {
+            background-color: #F1F8B4;
+        }
+    </style>
 </head>
-<body>
-<form>
-    <br>
-    <p class="text-center">
-        <input type="submit" value="添加文档">
-        <input type="submit" value="我的文档">
-        <input type="submit" value="稿件审核">
-        <input type="submit" value="栏目管理">
-        <input type="submit" value="更新列表">
-        <input type="submit" value="更新文档">
-        <input type="submit" value="文章回收站">
-    </p>
+<body style="padding: 5px">
+<div class="btn-group" role="group" style="float: right">
+    <button type="button" class="btn btn-default">添加文档</button>
+    <button type="button" class="btn btn-default">我的文档</button>
+    <button type="button" class="btn btn-default">稿件审核</button>
+    <button type="button" class="btn btn-default">栏目管理</button>
+    <button type="button" class="btn btn-default">更新列表</button>
+    <button type="button" class="btn btn-default">更新文档</button>
+    <button type="button" class="btn btn-default">文章回收站</button>
+</div>
 
-    <table class="table table-striped">
-        <tr>
-            <td colspan="6"><span>文档列表</span></td>
-        </tr>
-        <tr>
-            <th>ID</th>
-            <th>选择</th>
-            <th>文章标题</th>
-            <th>录入时间</th>
-            <th>发布人</th>
-            <th>操作</th>
-        </tr>
-        <tr>
-            <td colspan="6">
-                <input type="submit" value="全选">
-                <input type="submit" value="取消">
-                <input type="submit" value="更新">
-                <input type="submit" value="审核">
-                <input type="submit" value="推荐">
-                <input type="submit" value="移动">
-                <input type="submit" value="删除">
-            </td>
-        </tr>
-        <tr>
-            <td colspan="6"></td>
-        </tr>
-    </table>
+<div class="page-header">
+    <h4><b>留言列表</b><small>&nbsp;&nbsp;(20条)</small></h4>
+</div>
 
-    <p class="text-center">
-        搜索条件： <select>
-        <option>选择类型...</option>
+<table class="table table-bordered table-hover" id="">
+    // 一页5条
+    <tr>
+        <th>编号</th>
+        <th>文章标题</th>
+        <th>录入时间</th>
+        <th>发布人</th>
+        <th>操作</th>
+    </tr>
+</table>
+
+<center>
+    <nav>
+        <ul class="pagination">
+            <li>
+                <a href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li>
+                <a href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</center>
+
+<div class="btn-group" role="group">
+    <button type="button" class="btn btn-default">全选</button>
+    <button type="button" class="btn btn-default">取消</button>
+    <button type="button" class="btn btn-default">更新</button>
+    <button type="button" class="btn btn-default">审核</button>
+    <button type="button" class="btn btn-default">推荐</button>
+    <button type="button" class="btn btn-default">移动</button>
+    <button type="button" class="btn btn-default">删除</button>
+</div>
+<br>
+<br>
+
+<p class="text-center" style="background-color: #F5FFD8">
+
+    搜索条件： <select>
+    <option>选择类型...</option>
+</select>
+    关键字：
+    <input type="text">
+    <select>
+        <option>排序...</option>
     </select>
-        关键字：
-        <input type="text" >
-        <select>
-            <option>排序...</option>
-        </select>
-        <input type="button" value="搜索" disabled="disabled">
-    </p>
-</form>
+    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+</p>
 </body>
 </html>

@@ -1,10 +1,15 @@
+
+body {
+	font-family: 微软雅黑, serif;
+}
+
 .clear{
 	clear: both;
 }
 #page{
 	width: 1400px;
 	height: 700px;
-	background-color: aqua;
+	background-color: #959595;
 	margin: auto;
 }
 #top{
@@ -43,26 +48,20 @@
 	height: 100%;
 	width: 13%;
 	float: left;
-	background-color: #9AD075
+	background-color: #5da73c;
 }
 #bottom_left .d1{
-	width: 83%;
+	width: 100%;
 	margin-top: 10px;
-	text-align: right;
-	margin-left:1px;
+	text-align: center;
 }
 #bottom_left .d11{
-	background-color: #E7F692;
 	border-radius: 8% 5% 0% 0%;
 }
 #bottom_left .d2{
 	height:5%;
-	width: 83%;
-	background-color: #E7F692;
+	width: 100%;
 	margin-top: 10px;
-	margin-left:1px;
-	border-radius: 8% 5% 0% 0%;
-	text-align: right;
 }
 .td1{
 	width: 100px;

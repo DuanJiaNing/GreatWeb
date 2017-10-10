@@ -120,6 +120,7 @@
   <servlet-mapping>
     <servlet-name>NotesObtainServlet</servlet-name>
     <url-pattern>/notesObtain.do</url-pattern>
+    <url-pattern>/note-os/manage/notesObtain.do</url-pattern>
   </servlet-mapping>
 	<!-- 配置 servlet -->
 

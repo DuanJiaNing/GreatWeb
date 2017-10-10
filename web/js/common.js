@@ -87,23 +87,12 @@ function getUserNotesCount(userId) {
     return count;
 }
 
-function getUserName(userId) {
-    for (var i = 0; i < jsonUsers.length; i++) {
-        var user = jsonUsers[i];
-        if (userId === user.id) {
-            return user.name;
-        }
-    }
-
-    return "";
-}
-
 // 过滤留言并刷新页面(留言列表)
 function filterAndShowNotes(userId) {
     clearTable('notesTable');
 
     var tit = document.getElementById("notesTitle");
-    var des = userId === -1 ? "全部留言" : getUserName(userId);
+    var des = userId === -1 ? "全部留言" : getUser(userId).name;
     var count = userId === -1 ? jsonNotes.length : getUserNotesCount(userId);
     tit.innerHTML = "<h5><b>&nbsp;&nbsp;" + des + "</b><small>&nbsp;&nbsp;(" + count + "条)</small></h5>";
 
@@ -373,6 +362,24 @@ function clearTable(tableId) {
     }
 }
 
+// 根据用户id获得用户信息
+function getUser(userId) {
+    for (var i = 0; i < jsonUsers.length; i++) {
+        var user = jsonUsers[i];
+        if (userId === user.id) {
+            return {
+                id: user.id,
+                name: user.name,
+                state: user.state,
+                age: user.age,
+                password: user.password
+            };
+        }
+    }
+
+    return "";
+}
+
 // long 转为 yyyy/mm/dd
 function getDate(data) {
     var date = new Date(data);
@@ -410,3 +417,122 @@ function switchIframe(des) {
     iframe.src = 'note-os/manage/'+des;
 }
 
+var pageRate = 5; // 一页5条笔记
+var currentPageIndex;// 页下标 如：第2页，数组的下标应为 [5 - 9]
+var pageCount;
+function loadAllNotesAndUsersWithPage(initPage) {
+    loadData(1, function (jsonText) { // 异步获取留言
+        jsonNotes = JSON.parse(jsonText);
+
+        loadData(2, function (jsonText) { // 异步获取用户
+            jsonUsers = JSON.parse(jsonText);
+
+            if (initPage){
+                initNotesPageData();
+            }
+            updateNotesCount(jsonNotes.length);
+            showNotesWithPage(0);
+        });
+    })
+}
+
+function initNotesPageData() {
+    currentPageIndex = 0;
+    pageCount = Math.ceil(jsonNotes.length / pageRate);
+
+    var count = 0;
+    while(count < 5){
+        addRow();
+        count++;
+    }
+
+    function addRow() {
+        var table = document.getElementById('pageNotesTable');
+        var newRow = table.insertRow(table.rows.length);
+
+        newRow.insertCell(0);
+        newRow.insertCell(1);
+        newRow.insertCell(2);
+        newRow.insertCell(3);
+        newRow.insertCell(4);
+    }
+}
+
+function updateNotesCount(count) {
+    var ele = document.getElementById('notesCount');
+    ele.innerHTML = count;
+}
+
+// 显示指定页
+function showNotesWithPage(pageIndex) {
+    if (pageIndex > pageCount){
+        return;
+    }
+
+    currentPageIndex = pageIndex;
+
+    var index = currentPageIndex * pageRate;
+    var sum = index + pageRate;
+    for(var i = 0; i < pageRate ; i++){
+        var rowIndex = i + 1;
+        var jsonIndex = index;
+
+        if (index < jsonNotes.length && index < sum){
+            var time = getDate(jsonNotes[jsonIndex].dateTime);
+            var name = "未知用户";
+            name = getUser(jsonNotes[jsonIndex].userId).name;
+
+            modifyRow(
+                rowIndex,
+                jsonIndex + 1,
+                jsonNotes[jsonIndex].title,
+                time,
+                name,
+                jsonNotes[jsonIndex].id);
+
+            index++;
+        } else {
+            modifyRow(rowIndex,'','','','',-1);
+        }
+    }
+}
+
+// 第一行被表头占据
+function modifyRow(rowIndex,No, title, time, userName, noteId) {
+    if(rowIndex < 1 || rowIndex > pageRate){
+        return;
+    }
+
+    var table = document.getElementById('pageNotesTable');
+    var row = table.rows[rowIndex];
+
+    var cellNo_ = row.cells[0];
+    var cellTitle = row.cells[1];
+    var cellTime = row.cells[2];
+    var cellUserName = row.cells[3];
+    var cellOpt = row.cells[4];
+
+    cellNo_.align = 'center';
+    cellNo_.style.color = '#7c7c7c';
+    cellTime.style.color = '#7c7c7c';
+
+    cellNo_.innerHTML = No;
+    cellTitle.innerHTML = title;
+    cellTime.innerHTML = time;
+    cellUserName.innerHTML = userName;
+
+    if(noteId === -1){
+        cellOpt.innerHTML = '';
+    } else {
+        cellOpt.innerHTML = "<a href='modifyNote(" + noteId + ")'>编辑</a> | <a href='deleteNote(" + noteId + ")'>删除</a>"
+    }
+
+}
+
+function modifyNote(noteId) {
+
+}
+
+function deleteNote(noteId) {
+
+}

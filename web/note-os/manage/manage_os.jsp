@@ -26,17 +26,17 @@
     <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
 </head>
 <body>
 <div id="page">
     <div id="top">
         <div id="top_left">
-            <h2 style="margin-left: 8px; font-style: normal">内容管理系统</h2>
+            <h3 style="margin-left: 8px; font-style: normal">内容管理系统</h3>
         </div>
         <div id="top_right">
-        <span>您好：<%=name%>,&nbsp;欢迎使用内容管理系统！[<a href="#">网站主页</a>]&nbsp;[<a href="#">修改密码</a>]&nbsp;[<a
-                href="#">注销退出unknown</a>]</span>
+            <p class="text-right" style="font-size: 0.8em">
+                您好：<%=name%>,&nbsp;欢迎使用内容管理系统！[<a href="#">网站主页</a>]&nbsp;[<a href="#">修改密码</a>]&nbsp;[<a
+                    href="#">注销退出unknown</a>]</p>
         </div>
     </div>
 
@@ -47,22 +47,24 @@
         <div id="bottom_left">
             <div class="d1">
                 <div class="d11">
-                    <span>留言管理</span>
-                    <img src="../../img/0.png">
+                    <p class="text-center">留言管理&nbsp;<span class="glyphicon glyphicon-menu-down"></span>
+                    </p>
                 </div>
                 <div class="d12">
                     <ul>
-                        <li><a href="javaScript:switchIframe('manage_note_new.jsp')">新增留言</a><img src="../../img/1.png" class="img1"></li>
+                        <li><a href="javaScript:switchIframe('manage_note_new.jsp')">新增留言</a><img src="../../img/1.png"
+                                                                                                  class="img1"></li>
                         <li><a href="javaScript:switchIframe('manage_note_query.jsp')">查询留言</a></li>
-                        <li><a href="javaScript:switchIframe('manage_note_recycle_bin.jsp')">留言回收站</a><img src="../../img/2.png" class="img2"></li>
+                        <li><a href="javaScript:switchIframe('manage_note_recycle_bin.jsp')">留言回收站</a><img
+                                src="../../img/2.png" class="img2"></li>
                     </ul>
                 </div>
             </div>
 
             <div class="d2">
-                <div class="d21">
-                    <span>用户管理</span>
-                    <img src="../../img/0.png">
+                <div>
+                    <p class="text-center">用户管理&nbsp;<span class="glyphicon glyphicon-menu-down"></span>
+                    </p>
                 </div>
                 <div class="d22">
                     <ul>
@@ -74,7 +76,7 @@
         </div>
         <div id="bottom_right">
             <div id="bottom_right_content">
-                <iframe src="note-os/manage/manage_note_home.jsp" width="100%" height="100%" id="noteOsIframe"></iframe>
+                <iframe src="note-os/manage/manage_note_query.jsp" width="100%" height="100%" id="noteOsIframe"></iframe>
             </div>
         </div>
     </div>
