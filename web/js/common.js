@@ -46,16 +46,16 @@ function loadAllUsers() {
 // 显示所有用户
 function showAllUsers() {
 
-    addRow('全部留言', jsonNotes.length,-1);
+    addRow('全部留言', jsonNotes.length, -1);
     for (var i = 0; i < jsonUsers.length; i++) {
         var name = jsonUsers[i].name;
         var count = getUserNotesCount(jsonUsers[i].id);
         var randomAvatar = getRandomAvatar();
 
-        addRow(name, count,jsonUsers[i].id,randomAvatar);
+        addRow(name, count, jsonUsers[i].id, randomAvatar);
     }
 
-    function addRow(name, count,userId,avatar) {
+    function addRow(name, count, userId, avatar) {
         var userTable = document.getElementById("userTable");
         var newRaw = userTable.insertRow(userTable.rows.length);
         var cellAvatar = newRaw.insertCell(0);
@@ -69,8 +69,8 @@ function showAllUsers() {
         cellAvatar.style.verticalAlign = 'center';
         cellName.innerHTML = "<h5><b>" + name + "</b></h5>"
         cellCount.innerHTML = "<h6>" + count + "条</h6>"
-        if (!isNull(avatar)){
-            cellAvatar.innerHTML = "<img src='"+avatar+"' class='avatar'>";
+        if (!isNull(avatar)) {
+            cellAvatar.innerHTML = "<img src='" + avatar + "' class='avatar'>";
         }
     }
 }
@@ -107,7 +107,7 @@ function filterAndShowNotes(userId) {
         }
     }
 
-    function addRow(title, content, date,noteID) {
+    function addRow(title, content, date, noteID) {
         var table = document.getElementById("notesTable");
         var newRaw = table.insertRow(table.rows.length);
         var cell = newRaw.insertCell(0);
@@ -115,7 +115,7 @@ function filterAndShowNotes(userId) {
         newRaw.style.paddingLeft = 30;
         newRaw.style.paddingRight = 30;
         newRaw.onclick = function () {
-            window.location.href = 'note-os/home_note_detail.jsp?noteID='+noteID;
+            window.location.href = 'note-os/home_note_detail.jsp?noteID=' + noteID;
         };
 
         cell.innerHTML = "<h5><b>" + title + "</b></h5>" +
@@ -390,20 +390,20 @@ function getDate(data) {
 function getRandomAvatar() {
     var rootPath = 'img/avatar/';
     var avatars = [
-       'avatar01.png',
-       'avatar02.png',
-       'avatar03.png',
-       'avatar04.png',
-       'avatar05.png',
-       'avatar06.png',
-       'avatar07.png',
-       'avatar08.png',
-       'avatar09.png',
-       'avatar10.png',
-       'avatar11.png',
-       'avatar12.png',
-       'avatar13.png',
-       'avatar14.png'
+        'avatar01.png',
+        'avatar02.png',
+        'avatar03.png',
+        'avatar04.png',
+        'avatar05.png',
+        'avatar06.png',
+        'avatar07.png',
+        'avatar08.png',
+        'avatar09.png',
+        'avatar10.png',
+        'avatar11.png',
+        'avatar12.png',
+        'avatar13.png',
+        'avatar14.png'
     ];
 
     var random = Math.round(Math.random() * (avatars.length - 1));
@@ -414,12 +414,13 @@ function getRandomAvatar() {
 
 function switchIframe(des) {
     var iframe = document.getElementById('noteOsIframe');
-    iframe.src = 'note-os/manage/'+des;
+    iframe.src = 'note-os/manage/' + des;
 }
 
 var pageRate = 5; // 一页5条笔记
 var currentPageIndex;// 页下标 如：第2页，数组的下标应为 [5 - 9]
 var pageCount;
+
 function loadAllNotesAndUsersWithPage(initPage) {
     loadData(1, function (jsonText) { // 异步获取留言
         jsonNotes = JSON.parse(jsonText);
@@ -427,7 +428,7 @@ function loadAllNotesAndUsersWithPage(initPage) {
         loadData(2, function (jsonText) { // 异步获取用户
             jsonUsers = JSON.parse(jsonText);
 
-            if (initPage){
+            if (initPage) {
                 initNotesPageData();
             }
             updateNotesCount(jsonNotes.length);
@@ -441,7 +442,7 @@ function initNotesPageData() {
     pageCount = Math.ceil(jsonNotes.length / pageRate);
 
     var count = 0;
-    while(count < 5){
+    while (count < pageRate) {
         addRow();
         count++;
     }
@@ -449,6 +450,7 @@ function initNotesPageData() {
     function addRow() {
         var table = document.getElementById('pageNotesTable');
         var newRow = table.insertRow(table.rows.length);
+        newRow.style.height = '30px';
 
         newRow.insertCell(0);
         newRow.insertCell(1);
@@ -463,21 +465,79 @@ function updateNotesCount(count) {
     ele.innerHTML = count;
 }
 
+var indicatorCount = 5;// 指示点一次显示5个页标
+function updatePageIndicator() {
+    var indicatorLast = document.getElementById('pageIndexLast');
+    var indicatorFirst = document.getElementById('pageIndexFirst');
+
+    var first = indicatorFirst.firstChild.innerHTML - 1;
+    var last = indicatorLast.firstChild.innerHTML - 1;
+    var indicatorFirstIndex = 0;
+    var indicatorLastIndex = indicatorCount - 1;
+
+    var lastIn; // afterLast - pageCount
+    var afterLast;
+    var lastEnableIndex;
+
+    if (currentPageIndex === last + 1 && currentPageIndex <= pageCount - 1) { // 重新为指示点赋值(增加)
+        afterLast = currentPageIndex + 1 + indicatorLastIndex;
+        lastIn = afterLast - pageCount;
+
+        lastEnableIndex = lastIn  > 0 ? (pageCount - lastIn) - 1 :afterLast;
+        modify(first + 2,indicatorLastIndex,lastEnableIndex);
+    } else if (currentPageIndex === first - 1 && currentPageIndex >= 0) {// 重新为指示点赋值(减少)
+        afterLast = currentPageIndex - 1 + indicatorLastIndex;
+        lastIn = afterLast - pageCount;
+
+        lastEnableIndex = lastIn  > 0 ? (pageCount - lastIn) - 1 :afterLast;
+        modify(first,indicatorFirstIndex,lastEnableIndex)
+    } else { // 在中间，直接移动即可
+        afterLast = last;
+        lastIn = afterLast - pageCount;
+
+        lastEnableIndex = lastIn  > 0 ? (pageCount - lastIn) - 1 :afterLast;
+        modify(first + 1,currentPageIndex - first,lastEnableIndex);
+    }
+
+    function modify(first,activeIndex,lastEnableIndex) {
+        var indicators = [
+            document.getElementById('pageIndexFirst'),
+            document.getElementById('pageIndex2'),
+            document.getElementById('pageIndex3'),
+            document.getElementById('pageIndex4'),
+            document.getElementById('pageIndexLast')
+        ];
+
+        for (var i = 0; i < indicators.length; i++) {
+            indicators[i].firstChild.innerHTML = first + i;
+            if(activeIndex === i){
+                indicators[i].className = 'active'
+            } else if (i > lastEnableIndex){
+                indicators[i].className = 'disabled';
+            } else {
+                indicators[i].className = '';
+            }
+        }
+    }
+
+}
+
 // 显示指定页
 function showNotesWithPage(pageIndex) {
-    if (pageIndex > pageCount){
+    if (pageIndex >= pageCount) {
         return;
     }
 
     currentPageIndex = pageIndex;
+    updatePageIndicator();
 
     var index = currentPageIndex * pageRate;
     var sum = index + pageRate;
-    for(var i = 0; i < pageRate ; i++){
+    for (var i = 0; i < pageRate; i++) {
         var rowIndex = i + 1;
         var jsonIndex = index;
 
-        if (index < jsonNotes.length && index < sum){
+        if (index < jsonNotes.length && index < sum) {
             var time = getDate(jsonNotes[jsonIndex].dateTime);
             var name = "未知用户";
             name = getUser(jsonNotes[jsonIndex].userId).name;
@@ -492,14 +552,14 @@ function showNotesWithPage(pageIndex) {
 
             index++;
         } else {
-            modifyRow(rowIndex,'','','','',-1);
+            modifyRow(rowIndex, '', '', '', '', -1);
         }
     }
 }
 
 // 第一行被表头占据
-function modifyRow(rowIndex,No, title, time, userName, noteId) {
-    if(rowIndex < 1 || rowIndex > pageRate){
+function modifyRow(rowIndex, No, title, time, userName, noteId) {
+    if (rowIndex < 1 || rowIndex > pageRate) {
         return;
     }
 
@@ -513,20 +573,39 @@ function modifyRow(rowIndex,No, title, time, userName, noteId) {
     var cellOpt = row.cells[4];
 
     cellNo_.align = 'center';
+    cellOpt.align = 'center';
     cellNo_.style.color = '#7c7c7c';
     cellTime.style.color = '#7c7c7c';
+
+    cellNo_.style.width = '5%';
+    cellTitle.style.width = '55%';
+    cellTime.style.width = '13%';
+    cellUserName.style.width = '15%';
+    cellOpt.style.width = '12%';
 
     cellNo_.innerHTML = No;
     cellTitle.innerHTML = title;
     cellTime.innerHTML = time;
     cellUserName.innerHTML = userName;
 
-    if(noteId === -1){
+    if (noteId === -1) {
         cellOpt.innerHTML = '';
     } else {
         cellOpt.innerHTML = "<a href='modifyNote(" + noteId + ")'>编辑</a> | <a href='deleteNote(" + noteId + ")'>删除</a>"
     }
 
+}
+
+function prePage() {
+    if (currentPageIndex > 0) {
+        showNotesWithPage(currentPageIndex - 1);
+    }
+}
+
+function nextPage() {
+    if (currentPageIndex < pageCount - 1) {
+        showNotesWithPage(currentPageIndex + 1);
+    }
 }
 
 function modifyNote(noteId) {

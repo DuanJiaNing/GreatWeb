@@ -23,13 +23,13 @@
 <body style="padding: 5px">
 
 <div class="btn-group" role="group" style="float: right">
-    <button type="button" class="btn btn-default">添加文档</button>
-    <button type="button" class="btn btn-default">我的文档</button>
-    <button type="button" class="btn btn-default">稿件审核</button>
-    <button type="button" class="btn btn-default">栏目管理</button>
-    <button type="button" class="btn btn-default">更新列表</button>
-    <button type="button" class="btn btn-default">更新文档</button>
-    <button type="button" class="btn btn-default">文章回收站</button>
+    <button type="button" class="btn btn-default" disabled="disabled">添加文档</button>
+    <button type="button" class="btn btn-default" disabled="disabled">我的文档</button>
+    <button type="button" class="btn btn-default" disabled="disabled">稿件审核</button>
+    <button type="button" class="btn btn-default" disabled="disabled">栏目管理</button>
+    <button type="button" class="btn btn-default" disabled="disabled">更新列表</button>
+    <button type="button" class="btn btn-default" disabled="disabled">更新文档</button>
+    <button type="button" class="btn btn-default" disabled="disabled">文章回收站</button>
 </div>
 
 <div class="page-header">
@@ -39,12 +39,12 @@
 </div>
 
 <table class="table table-bordered table-hover" id="pageNotesTable">
-    <tr  style="background-color: #efefef">
+    <tr style="background-color: #efefef">
         <th style="text-align: center;">编号</th>
         <th>文章标题</th>
         <th>录入时间</th>
         <th>发布人</th>
-        <th>操作</th>
+        <th style="text-align: center;">操作</th>
     </tr>
 </table>
 
@@ -52,17 +52,17 @@
     <nav>
         <ul class="pagination">
             <li>
-                <a href="#" aria-label="Previous">
+                <a href="javaScript:prePage()" aria-label="Previous">
                     <span aria-hidden="true">&laquo;</span>
                 </a>
             </li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
+            <li id="pageIndexFirst" class="active"><a href="javaScript:">1</a></li>
+            <li id="pageIndex2"><a href="javaScript:">2</a></li>
+            <li id="pageIndex3"><a href="javaScript:">3</a></li>
+            <li id="pageIndex4"><a href="javaScript:">4</a></li>
+            <li id="pageIndexLast"><a href="javaScript:">5</a></li>
             <li>
-                <a href="#" aria-label="Next">
+                <a href="javaScript:nextPage()" aria-label="Next">
                     <span aria-hidden="true">&raquo;</span>
                 </a>
             </li>
@@ -72,8 +72,8 @@
 
 <div class="btn-group" role="group">
     <button type="button" class="btn btn-default">全选</button>
-    <button type="button" class="btn btn-default">取消</button>
-    <button type="button" class="btn btn-default">更新</button>
+    <button type="button" class="btn btn-default">全不选</button>
+    <button type="button" class="btn btn-default" disabled="disabled">更新</button>
     <button type="button" class="btn btn-default">批量删除</button>
 </div>
 <br>
