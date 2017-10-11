@@ -10,6 +10,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%
+
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+            + path + "/";
+
     Object obj = session.getAttribute("user");
     String name = "用户名获取出错";
     if (obj != null && obj instanceof User) {
@@ -28,6 +33,8 @@
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <body>
+<span data-base-path="<%=basePath%>" id="basePath"></span>
+
 <div id="page">
     <div id="top">
         <div id="top_left">
@@ -52,10 +59,15 @@
                 </div>
                 <div class="d12">
                     <ul>
-                        <li><a href="javaScript:switchIframe('manage_note_new.jsp')">新增留言</a><img src="../../img/1.png"
-                                                                                                  class="img1"></li>
-                        <li><a href="javaScript:switchIframe('manage_note_query.jsp')">查询留言</a></li>
-                        <li><a href="javaScript:switchIframe('manage_note_recycle_bin.jsp')">留言回收站</a><img
+                        <li>
+                            <a href="javaScript:switchIframe('manage_note_new.jsp')">新增留言</a><img
+                                src="../../img/1.png"
+                                class="img1"></li>
+                        <li>
+                            <a href="javaScript:switchIframe('manage_note_query.jsp')">查询留言</a>
+                        </li>
+                        <li>
+                            <a href="javaScript:switchIframe('manage_note_recycle_bin.jsp')">留言回收站</a><img
                                 src="../../img/2.png" class="img2"></li>
                     </ul>
                 </div>
@@ -68,15 +80,19 @@
                 </div>
                 <div class="d22">
                     <ul>
-                        <li><a href="javaScript:switchIframe('manage_user_add.jsp')">用户添加</a></li>
-                        <li><a href="javaScript:switchIframe('manage_user_modify.jsp')">修改密码</a></li>
+                        <li>
+                            <a href="javaScript:switchIframe('<%=basePath%>/note-os/manage/manage_user_add.jsp')">用户添加</a>
+                        </li>
+                        <li><a href="javaScript:switchIframe('<%=basePath%>/note-os/manage/manage_user_modify.jsp')">修改密码</a>
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
         <div id="bottom_right">
             <div id="bottom_right_content">
-                <iframe src="note-os/manage/manage_note_query.jsp" width="100%" height="100%" id="noteOsIframe"></iframe>
+                <iframe src="<%=basePath%>/note-os/manage/manage_note_query.jsp" width="100%" height="100%"
+                        id="noteOsIframe"></iframe>
             </div>
         </div>
     </div>

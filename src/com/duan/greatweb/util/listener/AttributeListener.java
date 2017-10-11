@@ -16,63 +16,63 @@ public class AttributeListener
 	public void attributeAdded(ServletRequestAttributeEvent srae) {
 		// TODO Auto-generated method stub
 
-		Utils.log("request 增加");
+//		Utils.log("request 增加");
 	}
 
 	@Override
 	public void attributeRemoved(ServletRequestAttributeEvent srae) {
 		// TODO Auto-generated method stub
 
-		Utils.log("request 移除");
+//		Utils.log("request 移除");
 	}
 
 	@Override
 	public void attributeReplaced(ServletRequestAttributeEvent srae) {
 		// TODO Auto-generated method stub
 
-		Utils.log("request 替换");
+//		Utils.log("request 替换");
 	}
 
 	@Override
 	public void attributeAdded(HttpSessionBindingEvent se) {
 		// TODO Auto-generated method stub
 
-		Utils.log("session 增加");
+//		Utils.log("session 增加");
 	}
 
 	@Override
 	public void attributeRemoved(HttpSessionBindingEvent se) {
 		// TODO Auto-generated method stub
 
-		Utils.log("session 移除");
+//		Utils.log("session 移除");
 	}
 
 	@Override
 	public void attributeReplaced(HttpSessionBindingEvent se) {
 		// TODO Auto-generated method stub
 
-		Utils.log("session 替换");
+//		Utils.log("session 替换");
 	}
 
 	@Override
 	public void attributeAdded(ServletContextAttributeEvent scae) {
 		// TODO Auto-generated method stub
 
-		Utils.log("app 增加");
+//		Utils.log("app 增加");
 	}
 
 	@Override
 	public void attributeRemoved(ServletContextAttributeEvent scae) {
 		// TODO Auto-generated method stub
 
-		Utils.log("app 移除");
+//		Utils.log("app 移除");
 	}
 
 	@Override
 	public void attributeReplaced(ServletContextAttributeEvent scae) {
 		// TODO Auto-generated method stub
 
-		Utils.log("app 替换");
+//		Utils.log("app 替换");
 	}
 
 }

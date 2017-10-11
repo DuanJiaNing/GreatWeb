@@ -10,13 +10,13 @@ public class RequestListener implements ServletRequestListener {
 	@Override
 	public void requestDestroyed(ServletRequestEvent sre) {
 		// TODO Auto-generated method stub
-		Utils.log("request 监听创建");
+//		Utils.log("request 监听创建");
 	}
 
 	@Override
 	public void requestInitialized(ServletRequestEvent sre) {
 		// TODO Auto-generated method stub
-		Utils.log("request 监听创建");
+//		Utils.log("request 监听创建");
 	}
 
 }

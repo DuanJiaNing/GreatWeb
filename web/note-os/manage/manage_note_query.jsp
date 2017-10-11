@@ -29,7 +29,7 @@
 
 <div class="page-header">
     <h4><b>留言列表</b>
-        <small>&nbsp;&nbsp;(<span id="notesCount">20</span>条)</small>
+        <small>&nbsp;&nbsp;(<span id="notesCount">0</span>条)</small>
     </h4>
 </div>
 
@@ -70,6 +70,7 @@
     <button type="button" class="btn btn-default" onclick="cancelAllCheck()">全不选</button>
     <button type="button" class="btn btn-default" onclick="batchDelete()">批量删除</button>
     <button type="button" class="btn btn-default" disabled="disabled">更新</button>
+    <button type="button" class="btn btn-default" onclick="refreshData()">刷新数据</button>
 </div>
 <br>
 <br>

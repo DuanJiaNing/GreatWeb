@@ -38,7 +38,7 @@ public class LoginFilter extends RootFilter {
 			if (user != null ) {
 				// 验证成功 将用户保存到 session 和 cookie 中
 				HttpSession session = req.getSession();
-				session.setMaxInactiveInterval(60 * 5);
+				session.setMaxInactiveInterval(60 * 30); // 30分钟
 				session.setAttribute("user", user);
 				session.setAttribute("rememberMe", rememberMe);
 
@@ -48,8 +48,8 @@ public class LoginFilter extends RootFilter {
 				Cookie cookie = new Cookie("user", user.getId() + "");
 				Cookie cookieRememberMe = new Cookie("rememberMe", rememberMe ? "true" : "false");
 
-				cookie.setMaxAge(60 * 5);
-				cookieRememberMe.setMaxAge(60 * 5);
+				cookie.setMaxAge(60 * 30); // 30分钟
+				cookieRememberMe.setMaxAge(60 * 30);
 
 				res.addCookie(cookie);
 				res.addCookie(cookieRememberMe);

@@ -32,4 +32,9 @@ public class NoteDaoImpl implements NoteDao {
 		return notes != null && notes.length > 0 ? notes[0] : null;
 	}
 
+	@Override
+	public int delete(int noteId) {
+		return dataBase.delete(sCLASS,noteId);
+	}
+
 }

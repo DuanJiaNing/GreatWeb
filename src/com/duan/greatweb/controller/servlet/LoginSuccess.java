@@ -17,7 +17,8 @@ public class LoginSuccess extends HttpServlet {
         HttpSession session = request.getSession();
         countSuccessLoginUser(session);
 
-        request.getRequestDispatcher("/note-os/manage/manage_os.jsp").forward(request,response);
+        response.sendRedirect("/note-os/manage/manage_os.jsp");
+//        request.getRequestDispatcher().forward(request,response);
     }
 
     private void countSuccessLoginUser(HttpSession session) {

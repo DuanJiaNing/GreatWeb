@@ -1,4 +1,5 @@
-<%--
+<%@ page import="com.duan.greatweb.entitly.User" %>
+<%@ page import="com.duan.greatweb.util.Utils" %><%--
   Created by IntelliJ IDEA.
   User: DuanJiaNing
   Date: 2017/10/9
@@ -6,6 +7,15 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+
+    Object obj = session.getAttribute("user");
+    User user = null;
+    if (obj != null && obj instanceof User) {
+        user = (User) obj;
+    }
+
+%>
 <html>
 <head>
     <title>新增留言</title>
@@ -20,30 +30,34 @@
 
 <form action="#" method="post">
     <table class="table table-bordered">
-        <tr >
+        <tr>
             <td colspan="2">
                 <b>留言内容</b>
             </td>
         </tr>
         <tr>
             <td><span>标题</span></td>
-            <td><input type="text" class="form-control" name="title" style="width: 50%"></td>
+            <td><input type="text" class="form-control" name="title" id="noteTitle" style="width: 50%"></td>
         </tr>
         <tr>
             <td><span>内容</span></td>
-            <td><textarea name="content" class="form-control" style="width: 90%;height: 100px;"></textarea></td>
+            <td><textarea name="content" class="form-control" id="noteContent"  style="width: 90%;height: 100px;"></textarea></td>
         </tr>
         <tr>
             <td><span>日期</span></td>
-            <td></td>
+            <td><%=Utils.getFormatedTime(System.currentTimeMillis(), "YYYY-MM-dd-HH")%>
+            </td>
         </tr>
         <tr>
             <td><span>留言人</span></td>
-            <td>zy</td>
+            <td><%=user == null ? "用户名获取出错" : user.getName()%>
+            </td>
         </tr>
         <tr>
             <td></td>
-            <td><input type="reset" value="取消填写">&nbsp;<input type="submit" value="保存填写"></td>
+            <td><input type="reset" id="resetInput" value="取消填写">&nbsp;<input type="button" value="保存填写"
+                                                              onclick="addNote('<%=user == null ? -1 : user.getId()%>')">
+            </td>
         </tr>
     </table>
 </form>

@@ -131,6 +131,7 @@
     <servlet-mapping>
         <servlet-name>NoteControlServlet</servlet-name>
         <url-pattern>/noteControl.do</url-pattern>
+        <url-pattern>/note-os/manage/noteControl.do</url-pattern>
     </servlet-mapping>
     <!-- 配置 servlet -->
 

@@ -13,4 +13,6 @@ public interface NoteDao extends Dao {
 
 	Note query(int noteId);
 
+	int delete(int noteId);
+
 }

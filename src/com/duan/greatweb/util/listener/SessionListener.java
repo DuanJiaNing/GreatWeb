@@ -14,14 +14,14 @@ public class SessionListener implements HttpSessionListener {
 	public void sessionCreated(HttpSessionEvent se) {
 		onlineNum++;
 		calcOnLineNum(se.getSession());
-		Utils.log("session 监听创建");
+//		Utils.log("session 监听创建");
 	}
 
 	@Override
 	public void sessionDestroyed(HttpSessionEvent se) {
 		onlineNum--;
 		calcOnLineNum(se.getSession());
-		Utils.log("session 监听销毁");
+//		Utils.log("session 监听销毁");
 	}
 
 	private void calcOnLineNum(HttpSession session) {
