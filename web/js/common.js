@@ -600,6 +600,9 @@ function showNotesWithPage(pageIndex) {
         return;
     }
 
+    // FIXME 翻页是选中状态将被清空
+    cancelAllCheck();
+
     currentPageIndex = pageIndex;
     updatePageIndicator();
 
