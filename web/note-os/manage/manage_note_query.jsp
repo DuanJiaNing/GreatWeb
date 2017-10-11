@@ -14,11 +14,6 @@
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-    <style>
-        button {
-            background-color: #F1F8B4;
-        }
-    </style>
 </head>
 <body style="padding: 5px">
 
@@ -38,7 +33,7 @@
     </h4>
 </div>
 
-<table class="table table-bordered table-hover" id="pageNotesTable">
+<table class="table table-bordered" id="pageNotesTable">
     <tr style="background-color: #efefef">
         <th style="text-align: center;">编号</th>
         <th>文章标题</th>
@@ -56,11 +51,11 @@
                     <span aria-hidden="true">&laquo;</span>
                 </a>
             </li>
-            <li id="pageIndexFirst" class="active"><a href="javaScript:">1</a></li>
-            <li id="pageIndex2"><a href="javaScript:">2</a></li>
-            <li id="pageIndex3"><a href="javaScript:">3</a></li>
-            <li id="pageIndex4"><a href="javaScript:">4</a></li>
-            <li id="pageIndexLast"><a href="javaScript:">5</a></li>
+            <li id="pageIndexFirst" class="active"><a href="javaScript:locationAtPage('First')">1</a></li>
+            <li id="pageIndex2"><a href="javaScript:locationAtPage('2')">2</a></li>
+            <li id="pageIndex3"><a href="javaScript:locationAtPage('3')">3</a></li>
+            <li id="pageIndex4"><a href="javaScript:locationAtPage('4')">4</a></li>
+            <li id="pageIndexLast"><a href="javaScript:locationAtPage('Last')">5</a></li>
             <li>
                 <a href="javaScript:nextPage()" aria-label="Next">
                     <span aria-hidden="true">&raquo;</span>
@@ -71,10 +66,10 @@
 </center>
 
 <div class="btn-group" role="group">
-    <button type="button" class="btn btn-default">全选</button>
-    <button type="button" class="btn btn-default">全不选</button>
+    <button type="button" class="btn btn-default" onclick="checkAll()">全选</button>
+    <button type="button" class="btn btn-default" onclick="cancelAllCheck()">全不选</button>
+    <button type="button" class="btn btn-default" onclick="batchDelete()">批量删除</button>
     <button type="button" class="btn btn-default" disabled="disabled">更新</button>
-    <button type="button" class="btn btn-default">批量删除</button>
 </div>
 <br>
 <br>
@@ -95,7 +90,7 @@
 </p>
 
 <script type="text/javascript">
-    loadAllNotesAndUsersWithPage(true);
+    loadAllNotesAndUsersWithPage(true,true,true,0);
 </script>
 
 </body>

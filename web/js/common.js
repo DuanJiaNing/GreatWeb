@@ -3,10 +3,10 @@ var jsonNotes;
 var jsonUsers;
 
 // 从后台异步加载数据
-function loadData(cate, callback) {
+function manipulateDataAsyn(url, callback) {
 
     var xmlRequest = new XMLHttpRequest();
-    xmlRequest.open("post", 'notesObtain.do?category=' + cate);
+    xmlRequest.open("post", url);
     xmlRequest.send();
     xmlRequest.onreadystatechange = function () {
         if (xmlRequest.readyState === 4) {
@@ -22,9 +22,10 @@ function loadData(cate, callback) {
     }
 }
 
+
 // 加载所有留言
 function loadAllNotes() {
-    loadData(1, function (jsonText) {
+    manipulateDataAsyn('notesObtain.do?category=1', function (jsonText) {
         jsonNotes = JSON.parse(jsonText);
 
         // ajax 同时请求时结果会被合并，用这种方式串行获取
@@ -34,7 +35,7 @@ function loadAllNotes() {
 
 // 加载所有用户
 function loadAllUsers() {
-    loadData(2, function (jsonText) {
+    manipulateDataAsyn('notesObtain.do?category=2', function (jsonText) {
         jsonUsers = JSON.parse(jsonText);
 
         // 显示【全部】
@@ -207,12 +208,12 @@ function verifyUsernameUsed(msgWhenUsed, msgWhenNotUse) {
 function register() {
     var errorInfo = document.getElementById("info").innerHTML;
     if (!isEmpty(errorInfo)) {
-        splashInfo(info);
+        splashInfo('info');
         return;
     }
 
     if (!verifyPassword() || !verifyAge()) {
-        splashInfo(info);
+        splashInfo('info');
         return;
     } else {
         var register = document.getElementById("register");
@@ -224,7 +225,7 @@ function register() {
 
 function login() {
     if (!verifyIdentfyCode() || !verifyUsername() || !verifyPassword()) {
-        splashInfo(info);
+        splashInfo('info');
         return;
     } else {
         var login = document.getElementById("login");
@@ -324,7 +325,7 @@ function splashInfo(elementId) {
     setTimeout(function endSplash() {
         infoSpan.style.backgroundColor = 'transparent'
         infoSpan.style.color = 'red';
-    }, 200);
+    }, 400);
 }
 
 function info(info) {
@@ -380,6 +381,21 @@ function getUser(userId) {
     return "";
 }
 
+function getNote(noteId) {
+    for (var i = 0; i < jsonNotes.length; i++) {
+        var note = jsonNotes[i];
+        if (noteId === note.id){
+            return {
+                id: note.id,
+                title: note.title,
+                content: note.content,
+                dateTime: note.dateTime,
+                userId: note.userId
+            }
+        }
+    }
+}
+
 // long 转为 yyyy/mm/dd
 function getDate(data) {
     var date = new Date(data);
@@ -421,19 +437,31 @@ var pageRate = 5; // 一页5条笔记
 var currentPageIndex;// 页下标 如：第2页，数组的下标应为 [5 - 9]
 var pageCount;
 
-function loadAllNotesAndUsersWithPage(initPage) {
-    loadData(1, function (jsonText) { // 异步获取留言
+/**
+ * 加载（刷新）所有笔记和用户(可选)到客户端
+ * @param initPage boolean 初始化表格（仅第一次调用为 true）
+ * @param loadUser boolean 加载用户
+ * @param show boolean 是否显示（false 时仅加载数数据）
+ * @param pageIndex 显示的页下标（只在 show 为 true 时被使用）
+ */
+function loadAllNotesAndUsersWithPage(initPage,loadUser,show,pageIndex) {
+    manipulateDataAsyn('notesObtain.do?category=1', function (jsonText) { // 异步获取留言
         jsonNotes = JSON.parse(jsonText);
 
-        loadData(2, function (jsonText) { // 异步获取用户
-            jsonUsers = JSON.parse(jsonText);
+        if(loadUser){
+            manipulateDataAsyn('notesObtain.do?category=2', function (jsonText) { // 异步获取用户
+                jsonUsers = JSON.parse(jsonText);
 
-            if (initPage) {
-                initNotesPageData();
-            }
-            updateNotesCount(jsonNotes.length);
-            showNotesWithPage(0);
-        });
+                if (initPage) {
+                    initNotesPageData();
+                }
+                updateNotesCount(jsonNotes.length);
+
+                if (show){
+                    showNotesWithPage(pageIndex);
+                }
+            });
+        }
     })
 }
 
@@ -443,14 +471,17 @@ function initNotesPageData() {
 
     var count = 0;
     while (count < pageRate) {
-        addRow();
+        addRow(count + 1);
         count++;
     }
 
-    function addRow() {
+    function addRow(rowIndex) {
         var table = document.getElementById('pageNotesTable');
         var newRow = table.insertRow(table.rows.length);
         newRow.style.height = '30px';
+        newRow.dataset.checked = '0'; // 0 false ,1 true
+        newRow.dataset.noteId = -1; // 0 false ,1 true
+        newRow.onclick = function () { switchCheckState(rowIndex); }
 
         newRow.insertCell(0);
         newRow.insertCell(1);
@@ -460,12 +491,21 @@ function initNotesPageData() {
     }
 }
 
+// 更新留言条数
 function updateNotesCount(count) {
     var ele = document.getElementById('notesCount');
     ele.innerHTML = count;
 }
 
+// 页指示点具体页点击时定位到该页
+function locationAtPage(token) {
+    var ele = document.getElementById('pageIndex' + token);
+    currentPageIndex = ele.firstChild.innerHTML - 1;
+    showNotesWithPage(currentPageIndex);
+}
+
 var indicatorCount = 5;// 指示点一次显示5个页标
+// 更新页指示点上的数字（页码）
 function updatePageIndicator() {
     var indicatorLast = document.getElementById('pageIndexLast');
     var indicatorFirst = document.getElementById('pageIndexFirst');
@@ -475,31 +515,15 @@ function updatePageIndicator() {
     var indicatorFirstIndex = 0;
     var indicatorLastIndex = indicatorCount - 1;
 
-    var lastIn; // afterLast - pageCount
-    var afterLast;
-    var lastEnableIndex;
-
     if (currentPageIndex === last + 1 && currentPageIndex <= pageCount - 1) { // 重新为指示点赋值(增加)
-        afterLast = currentPageIndex + 1 + indicatorLastIndex;
-        lastIn = afterLast - pageCount;
-
-        lastEnableIndex = lastIn  > 0 ? (pageCount - lastIn) - 1 :afterLast;
-        modify(first + 2,indicatorLastIndex,lastEnableIndex);
+        modify(first + 2, indicatorLastIndex);
     } else if (currentPageIndex === first - 1 && currentPageIndex >= 0) {// 重新为指示点赋值(减少)
-        afterLast = currentPageIndex - 1 + indicatorLastIndex;
-        lastIn = afterLast - pageCount;
-
-        lastEnableIndex = lastIn  > 0 ? (pageCount - lastIn) - 1 :afterLast;
-        modify(first,indicatorFirstIndex,lastEnableIndex)
+        modify(first, indicatorFirstIndex)
     } else { // 在中间，直接移动即可
-        afterLast = last;
-        lastIn = afterLast - pageCount;
-
-        lastEnableIndex = lastIn  > 0 ? (pageCount - lastIn) - 1 :afterLast;
-        modify(first + 1,currentPageIndex - first,lastEnableIndex);
+        modify(first + 1, currentPageIndex - first);
     }
 
-    function modify(first,activeIndex,lastEnableIndex) {
+    function modify(first, activeIndex) {
         var indicators = [
             document.getElementById('pageIndexFirst'),
             document.getElementById('pageIndex2'),
@@ -508,18 +532,24 @@ function updatePageIndicator() {
             document.getElementById('pageIndexLast')
         ];
 
+        // 只有在页数小余 5 时，lastEnableIndex 才会小余 lastPage - 1，否则都为 lastPage - 1,
+        // TODO 待测试
+        var len = indicators.length;
+        var lastPage = first + len - 1;
+        var lastEnableIndex = lastPage > pageCount ?
+            len - (lastPage - pageCount) - 1 : lastPage - 1;
+
         for (var i = 0; i < indicators.length; i++) {
             indicators[i].firstChild.innerHTML = first + i;
-            if(activeIndex === i){
+            if (activeIndex === i) {
                 indicators[i].className = 'active'
-            } else if (i > lastEnableIndex){
+            } else if (i > lastEnableIndex) {
                 indicators[i].className = 'disabled';
             } else {
                 indicators[i].className = '';
             }
         }
     }
-
 }
 
 // 显示指定页
@@ -557,14 +587,16 @@ function showNotesWithPage(pageIndex) {
     }
 }
 
-// 第一行被表头占据
+// 修改留言列表的具体行，rowIndex: 1 ~ pageRate (0 行被表头占据)
 function modifyRow(rowIndex, No, title, time, userName, noteId) {
+    // 第一行被表头占据
     if (rowIndex < 1 || rowIndex > pageRate) {
         return;
     }
 
     var table = document.getElementById('pageNotesTable');
     var row = table.rows[rowIndex];
+    row.dataset.noteId = noteId;
 
     var cellNo_ = row.cells[0];
     var cellTitle = row.cells[1];
@@ -596,22 +628,76 @@ function modifyRow(rowIndex, No, title, time, userName, noteId) {
 
 }
 
+// 上一页
 function prePage() {
     if (currentPageIndex > 0) {
         showNotesWithPage(currentPageIndex - 1);
     }
 }
 
+// 下一页
 function nextPage() {
     if (currentPageIndex < pageCount - 1) {
         showNotesWithPage(currentPageIndex + 1);
     }
 }
 
+function switchCheckState(rowIndex) {
+    var row = document.getElementById('pageNotesTable').rows[rowIndex];
+    var checked = row.dataset.checked;
+    if(checked === '1'){
+        row.style.backgroundColor = rowNotCheckColor;
+        row.dataset.checked = '0';
+    } else {
+        // row.style.backgroundColor = "#17bce8";
+        row.style.backgroundColor = rowCheckColor;
+        row.dataset.checked = '1';
+    }
+}
+
+var rowCheckColor = 'rgba(23, 188, 232, 0.24)';
+var rowNotCheckColor = 'transparent';
+function checkAll() {
+    changeAllColor(rowCheckColor);
+}
+
+function cancelAllCheck() {
+    changeAllColor(rowNotCheckColor);
+}
+function changeAllColor(color) {
+    var table = document.getElementById('pageNotesTable');
+    for (var i = 1; i< table.rows.length; i++){
+        var row = table.rows[i];
+        row.style.backgroundColor = color;
+    }
+}
+
+function batchDelete() {
+    var table = document.getElementById('pageNotesTable');
+
+    var count = 0;
+    for (var i = 1; i< table.rows.length; i++){
+        var row = table.rows[i];
+        var checked = row.dataset.checked === '1';
+        if(checked){
+            var noteId = row.dataset.noteId;
+            deleteNoteAsyn(noteId);
+            count++;
+        }
+    }
+
+    if (count > 0){
+        loadAllNotesAndUsersWithPage(false,false,true,0);
+    }
+
+}
+
 function modifyNote(noteId) {
 
 }
 
-function deleteNote(noteId) {
+function deleteNoteAsyn(noteId) {
+    manipulateDataAsyn('noteControl.do?category=1',function (responseData) {
 
+    })
 }
