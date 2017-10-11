@@ -478,6 +478,7 @@ var pageCount;
 function loadAllNotesAndUsersWithPage(initPage, loadUser, show, pageIndex) {
     manipulateDataAsyn('notesObtain.do?category=1', null, function (jsonText) { // 异步获取留言
         jsonNotes = JSON.parse(jsonText);
+        updateNotesCount(jsonNotes.length);
 
         var alreadyShow = false;
         if (loadUser) {
@@ -487,7 +488,6 @@ function loadAllNotesAndUsersWithPage(initPage, loadUser, show, pageIndex) {
                 if (initPage) {
                     initNotesPageData();
                 }
-                updateNotesCount(jsonNotes.length);
 
                 if (show) {
                     currentPageIndex = pageIndex;

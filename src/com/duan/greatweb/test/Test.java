@@ -32,7 +32,7 @@ public class Test {
 
         Random r = new Random();
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 20; i++) {
             Note note = new Note();
             note.setTitle(titles[r.nextInt(titles.length)]);
             note.setContent(contents[r.nextInt(contents.length)]);
