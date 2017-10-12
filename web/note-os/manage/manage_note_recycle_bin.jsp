@@ -68,7 +68,7 @@
 <div class="btn-group" role="group">
     <button type="button" class="btn btn-default" onclick="checkAll()">全选</button>
     <button type="button" class="btn btn-default" onclick="cancelAllCheck()">全不选</button>
-    <button type="button" class="btn btn-default btn-danger" onclick="batchAddToRecycleBin()">批量删除</button>
+    <button type="button" class="btn btn-default btn-danger" onclick="batchDelete()">批量删除</button>
     <button type="button" class="btn btn-default" onclick="refreshData(1)">刷新数据</button>
 </div>
 <br>

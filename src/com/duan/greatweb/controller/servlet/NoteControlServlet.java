@@ -27,6 +27,11 @@ public class NoteControlServlet extends DataManipulateAbstract {
     private static final int CATEGORY_ADD_NOTES = 2;
 
     /**
+     * 添加留言
+     */
+    private static final int CATEGORY_MODIFY_NOTES = 5;
+
+    /**
      * 将留言移动到回收站
      */
     private static final int CATEGORY_ADD_NOTES_TO_RECYCLE_BIN = 3;

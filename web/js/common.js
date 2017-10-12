@@ -439,7 +439,7 @@ function getRandomAvatar() {
     return rootPath + avatars[random];
 }
 
-// 获得项目路径
+// 获得项目路径 http://localhost:8083/
 function getRootPath() {
     //获取当前网址，如： http://localhost:8083/uimcardprj/share/meun.jsp
     var curWwwPath = window.document.location.href;
@@ -454,6 +454,41 @@ function getRootPath() {
     // var projectName = pathName.substring(0, pathName.substr(1).indexOf('/') + 1);
 
     return localhostPath + '/';
+}
+
+
+function showPopup(width, height, src) {
+    var doc = window.parent.document;
+
+    var popUp = doc.getElementById("popupContent");
+    var popUpContainer = doc.getElementById("popupWindowContainer");
+    var wWidth = window.parent.innerWidth;
+    var wHeight = window.parent.innerHeight;
+    var top = wHeight / 2 - height / 2;
+    var left = wWidth / 2 - width / 2;
+
+    popUp.style.top = top;
+    popUp.style.left = left;
+
+    popUp.style.width = width;
+    popUp.style.height = height;
+
+    var frame = doc.getElementById('popupFrame');
+    frame.src = src;
+
+    popUp.style.visibility = "visible";
+    popUpContainer.style.visibility = "visible";
+
+}
+
+function hidePopup() {
+    var doc = window.parent.document;
+
+    var popUp = doc.getElementById("popupContent");
+    var popUpContainer = doc.getElementById("popupWindowContainer");
+
+    popUp.style.visibility = "hidden";
+    popUpContainer.style.visibility = "hidden";
 }
 
 //---------------------------------------------------------------------------note-os: manage_os
@@ -729,7 +764,7 @@ function modifyRow(rowIndex, No, title, time, userName, noteId) {
     } else {
         var fontSize = '0.8em';
         if (noteState === 0) {
-            cellOpt.innerHTML = "<a style='font-size: " + fontSize + "' href='javaScript:modifyNote(" + noteId + ")'>编辑</a> | <a style='font-size: " + fontSize + "' href='javaScript:addNoteToRecycleBin(" + noteId + "," + rowIndex + ")'>删除</a>"
+            cellOpt.innerHTML = "<a style='font-size: " + fontSize + "' href='javaScript:modifyNote(" + noteId + "," + rowIndex + ")'>编辑</a> | <a style='font-size: " + fontSize + "' href='javaScript:addNoteToRecycleBin(" + noteId + "," + rowIndex + ")'>删除</a>"
         } else if (noteState === 1) {
             cellOpt.innerHTML = "<a style='font-size: " + fontSize + "' href='javaScript:restoreFromRecycleBin(" + noteId + "," + rowIndex + ")'>还原</a> | <a style='color: #cf3150;font-size: " + fontSize + "';' href='javaScript:deleteNote(" + noteId + "," + rowIndex + ")'>彻底删除</a>"
         }
@@ -747,6 +782,13 @@ function addNoteToRecycleBin(noteId, rowIndex) {
 
 function restoreFromRecycleBin(noteId, rowIndex) {
     manipulateSingleNoteAsyn(noteId, 1, 4, rowIndex, null);
+}
+
+// TODO
+function modifyNote(noteId, rowIndex) {
+    var src = getRootPath() + 'note-os/manage/manage_note_modify.jsp?noteId=' + noteId;
+    showPopup(500, 450, src);
+    changeCheckState(rowIndex, false);
 }
 
 /**
@@ -959,11 +1001,6 @@ function batchDelete() {
     } else {
         alert('请先选中要删除的留言');
     }
-
-}
-
-// TODO
-function modifyNote(noteId) {
 
 }
 
