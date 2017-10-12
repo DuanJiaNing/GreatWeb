@@ -42,10 +42,12 @@ public abstract class DataManipulateAbstract extends HttpServlet {
         close();
     }
 
-    protected int getCode(String name){
+    protected int getCode(String name) {
         if (request != null) {
             String str = request.getParameter(name);
-            return Integer.valueOf(str);
+            if (Utils.isReal(str)) {
+                return Integer.valueOf(str);
+            }
         }
 
         return -1;

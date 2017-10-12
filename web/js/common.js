@@ -470,17 +470,25 @@ var currentPageIndex;// 页下标 如：第2页，数组的下标应为 [5 - 9]
 var pageCount;
 
 /**
+ *  0 正常留言 （默认值）
+ *  1 在回收站中的留言
+ * @type {number}
+ */
+var noteState = 0;
+
+/**
  * 加载（刷新）所有笔记和用户(可选)到客户端
  * @param initPage boolean 初始化表格（仅第一次调用为 true）
- * @param noteState 操作成功后重新加载留言时要加载的留言的状态
+ * @param noteState_ 操作成功后重新加载留言时要加载的留言的状态
  * @param loadUser boolean 加载用户
  * @param show boolean 是否显示（false 时仅加载数数据）
  * @param pageIndex 显示的页下标（只在 show 为 true 时被使用）
  */
-function loadNotesAndUsersWithPage(initPage, noteState, loadUser, show, pageIndex) {
-    manipulateDataAsyn('dataObtain.do?category=1&noteState='+noteState, null, function (jsonText) { // 异步获取留言
+function loadNotesAndUsersWithPage(initPage, noteState_, loadUser, show, pageIndex) {
+    manipulateDataAsyn('dataObtain.do?category=1&noteState=' + noteState_, null, function (jsonText) { // 异步获取留言
         jsonNotes = JSON.parse(jsonText);
         updateNotesCount(jsonNotes.length);
+        noteState = noteState_; // noteState 有变化时应确保在 showNotesWithPage 前修改其值
 
         var alreadyShow = false;
         if (loadUser) {
@@ -685,26 +693,46 @@ function modifyRow(rowIndex, No, title, time, userName, noteId) {
     var cellUserName = row.cells[3];
     var cellOpt = row.cells[4];
 
+    // 宽度和居中属性
     cellNo_.align = 'center';
     cellOpt.align = 'center';
-    cellNo_.style.color = '#7c7c7c';
-    cellTime.style.color = '#7c7c7c';
-
-    cellNo_.style.width = '5%';
-    cellTitle.style.width = '55%';
-    cellTime.style.width = '13%';
+    cellNo_.style.width = '8%';
+    cellTitle.style.width = '52%';
+    cellTime.style.width = '10%';
     cellUserName.style.width = '15%';
-    cellOpt.style.width = '12%';
+    cellOpt.style.width = '15%';
 
+    // 修改值
     cellNo_.innerHTML = No;
     cellTitle.innerHTML = title;
     cellTime.innerHTML = time;
     cellUserName.innerHTML = userName;
 
+    // 颜色
+    var firstColor = '#000'
+    var secondColor = '#7c7c7c';
+    if (noteState === 1) {
+        cellNo_.style.color = secondColor;
+        cellTitle.style.color = secondColor;
+        cellTime.style.color = secondColor;
+        cellUserName.style.color = secondColor;
+    } else if (noteState === 0) {
+        cellNo_.style.color = secondColor;
+        cellTitle.style.color = firstColor;
+        cellTime.style.color = secondColor;
+        cellUserName.style.color = firstColor;
+    }
+
+    // 操作
     if (noteId === -1) {
         cellOpt.innerHTML = '';
     } else {
-        cellOpt.innerHTML = "<a href='javaScript:modifyNote(" + noteId + ")'>编辑</a> | <a href='javaScript:addNoteToRecycleBin(" + noteId + "," + rowIndex + ")'>删除</a>"
+        var fontSize = '0.8em';
+        if (noteState === 0) {
+            cellOpt.innerHTML = "<a style='font-size: " + fontSize + "' href='javaScript:modifyNote(" + noteId + ")'>编辑</a> | <a style='font-size: " + fontSize + "' href='javaScript:addNoteToRecycleBin(" + noteId + "," + rowIndex + ")'>删除</a>"
+        } else if (noteState === 1) {
+            cellOpt.innerHTML = "<a style='font-size: " + fontSize + "' href='javaScript:restoreFromRecycleBin(" + noteId + "," + rowIndex + ")'>还原</a> | <a style='color: #cf3150;font-size: " + fontSize + "';' href='javaScript:deleteNote(" + noteId + "," + rowIndex + ")'>彻底删除</a>"
+        }
     }
 
 }
@@ -717,46 +745,40 @@ function addNoteToRecycleBin(noteId, rowIndex) {
     manipulateSingleNoteAsyn(noteId, 0, 3, rowIndex, '确认删除，你可以在[回收站]中恢复它们');
 }
 
+function restoreFromRecycleBin(noteId, rowIndex) {
+    manipulateSingleNoteAsyn(noteId, 1, 4, rowIndex, null);
+}
+
 /**
  * 异步操控单条留言
  * @param noteId 留言 id
- * @param noteState 操作成功后重新加载留言时要加载的留言的状态
+ * @param noteStateWhenLoad 操作成功后重新加载留言时要加载的留言的状态
  * @param category 操控类别
  * @param rowIndex 留言所正行行标
  * @param tip 操作正真执行前的确认提示
  */
-function manipulateSingleNoteAsyn(noteId, noteState, category, rowIndex, tip) {
+function manipulateSingleNoteAsyn(noteId, noteStateWhenLoad, category, rowIndex, tip) {
 
     // 点击会改变选中状态，不删除时恢复选中状态
     var row = document.getElementById('pageNotesTable').rows[rowIndex];
     var checkState = row.dataset.checked === '1';
 
-    if (confirm(tip)) {
+    var exe = true;
+    if (!isNull(tip)) {
+        exe = confirm(tip);
+    }
+
+    if (exe) {
         // 要传数组
         manipulateNotesAsyn([noteId], category, function (jsonResult) {
             // alert('删除成功');
             cancelAllCheck();
-            loadNotesAndUsersWithPage(false, noteState, false, true, currentPageIndex);
+            loadNotesAndUsersWithPage(false, noteStateWhenLoad, false, true, currentPageIndex);
         }, function (jsonResult) {
-            alert('删除失败：' + jsonResult.result);
+            alert('错误：' + jsonResult.result);
         });
     } else {
         changeCheckState(rowIndex, !checkState);
-    }
-}
-
-/**
- * 获得操控类别对应的用户状态
- */
-function getManipulateCorreUserState(category) {
-    var USER_STATE_
-
-
-    switch (category) {
-        case 1: // 彻底删除留言
-            return;
-        case 3: // 添加留言到回收站
-            return
     }
 }
 
@@ -887,7 +909,7 @@ function batchAddToRecycleBin() {
         if (confirm('确认将选中的' + count + '条留言删除，你可以在[回收站]中恢复它们')) {
             manipulateNotesAsyn(reNoteIds, 3, function (result) {
                 cancelAllCheck();
-                loadNotesAndUsersWithPage(false, 0, false, 0, true, currentPageIndex);
+                loadNotesAndUsersWithPage(false, 0, false, true, currentPageIndex);
             }, function (result) {
                 alert('删除失败: ' + result.result);
             })
@@ -943,6 +965,22 @@ function batchDelete() {
 // TODO
 function modifyNote(noteId) {
 
+}
+
+function openWin() {
+    var url = 'http://www.baidu.com';
+    var name = '新的窗口';                            //网页名称，可为空;
+    var iWidth = 700;                          //弹出窗口的宽度;
+    var iHeight = 700;                         //弹出窗口的高度;
+
+    //获得窗口的垂直位置
+    var iTop = (window.screen.availHeight - 30 - iHeight) / 2;
+
+    //获得窗口的水平位置
+    var iLeft = (window.screen.availWidth - 10 - iWidth) / 2;
+
+    window.open(url, name, 'height=' + iHeight + ',,innerHeight=' + iHeight + ',width=' + iWidth + ',innerWidth=' + iWidth + ',top=' + iTop + ',left=' + iLeft + ',status=no,toolbar=no,menubar=no,location=no,resizable=no,scrollbars=0,titlebar=no');
+    // window.open("AddScfj.aspx", "newWindows", 'height=100,width=400,top=0,left=0,toolbar=no,menubar=no,scrollbars=no, resizable=no,location=no, status=no');
 }
 
 /**

@@ -55,7 +55,7 @@
         </tr>
         <tr>
             <td></td>
-            <td><input type="reset" id="resetInput" value="取消填写">&nbsp;<input type="button" value="保存填写"
+            <td><input type="reset" id="resetInput" value="清空">&nbsp;<input type="button" value="保存填写"
                                                               onclick="addNote('<%=user == null ? -1 : user.getId()%>')">
             </td>
         </tr>

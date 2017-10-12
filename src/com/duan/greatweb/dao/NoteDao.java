@@ -17,4 +17,5 @@ public interface NoteDao extends Dao {
 
 	List<Note> queryWithState(int noteState);
 
+    int updateNoteState(int noteId,int state);
 }

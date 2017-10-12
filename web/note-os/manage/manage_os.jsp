@@ -16,7 +16,7 @@
             + path + "/";
 
     Object obj = session.getAttribute("user");
-    String name = "用户名获取出错";
+    String name = "Unknow";
     if (obj != null && obj instanceof User) {
         name = ((User) obj).getName();
     }
@@ -35,48 +35,53 @@
 <body>
 <span data-base-path="<%=basePath%>" id="basePath"></span>
 
-<div id="page">
-    <div id="top">
-        <div id="top_left">
-            <h3 style="margin-left: 8px; font-style: normal">内容管理系统</h3>
+
+<div class="container top">
+    <div class="row">
+        <div class="col-xs-8 top-sub-container">
+            <h3 class="title"><b>管理系统</b></h3>
         </div>
-        <div id="top_right">
-            <p class="text-right" style="font-size: 0.8em">
-                您好：<%=name%>,&nbsp;欢迎使用内容管理系统！[<a href="#">网站主页</a>]&nbsp;[<a href="#">修改密码</a>]&nbsp;[<a
-                    href="#">注销退出unknown</a>]</p>
+
+        <div class="col-xs-4 top-sub-container">
+
+            <nav class="non-border" aria-label="...">
+                <ul class="pagination non-border">
+                    <li class="active"><a href="#">网站主页 </a></li>
+                    <li><a href="#">修改密码 </a></li>
+                    <li><a href="#">注销退出 </a></li>
+                    <li><a href="#">&nbsp;<span class="glyphicon glyphicon-user"></span></a>&nbsp;</li>
+                </ul>
+            </nav>
         </div>
+
     </div>
+</div>
 
-    <div class="clear"></div>
-    <div id="center"></div>
-
-    <div id="bottom">
-        <div id="bottom_left">
+<div class="container">
+    <div class="row">
+        <div class="col-md-2 content">
+            <hr>
             <div class="d1">
                 <div class="d11">
-                    <p class="text-center">留言管理&nbsp;<span class="glyphicon glyphicon-menu-down"></span>
-                    </p>
+                    <p class="text-center"><b class="category">&nbsp;留言管理</b></p>
                 </div>
                 <div class="d12">
                     <ul>
                         <li>
-                            <a href="javaScript:switchIframe('manage_note_new.jsp')">新增留言</a><img
-                                src="../../img/1.png"
-                                class="img1"></li>
+                            <a href="javaScript:switchIframe('manage_note_new.jsp')">新增留言</a>
+                        </li>
                         <li>
                             <a href="javaScript:switchIframe('manage_note_query.jsp')">查询留言</a>
                         </li>
                         <li>
-                            <a href="javaScript:switchIframe('manage_note_recycle_bin.jsp')">留言回收站</a><img
-                                src="../../img/2.png" class="img2"></li>
+                            <a href="javaScript:switchIframe('manage_note_recycle_bin.jsp')">留言回收站</a></li>
                     </ul>
                 </div>
             </div>
 
             <div class="d2">
                 <div>
-                    <p class="text-center">用户管理&nbsp;<span class="glyphicon glyphicon-menu-down"></span>
-                    </p>
+                    <p class="text-center"><b class="category">&nbsp;用户管理</b></p>
                 </div>
                 <div class="d22">
                     <ul>
@@ -89,11 +94,9 @@
                 </div>
             </div>
         </div>
-        <div id="bottom_right">
-            <div id="bottom_right_content">
-                <iframe src="<%=basePath%>/note-os/manage/manage_note_query.jsp" width="100%" height="100%"
-                        id="noteOsIframe"></iframe>
-            </div>
+        <div class="col-md-10">
+            <iframe src="<%=basePath%>/note-os/manage/manage_note_query.jsp" width="100%" height="100%"
+                    frameborder="0px" scrolling="no" id="noteOsIframe"></iframe>
         </div>
     </div>
 </div>

@@ -8,12 +8,8 @@ import net.sf.json.JSONObject;
 
 import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.URLDecoder;
-import java.util.function.Function;
-import java.util.function.IntFunction;
-import java.util.stream.Stream;
 
 /**
  * Created by DuanJiaNing on 2017/10/11.
@@ -36,14 +32,19 @@ public class NoteControlServlet extends DataManipulateAbstract {
     private static final int CATEGORY_ADD_NOTES_TO_RECYCLE_BIN = 3;
 
     /**
+     * 将留言从回收站中还原
+     */
+    private static final int CATEGORY_RESTORE_NOTES_FROM_RECYCLE_BIN = 4;
+
+    /**
      * 留言状态：正常
      */
-    private static final int NOTESTATE_NORMAL = 0;
+    private static final int NOTE_STATE_NORMAL = 0;
 
     /**
      * 留言状态：回收站
      */
-    private static final int NOTESTATE_RECYCLE_BIN = 1;
+    private static final int NOTE_STATE_RECYCLE_BIN = 1;
 
     @Override
     protected String handleManipulate() {
@@ -60,22 +61,24 @@ public class NoteControlServlet extends DataManipulateAbstract {
 
             switch (category) {
                 case CATEGORY_DELETE_NOTES: {
-                    String str = request.getParameter("noteIds");
-                    String[] ns = str.split("\\*");
+                    int[] noteIds = parseNoteIds(request);
+                    if (!Utils.isArrayEmpty(noteIds)) {
+                        for (int noteId : noteIds) {
 
-                    Object[] objs = Stream.of(ns).map(Utils::parseStringToInt).toArray();
-
-                    for (Object d : objs) {
-                        int noteId = (int) d;
-                        int res = noteDao.delete(noteId);
-
-                        if (res != NoteDao.STATE_DELETE_SUCCESS) {
-                            resultCode = -1;
-                            builder.append(noteId).append(" ");
+                            int res = noteDao.delete(noteId);
+                            if (res != NoteDao.STATE_DELETE_SUCCESS) {
+                                resultCode = -1;
+                                builder.append(noteId).append(" ");
+                            }
                         }
+                    } else {
+                        resultCode = -1;
+                        builder.append("未正确传递要删除的留言id");
                     }
+
                     break;
                 }
+
                 case CATEGORY_ADD_NOTES: {
                     try {
 
@@ -111,6 +114,22 @@ public class NoteControlServlet extends DataManipulateAbstract {
 
                     break;
                 }
+                case CATEGORY_ADD_NOTES_TO_RECYCLE_BIN: {
+                    String res = updateNoteState(noteDao, request, NOTE_STATE_RECYCLE_BIN);
+                    if (res != null){
+                        resultCode = -1;
+                        builder.append(res);
+                    }
+                    break;
+                }
+                case CATEGORY_RESTORE_NOTES_FROM_RECYCLE_BIN:{
+                    String res = updateNoteState(noteDao, request, NOTE_STATE_NORMAL);
+                    if (res != null){
+                        resultCode = -1;
+                        builder.append(res);
+                    }
+                    break;
+                }
                 default: {
                     resultCode = -1;
                     builder.append("要执行的操作不存在");
@@ -120,6 +139,50 @@ public class NoteControlServlet extends DataManipulateAbstract {
         }
 
         return "{\"code\": " + resultCode + ",\"result\": \"" + builder.toString() + "\"}";
+    }
+
+    private String updateNoteState(NoteDao noteDao, HttpServletRequest request, int state) {
+
+        int[] noteIds = parseNoteIds(request);
+        StringBuilder builder = null;
+
+        if (!Utils.isArrayEmpty(noteIds)) {
+            for (int noteId : noteIds) {
+
+                int res = noteDao.updateNoteState(noteId,state);
+
+                if (res != NoteDao.STATE_DELETE_SUCCESS) {
+                    if (builder == null) {
+                        builder = new StringBuilder();
+                    }
+                    builder.append(noteId).append(" ");
+                }
+            }
+        } else {
+            builder = new StringBuilder();
+            builder.append("未正确传递要删除的留言id");
+        }
+
+        return builder == null ? null : builder.toString();
+
+    }
+
+    private int[] parseNoteIds(HttpServletRequest request) {
+
+        String str = request.getParameter("noteIds");
+        String[] ns = str.split("\\*");
+
+        int[] ids = new int[ns.length];
+        for (int i = 0; i < ns.length; i++) {
+            try {
+                ids[i] = Integer.valueOf(ns[i]);
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+                return null;
+            }
+        }
+
+        return ids;
     }
 
 }

@@ -44,4 +44,13 @@ public class NoteDaoImpl implements NoteDao {
         return notes == null || notes.length == 0 ? null : Arrays.asList(notes);
     }
 
+    @Override
+    public int updateNoteState(int noteId, int state) {
+        Note note = new Note();
+        note.setId(noteId);
+        note.setState(state);
+
+        return dataBase.update(note);
+    }
+
 }

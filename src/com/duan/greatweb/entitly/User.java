@@ -6,7 +6,7 @@ import com.duan.greatweb.dao.mapping.Mapping;
 public class User {
 
 	@Mapping("id")
-	private int id;
+	private Integer id;
 
 	@Mapping("name")
 	private String name;
@@ -15,10 +15,10 @@ public class User {
 	private String password;
 
 	@Mapping("state")
-	private int state;
+	private Integer state;
 
 	@Mapping("age")
-	private int age;
+	private Integer age;
 
 	public User() {
 	}
