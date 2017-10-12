@@ -15,6 +15,8 @@ import java.io.OutputStream;
 public abstract class DataManipulateAbstract extends HttpServlet {
 
     private OutputStream outStream;
+    protected HttpServletRequest request;
+    protected HttpServletResponse response;
 
     @Override
     protected final void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -23,22 +25,15 @@ public abstract class DataManipulateAbstract extends HttpServlet {
 
     @Override
     protected final void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        this.request = request;
+        this.response = response;
 
         response.setContentType("text/html");
 
-        String str = request.getParameter("category");
         outStream = response.getOutputStream();
 
-        if (!Utils.isReal(str)) {
-            LogErrorRequest("需要在请求中指明需要的操作类别,category=?");
-            return;
-        }
-
         String errorInfo = "操作执行失败";
-
-        int cate = Integer.valueOf(str);
-        String data = handleManipulate(cate,request,response);
-
+        String data = handleManipulate();
         if (Utils.isReal(data)) {
             out(data);
         } else {
@@ -47,7 +42,16 @@ public abstract class DataManipulateAbstract extends HttpServlet {
         close();
     }
 
-    protected abstract String handleManipulate(int category,HttpServletRequest request,HttpServletResponse response);
+    protected int getCode(String name){
+        if (request != null) {
+            String str = request.getParameter(name);
+            return Integer.valueOf(str);
+        }
+
+        return -1;
+    }
+
+    protected abstract String handleManipulate();
 
     protected void LogErrorRequest(String msg) {
         Utils.log(msg);

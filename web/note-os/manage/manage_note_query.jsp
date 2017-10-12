@@ -29,7 +29,7 @@
 
 <div class="page-header">
     <h4><b>留言列表</b>
-        <small>&nbsp;&nbsp;(<span id="notesCount">0</span>条)</small>
+        <small>&nbsp;&nbsp;(共<span id="notesCount">0</span>条)</small>
     </h4>
 </div>
 
@@ -68,9 +68,9 @@
 <div class="btn-group" role="group">
     <button type="button" class="btn btn-default" onclick="checkAll()">全选</button>
     <button type="button" class="btn btn-default" onclick="cancelAllCheck()">全不选</button>
-    <button type="button" class="btn btn-default" onclick="batchDelete()">批量删除</button>
+    <button type="button" class="btn btn-default" onclick="batchAddToRecycleBin()">批量删除</button>
     <button type="button" class="btn btn-default" disabled="disabled">更新</button>
-    <button type="button" class="btn btn-default" onclick="refreshData()">刷新数据</button>
+    <button type="button" class="btn btn-default" onclick="refreshData(0)">刷新数据</button>
 </div>
 <br>
 <br>
@@ -91,7 +91,7 @@
 </p>
 
 <script type="text/javascript">
-    loadAllNotesAndUsersWithPage(true,true,true,0);
+    loadNotesAndUsersWithPage(true,0,true,true,0);
 </script>
 
 </body>

@@ -6,7 +6,7 @@ var jsonUsers;
 function manipulateDataAsyn(url, data, callback, asyn) {
 
     var xmlRequest = new XMLHttpRequest();
-    xmlRequest.open("post", url,asyn);
+    xmlRequest.open("post", url, asyn);
     if (isNull(data)) {
         xmlRequest.send();
     } else {
@@ -27,9 +27,9 @@ function manipulateDataAsyn(url, data, callback, asyn) {
 }
 
 
-// 加载所有留言
+// 加载所有留言（不区分笔记的状态）
 function loadAllNotes() {
-    manipulateDataAsyn('notesObtain.do?category=1', null, function (jsonText) {
+    manipulateDataAsyn('dataObtain.do?category=1', null, function (jsonText) {
         jsonNotes = JSON.parse(jsonText);
 
         // ajax 同时请求时结果会被合并，用这种方式串行获取
@@ -39,7 +39,7 @@ function loadAllNotes() {
 
 // 加载所有用户
 function loadAllUsers() {
-    manipulateDataAsyn('notesObtain.do?category=2', null, function (jsonText) {
+    manipulateDataAsyn('dataObtain.do?category=2', null, function (jsonText) {
         jsonUsers = JSON.parse(jsonText);
 
         // 显示【全部】
@@ -402,7 +402,8 @@ function getNote(noteId) {
                 title: note.title,
                 content: note.content,
                 dateTime: note.dateTime,
-                userId: note.userId
+                userId: note.userId,
+                state: note.state
             }
         }
     }
@@ -452,7 +453,7 @@ function getRootPath() {
     //获取带"/"的项目名，如：/uimcardprj
     // var projectName = pathName.substring(0, pathName.substr(1).indexOf('/') + 1);
 
-    return localhostPath+'/';
+    return localhostPath + '/';
 }
 
 //---------------------------------------------------------------------------note-os: manage_os
@@ -471,18 +472,19 @@ var pageCount;
 /**
  * 加载（刷新）所有笔记和用户(可选)到客户端
  * @param initPage boolean 初始化表格（仅第一次调用为 true）
+ * @param noteState 操作成功后重新加载留言时要加载的留言的状态
  * @param loadUser boolean 加载用户
  * @param show boolean 是否显示（false 时仅加载数数据）
  * @param pageIndex 显示的页下标（只在 show 为 true 时被使用）
  */
-function loadAllNotesAndUsersWithPage(initPage, loadUser, show, pageIndex) {
-    manipulateDataAsyn('notesObtain.do?category=1', null, function (jsonText) { // 异步获取留言
+function loadNotesAndUsersWithPage(initPage, noteState, loadUser, show, pageIndex) {
+    manipulateDataAsyn('dataObtain.do?category=1&noteState='+noteState, null, function (jsonText) { // 异步获取留言
         jsonNotes = JSON.parse(jsonText);
         updateNotesCount(jsonNotes.length);
 
         var alreadyShow = false;
         if (loadUser) {
-            manipulateDataAsyn('notesObtain.do?category=2', null, function (jsonText) { // 异步获取用户
+            manipulateDataAsyn('dataObtain.do?category=2', null, function (jsonText) { // 异步获取用户
                 jsonUsers = JSON.parse(jsonText);
 
                 if (initPage) {
@@ -496,7 +498,7 @@ function loadAllNotesAndUsersWithPage(initPage, loadUser, show, pageIndex) {
                     showNotesWithPage(pageIndex);
                     alreadyShow = true;
                 }
-            },true);
+            }, true);
         }
 
         if (show && !alreadyShow) {
@@ -539,6 +541,20 @@ function updateNotesCount(count) {
     ele.innerHTML = count;
 }
 
+// 上一页
+function prePage() {
+    if (currentPageIndex > 0) {
+        showNotesWithPage(currentPageIndex - 1);
+    }
+}
+
+// 下一页
+function nextPage() {
+    if (currentPageIndex < pageCount - 1) {
+        showNotesWithPage(currentPageIndex + 1);
+    }
+}
+
 // 页指示点具体页点击时定位到该页
 function locationAtPage(token) {
     var ele = document.getElementById('pageIndex' + token);
@@ -561,8 +577,12 @@ function updatePageIndicator() {
         modify(first + 2, indicatorLastIndex);
     } else if (currentPageIndex === first - 1 && currentPageIndex >= 0) {// 重新为指示点赋值(减少)
         modify(first, indicatorFirstIndex)
-    } else { // 在中间，直接移动即可
-        modify(first + 1, currentPageIndex - first);
+    } else { // 在中间(或指定的位置)，直接移动即可
+        if (currentPageIndex >= first && currentPageIndex <= last) {
+            modify(first + 1, currentPageIndex - first); //在中间
+        } else {
+            modify(currentPageIndex + 1, currentPageIndex);//非中间的指定位置
+        }
     }
 
     function modify(first, activeIndex) {
@@ -594,7 +614,10 @@ function updatePageIndicator() {
     }
 }
 
-// 显示指定页
+/**
+ * 显示指定页
+ * @param pageIndex 页下标
+ */
 function showNotesWithPage(pageIndex) {
     if (pageIndex >= pageCount) {
         return;
@@ -637,7 +660,15 @@ function showNotesWithPage(pageIndex) {
     }
 }
 
-// 修改留言列表的具体行，rowIndex: 1 ~ pageRate (0 行被表头占据)
+/**
+ * 修改留言列表的具体行内容
+ * @param rowIndex 1 ~ pageRate (0 行被表头占据)
+ * @param No 编号
+ * @param title 标题
+ * @param time 时间
+ * @param userName 用户名
+ * @param noteId 留言 id
+ */
 function modifyRow(rowIndex, No, title, time, userName, noteId) {
     // 第一行被表头占据
     if (rowIndex < 1 || rowIndex > pageRate) {
@@ -673,32 +704,66 @@ function modifyRow(rowIndex, No, title, time, userName, noteId) {
     if (noteId === -1) {
         cellOpt.innerHTML = '';
     } else {
-        cellOpt.innerHTML = "<a href='javaScript:modifyNote(" + noteId + ")'>编辑</a> | <a href='javaScript:deleteNote(" + noteId + ")'>删除</a>"
+        cellOpt.innerHTML = "<a href='javaScript:modifyNote(" + noteId + ")'>编辑</a> | <a href='javaScript:addNoteToRecycleBin(" + noteId + "," + rowIndex + ")'>删除</a>"
     }
 
 }
 
-function deleteNote(noteId){
-    if(confirm('确认删除')){
+function deleteNote(noteId, rowIndex) {
+    manipulateSingleNoteAsyn(noteId, 1, 1, rowIndex, '确认彻底删除，删除后将无法恢复');
+}
+
+function addNoteToRecycleBin(noteId, rowIndex) {
+    manipulateSingleNoteAsyn(noteId, 0, 3, rowIndex, '确认删除，你可以在[回收站]中恢复它们');
+}
+
+/**
+ * 异步操控单条留言
+ * @param noteId 留言 id
+ * @param noteState 操作成功后重新加载留言时要加载的留言的状态
+ * @param category 操控类别
+ * @param rowIndex 留言所正行行标
+ * @param tip 操作正真执行前的确认提示
+ */
+function manipulateSingleNoteAsyn(noteId, noteState, category, rowIndex, tip) {
+
+    // 点击会改变选中状态，不删除时恢复选中状态
+    var row = document.getElementById('pageNotesTable').rows[rowIndex];
+    var checkState = row.dataset.checked === '1';
+
+    if (confirm(tip)) {
         // 要传数组
-        deleteNoteAsyn([noteId],true);
+        manipulateNotesAsyn([noteId], category, function (jsonResult) {
+            // alert('删除成功');
+            cancelAllCheck();
+            loadNotesAndUsersWithPage(false, noteState, false, true, currentPageIndex);
+        }, function (jsonResult) {
+            alert('删除失败：' + jsonResult.result);
+        });
+    } else {
+        changeCheckState(rowIndex, !checkState);
     }
 }
 
-// 上一页
-function prePage() {
-    if (currentPageIndex > 0) {
-        showNotesWithPage(currentPageIndex - 1);
+/**
+ * 获得操控类别对应的用户状态
+ */
+function getManipulateCorreUserState(category) {
+    var USER_STATE_
+
+
+    switch (category) {
+        case 1: // 彻底删除留言
+            return;
+        case 3: // 添加留言到回收站
+            return
     }
 }
 
-// 下一页
-function nextPage() {
-    if (currentPageIndex < pageCount - 1) {
-        showNotesWithPage(currentPageIndex + 1);
-    }
-}
-
+/**
+ * 反转行选中状态
+ * @param rowIndex 行下标
+ */
 function switchCheckState(rowIndex) {
     var row = document.getElementById('pageNotesTable').rows[rowIndex];
     var checked = row.dataset.checked;
@@ -712,6 +777,28 @@ function switchCheckState(rowIndex) {
     }
 }
 
+/**
+ * 修改指定行的选中状态
+ * @param rowIndex 行下标
+ * @param check 选中为 true
+ */
+function changeCheckState(rowIndex, check) {
+    if (rowIndex < 1 || rowIndex > pageRate - 1) {
+        return;
+    }
+
+    var table = document.getElementById('pageNotesTable');
+    var row = table.rows[rowIndex];
+
+    if (check) {
+        row.style.backgroundColor = rowCheckColor;
+        row.dataset.checked = '1';
+    } else {
+        row.style.backgroundColor = rowNotCheckColor;
+        row.dataset.checked = '0';
+    }
+}
+
 var rowCheckColor = 'rgba(23, 188, 232, 0.24)';
 var rowNotCheckColor = 'transparent';
 
@@ -719,27 +806,20 @@ function checkAll() {
     changeAllRowCheckState(true);
 }
 
-function checkRow(rowIndex) {
-    if(rowIndex < 1 || rowIndex > pageRate - 1){
-        return;
-    }
-
-    var table = document.getElementById('pageNotesTable');
-    var row = table.rows[rowIndex];
-    row.style.backgroundColor = rowCheckColor;
-    row.dataset.checked = '1';
-}
-
 function cancelAllCheck() {
     changeAllRowCheckState(false);
 }
 
+/**
+ * 修改所有行的选中状态
+ * @param check 选中为 true
+ */
 function changeAllRowCheckState(check) {
     var table = document.getElementById('pageNotesTable');
     for (var i = 1; i < table.rows.length; i++) {
         var row = table.rows[i];
 
-        if (check && row.dataset.noteId !== -1) {
+        if (check && row.dataset.noteId !== '-1') {
             row.style.backgroundColor = rowCheckColor;
             row.dataset.checked = '1';
         } else {
@@ -749,24 +829,110 @@ function changeAllRowCheckState(check) {
     }
 }
 
-function batchDelete() {
+/**
+ * 异步操控笔记
+ * @param noteIds 笔记 id，数组
+ * @param category 操控类别
+ * @param successCallback 执行成功后回调
+ * @param failCallback 执行失败后回调
+ */
+function manipulateNotesAsyn(noteIds, category, successCallback, failCallback) {
+    if (isNull(noteIds) || noteIds.length === 0) {
+        return;
+    }
+
+    var param = constructorNoteIdsParam(noteIds);
+    if (param === null) {
+        return;
+    }
+
+    manipulateDataAsyn('noteControl.do?category=' + category + '&noteIds=' + param, null, function (responseData) {
+        var json = JSON.parse(responseData);
+        if (json.code === 1) {
+            successCallback(json);
+        } else {
+            failCallback(json);
+        }
+
+    }, true);
+
+    function constructorNoteIdsParam(noteIds) {
+        if (isNull(noteIds) || noteIds.length === 0) {
+            return null;
+        }
+
+        var param = '';
+        for (var i = 0; i < noteIds.length; i++) {
+            var id = noteIds[i];
+            if (i === 0) {
+                param += id;
+            } else {
+                param += '*' + id;
+            }
+        }
+
+        return param;
+    }
+}
+
+/**
+ * 批量加入回收站
+ */
+function batchAddToRecycleBin() {
+
+    var reNoteIds = getCheckedRowNoteIds();
+    var count = reNoteIds.length;
+
+    if (count > 0) {
+        if (confirm('确认将选中的' + count + '条留言删除，你可以在[回收站]中恢复它们')) {
+            manipulateNotesAsyn(reNoteIds, 3, function (result) {
+                cancelAllCheck();
+                loadNotesAndUsersWithPage(false, 0, false, 0, true, currentPageIndex);
+            }, function (result) {
+                alert('删除失败: ' + result.result);
+            })
+        }
+    } else {
+        alert('请先选中要删除的留言');
+    }
+
+}
+
+// 获得选中行对应的留言 id 数组
+function getCheckedRowNoteIds() {
     var table = document.getElementById('pageNotesTable');
 
     var count = 0;
-    var deleteNoteIds = new Array();
+    var array = new Array();
     for (var i = 1; i < table.rows.length; i++) {
         var row = table.rows[i];
         var checked = row.dataset.checked === '1';
         if (checked) {
-            var noteId = row.dataset.noteId;
-            deleteNoteIds[count] = noteId;
+            array[count] = row.dataset.noteId;
             count++;
         }
     }
 
+    return array;
+}
+
+/**
+ * 批量彻底删除留言
+ */
+function batchDelete() {
+
+    var deleteNoteIds = getCheckedRowNoteIds();
+    var count = deleteNoteIds.length;
+
     if (count > 0) {
         if (confirm('确认删除选中的' + count + '条留言')) {
-            deleteNoteAsyn(deleteNoteIds, true);
+            manipulateNotesAsyn(deleteNoteIds, 1, function (jsonResult) {
+                // alert('删除成功');
+                cancelAllCheck();
+                loadNotesAndUsersWithPage(false, 1, false, 0, true, currentPageIndex);
+            }, function (jsonResult) {
+                alert('删除失败：' + jsonResult.result);
+            });
         }
     } else {
         alert('请先选中要删除的留言');
@@ -779,38 +945,16 @@ function modifyNote(noteId) {
 
 }
 
-function deleteNoteAsyn(noteIds, reloadAfterDone) {
-    if (isNull(noteIds) || noteIds.length === 0) {
-        return;
-    }
+/**
+ * 刷新列表
+ */
+function refreshData(noteState) {
 
-    var param = '';
-    for (var i = 0; i < noteIds.length; i++) {
-        var id = noteIds[i];
-        if (i === 0) {
-            param += id;
-        } else {
-            param += '*' + id;
-        }
-    }
-
-    manipulateDataAsyn('noteControl.do?category=1&noteIds=' + param, null, function (responseData) {
-        var json = JSON.parse(responseData);
-        if (json.code === 1) {
-            // alert('删除成功');
-            cancelAllCheck();
-        } else {
-            alert('删除失败：' + json.result);
-        }
-
-        if (reloadAfterDone) {
-            loadAllNotesAndUsersWithPage(false, false, true, currentPageIndex);
-        }
-    },true);
-}
-
-function refreshData() {
-    loadAllNotesAndUsersWithPage(false, false, true, 0);
+    checkAll();
+    loadNotesAndUsersWithPage(false, noteState, false, true, 0);
+    setTimeout(function () {
+        cancelAllCheck();
+    }, 1500);
 }
 
 //---------------------------------------------------------------------------note-os: manage_note_new.jsp
@@ -839,7 +983,7 @@ function addNote(userId) {
                 } else {
                     alert('添加失败: ' + json.result);
                 }
-            },true);
+            }, true);
     }
 }
 

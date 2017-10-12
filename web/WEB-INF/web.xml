@@ -109,8 +109,8 @@
         <servlet-class>com.duan.greatweb.controller.servlet.PatchImportNoteServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>NotesObtainServlet</servlet-name>
-        <servlet-class>com.duan.greatweb.controller.servlet.NotesObtainServlet</servlet-class>
+        <servlet-name>DataObtainServlet</servlet-name>
+        <servlet-class>com.duan.greatweb.controller.servlet.DataObtainServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -118,9 +118,9 @@
         <url-pattern>/patchImportNote.do</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>NotesObtainServlet</servlet-name>
-        <url-pattern>/notesObtain.do</url-pattern>
-        <url-pattern>/note-os/manage/notesObtain.do</url-pattern>
+        <servlet-name>DataObtainServlet</servlet-name>
+        <url-pattern>/dataObtain.do</url-pattern>
+        <url-pattern>/note-os/manage/dataObtain.do</url-pattern>
     </servlet-mapping>
 
     <servlet>

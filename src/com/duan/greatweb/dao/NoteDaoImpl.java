@@ -9,32 +9,39 @@ import com.duan.greatweb.entitly.Note;
 
 public class NoteDaoImpl implements NoteDao {
 
-	private final DataBase dataBase;
-	private static final Class<Note> sCLASS = Note.class;
+    private final DataBase dataBase;
+    private static final Class<Note> sCLASS = Note.class;
 
-	public NoteDaoImpl() {
-		dataBase = DBHelper.getDataBase();
-	}
+    public NoteDaoImpl() {
+        dataBase = DBHelper.getDataBase();
+    }
 
-	@Override
-	public int addNote(Note note) {
-		return dataBase.insert(note);
-	}
+    @Override
+    public int addNote(Note note) {
+        return dataBase.insert(note);
+    }
 
-	@Override
-	public List<Note> queryAll() {
-		return Arrays.asList(dataBase.queryAll(sCLASS));
-	}
+    @Override
+    public List<Note> queryAll() {
+        Note[] notes = dataBase.queryAll(sCLASS);
+        return notes == null || notes.length == 0 ? null : Arrays.asList(notes);
+    }
 
-	@Override
-	public Note query(int noteId) {
-		Note[] notes = dataBase.query(sCLASS, new String[]{"id"}, new String[]{noteId + ""});
-		return notes != null && notes.length > 0 ? notes[0] : null;
-	}
+    @Override
+    public Note query(int noteId) {
+        Note[] notes = dataBase.query(sCLASS, new String[]{"id"}, new String[]{noteId + ""});
+        return notes != null && notes.length > 0 ? notes[0] : null;
+    }
 
-	@Override
-	public int delete(int noteId) {
-		return dataBase.delete(sCLASS,noteId);
-	}
+    @Override
+    public int delete(int noteId) {
+        return dataBase.delete(sCLASS, noteId);
+    }
+
+    @Override
+    public List<Note> queryWithState(int noteState) {
+        Note[] notes = dataBase.query(sCLASS, new String[]{"state"}, new String[]{noteState + ""});
+        return notes == null || notes.length == 0 ? null : Arrays.asList(notes);
+    }
 
 }

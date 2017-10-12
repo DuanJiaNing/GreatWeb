@@ -20,21 +20,26 @@ public class Note {
 	@Mapping("uid")
 	private int userId;
 
+	@Mapping("state")
+	private int state;
+
 	public Note(){}
 	
-	public Note(int id, String title, String content, long dateTime, int userId) {
+	public Note(int id, String title, String content, long dateTime, int userId,int state) {
 		this.id = id;
 		this.title = title;
 		this.content = content;
 		this.dateTime = dateTime;
+		this.state = state;
 		this.userId = userId;
 	}
 
-	public Note(String title, String content, long dateTime, int userId) {
+	public Note(String title, String content, long dateTime, int userId,int state) {
 		this.title = title;
 		this.content = content;
 		this.dateTime = dateTime;
 		this.userId = userId;
+		this.state = state;
 	}
 
 	public int getId() {
@@ -77,10 +82,24 @@ public class Note {
 		this.userId = userId;
 	}
 
+	public void setState(int state) {
+		this.state = state;
+	}
+
+	public int getState() {
+		return state;
+	}
+
 	@Override
 	public String toString() {
-		return "Note [id=" + id + ", title=" + title + ", content=" + content + ", dateTime=" + dateTime + ", userId="
-				+ userId + "]";
+		return "Note{" +
+				"id=" + id +
+				", title='" + title + '\'' +
+				", content='" + content + '\'' +
+				", dateTime=" + dateTime +
+				", userId=" + userId +
+				", state=" + state +
+				'}';
 	}
 
 }

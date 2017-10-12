@@ -81,9 +81,9 @@
                 <div class="d22">
                     <ul>
                         <li>
-                            <a href="javaScript:switchIframe('<%=basePath%>/note-os/manage/manage_user_add.jsp')">用户添加</a>
+                            <a href="javaScript:switchIframe('manage_user_add.jsp')">用户添加</a>
                         </li>
-                        <li><a href="javaScript:switchIframe('<%=basePath%>/note-os/manage/manage_user_modify.jsp')">修改密码</a>
+                        <li><a href="javaScript:switchIframe('manage_user_modify.jsp')">修改密码</a>
                         </li>
                     </ul>
                 </div>

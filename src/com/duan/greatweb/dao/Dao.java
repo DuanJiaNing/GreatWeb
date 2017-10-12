@@ -1,6 +1,9 @@
 package com.duan.greatweb.dao;
 
 import com.duan.greatweb.dao.db.DB;
+import com.duan.greatweb.entitly.Note;
+
+import java.util.List;
 
 public interface Dao {
 

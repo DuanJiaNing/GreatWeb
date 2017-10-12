@@ -15,4 +15,6 @@ public interface NoteDao extends Dao {
 
 	int delete(int noteId);
 
+	List<Note> queryWithState(int noteState);
+
 }
