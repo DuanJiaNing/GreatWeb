@@ -1,8 +1,5 @@
-<%@ page import="com.duan.greatweb.util.Utils" %>
-<%@ page import="com.duan.greatweb.entitly.User" %>
-<%@ page import="com.duan.greatweb.entitly.Note" %>
-<%@ page import="com.duan.greatweb.dao.NoteDaoImpl" %>
-<%@ page import="com.duan.greatweb.dao.UserDaoImpl" %><%--
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--
   Created by IntelliJ IDEA.
   User: DuanJiaNing
   Date: 2017/10/9
@@ -10,20 +7,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%
-
-    String id = request.getParameter("noteId");
-    Note note = null;
-    User user = null;
-    if (Utils.isReal(id)) {
-        int noteId = Integer.valueOf(id);
-        note = new NoteDaoImpl().query(noteId);
-        if (note != null) {
-            user = new UserDaoImpl().query(note.getUserId());
-        }
-    }
-
-%>
 <html>
 <head>
     <title>添加用户</title>
@@ -38,23 +21,25 @@
     <tr>
         <td style="text-align: center;vertical-align: middle"><span>标题</span></td>
         <td><input type="text" class="form-control" name="title" id="noteTitle" style="width: 100%"
-                   onfocus="clearInfo()" value="<%=note == null ? "标题获取出错" : note.getTitle()%>"></td>
+                   onfocus="clearInfo()" value="${param.title == null ? "标题获取出错" : param.title}"></td>
     </tr>
     <tr>
         <td style="text-align: center;vertical-align: middle"><span>内容</span></td>
         <td><textarea name="content" class="form-control" id="noteContent"
-                      onfocus="clearInfo()" style="width: 100%;height: 130px;"><%=note == null ? "留言内容获取出错" : note.getContent()%></textarea>
+                      onfocus="clearInfo()"
+                      style="width: 100%;height: 130px;">${param.content == null ? "留言内容获取出错" : param.content}</textarea>
         </td>
     </tr>
     <tr>
         <td style="text-align: center;vertical-align: middle"><span>日期</span></td>
         <td><span style="color: #7c7c7c;">
-            <%=note == null ? "" : Utils.getFormatedTime(note.getDateTime(), "YYYY-MM-dd-HH")%></span>
+            ${param.time}
+        </span>
         </td>
     </tr>
     <tr>
         <td style="text-align: center;vertical-align: middle"><span>留言人</span></td>
-        <td><span style="color: #7c7c7c;"><%=user == null ? "用户名获取出错" : user.getName()%></span>
+        <td><span style="color: #7c7c7c;">${param.userName == null ? "用户名获取出错" : param.userName}</span>
         </td>
     </tr>
     <tr>

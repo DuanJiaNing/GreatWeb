@@ -8,7 +8,7 @@
 
 <%@ page import="com.duan.greatweb.entitly.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 
     String path = request.getContextPath();
@@ -38,7 +38,11 @@
 <%--模拟的弹出窗口 依赖于 css 和 之后的 contentWithPopupWindow--%>
 <div style="width: 100%; height: 100%" id="popupWindowContainer" onclick="hidePopup()">
     <div id="popupContent" class="panel panel-default">
-        <div class="panel-heading"><h4><b>编辑留言&nbsp;&nbsp;</b><small>只能修改留言标题和内容</small></h4></div>
+        <div class="panel-heading">
+            <h4><b>编辑留言&nbsp;&nbsp;</b>
+                <small>只能修改留言标题和内容</small>
+            </h4>
+        </div>
         <div class="panel-body">
             <iframe width="100%" height="100%" frameborder="0px" id="popupFrame"></iframe>
         </div>
@@ -49,7 +53,8 @@
     <div class="container top">
         <div class="row">
             <div class="col-xs-8 top-sub-container">
-                <h3 class="title"><b>管理系统</b></h3>
+                <h3 class="title"><b>管理系统</b>&nbsp;&nbsp;<small><c:out value="${user}" default="unknown"></c:out></small>
+                </h3>
             </div>
 
             <div class="col-xs-4 top-sub-container">

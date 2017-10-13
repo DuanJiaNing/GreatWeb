@@ -692,13 +692,14 @@ function showNotesWithPage(pageIndex) {
                 rowIndex,
                 jsonIndex + 1,
                 jsonNotes[jsonIndex].title,
+                jsonNotes[jsonIndex].content,
                 time,
                 name,
                 jsonNotes[jsonIndex].id);
 
             index++;
         } else {
-            modifyRow(rowIndex, '', '', '', '', -1);
+            modifyRow(rowIndex, '', '', '', '', '', -1);
         }
     }
 }
@@ -708,11 +709,12 @@ function showNotesWithPage(pageIndex) {
  * @param rowIndex 1 ~ pageRate (0 行被表头占据)
  * @param No 编号
  * @param title 标题
+ * @param content 内容
  * @param time 时间
  * @param userName 用户名
  * @param noteId 留言 id
  */
-function modifyRow(rowIndex, No, title, time, userName, noteId) {
+function modifyRow(rowIndex, No, title, content, time, userName, noteId) {
     // 第一行被表头占据
     if (rowIndex < 1 || rowIndex > pageRate) {
         return;
@@ -764,7 +766,7 @@ function modifyRow(rowIndex, No, title, time, userName, noteId) {
     } else {
         var fontSize = '0.8em';
         if (noteState === 0) {
-            cellOpt.innerHTML = "<a style='font-size: " + fontSize + "' href='javaScript:modifyNote(" + noteId + "," + rowIndex + ")'>编辑</a> | <a style='font-size: " + fontSize + "' href='javaScript:addNoteToRecycleBin(" + noteId + "," + rowIndex + ")'>删除</a>"
+            cellOpt.innerHTML = "<a style='font-size: " + fontSize + "' href='javaScript:modifyNote(" + noteId + "," + rowIndex + ",\"" + title + "\",\"" + content + "\",\"" + userName + "\",\"" + time + "\")'>编辑</a> | <a style='font-size: " + fontSize + "' href='javaScript:addNoteToRecycleBin(" + noteId + "," + rowIndex + ")'>删除</a>"
         } else if (noteState === 1) {
             cellOpt.innerHTML = "<a style='font-size: " + fontSize + "' href='javaScript:restoreFromRecycleBin(" + noteId + "," + rowIndex + ")'>还原</a> | <a style='color: #cf3150;font-size: " + fontSize + "';' href='javaScript:deleteNote(" + noteId + "," + rowIndex + ")'>彻底删除</a>"
         }
@@ -785,8 +787,14 @@ function restoreFromRecycleBin(noteId, rowIndex) {
 }
 
 // TODO
-function modifyNote(noteId, rowIndex) {
-    var src = getRootPath() + 'note-os/manage/manage_note_modify.jsp?noteId=' + noteId;
+function modifyNote(noteId, rowIndex, title, content, userName, time) {
+    var src = getRootPath() + 'note-os/manage/manage_note_modify.jsp?' + encodeURIComponent(
+        'noteId=' + noteId +
+        '&title=' + title +
+        '&content=' + content +
+        '&userName=' + userName +
+        '&time=' + time);
+
     showPopup(500, 450, src);
     changeCheckState(rowIndex, false);
 }

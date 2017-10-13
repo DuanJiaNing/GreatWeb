@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page isELIgnored="false" %>
 <html>
 <head>
     <title>查询留言</title>
@@ -27,11 +28,31 @@
     <button type="button" class="btn btn-default" disabled="disabled">文章回收站</button>
 </div>
 
-<div class="page-header">
-    <h4><b>留言列表</b>
-        <small>&nbsp;&nbsp;(共<span id="notesCount">0</span>条)</small>
-    </h4>
+<br>
+
+<div class="page-header ">
+    <table style="width: 100%;">
+        <tr>
+            <td align="left" style="width: 70%;">
+                <h4><b>留言列表</b>
+                    <small>&nbsp;&nbsp;(共<span id="notesCount">0</span>条)</small>
+                </h4>
+            </td>
+            <td align="right" style="width: 30%;">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn"><button class="btn btn-default" type="button"><span
+                            class="glyphicon glyphicon-search" style="padding: 3px"></span></button></span>
+                </div><!-- /input-group -->
+            </td>
+        </tr>
+    </table>
 </div>
+
+11<h1>${sessionScope.user.password}</h1>
+
+22<h1>${user['name']}</h1>
+
 
 <table class="table table-bordered" id="pageNotesTable">
     <tr style="background-color: #efefef">
@@ -91,7 +112,7 @@
 </p>
 
 <script type="text/javascript">
-    loadNotesAndUsersWithPage(true,0,true,true,0);
+    loadNotesAndUsersWithPage(true, 0, true, true, 0);
 </script>
 
 
