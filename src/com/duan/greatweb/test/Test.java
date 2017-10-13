@@ -5,6 +5,7 @@ import com.duan.greatweb.dao.NoteDaoImpl;
 import com.duan.greatweb.entitly.Note;
 
 import java.util.Random;
+import java.util.StringTokenizer;
 
 public class Test {
 

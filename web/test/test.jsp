@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
+<%@ page language="java" pageEncoding="UTF-8" %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -14,6 +14,13 @@
 </head>
 
 <body>
+
+${pageContext.page}<br><br>
+${pageContext}<br><br>
+${pageContext.request}<br><br>
+${header.hashCode()}<br><br>
+${initParam.hashCode()}<br><br>
+
 
 <c:set value="101" var="num"/>
 <c:choose>
