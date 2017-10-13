@@ -120,6 +120,7 @@
     <servlet-mapping>
         <servlet-name>DataObtainServlet</servlet-name>
         <url-pattern>/dataObtain.do</url-pattern>
+        <url-pattern>/note-os/dataObtain.do</url-pattern>
         <url-pattern>/note-os/manage/dataObtain.do</url-pattern>
     </servlet-mapping>
 

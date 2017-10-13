@@ -53,4 +53,14 @@ public class NoteDaoImpl implements NoteDao {
         return dataBase.update(note);
     }
 
+    @Override
+    public int updateNote(int noteId, Note note) {
+        if (note == null) {
+            return NoteDao.STATE_UPDATE_FAIL;
+        }
+
+        note.setId(noteId);
+        return dataBase.update(note);
+    }
+
 }

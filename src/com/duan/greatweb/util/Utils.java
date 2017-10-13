@@ -33,14 +33,12 @@ public class Utils {
      * 关闭一个 {@link Closeable}对象
      */
     public static void close(Closeable obj) {
-        if (obj == null) {
-            return;
-        }
-
-        try {
-            obj.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (obj != null) {
+            try {
+                obj.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -48,14 +46,12 @@ public class Utils {
      * 关闭一个 {@link AutoCloseable}对象
      */
     public static void closeAutoCloseable(AutoCloseable obj) {
-        if (obj == null) {
-            return;
-        }
-
-        try {
-            obj.close();
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (obj != null) {
+            try {
+                obj.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 

@@ -19,6 +19,8 @@ function manipulateDataAsyn(url, data, callback, asyn) {
                 case 200: // 接收到结果
                     callback(xmlRequest.responseText);
                     break;
+                case 204: //请求收到，但返回信息为空
+                    callback(null);
                 default:
                     break;
             }
@@ -103,10 +105,14 @@ function filterAndShowNotes(userId) {
 
     for (var i = 0; i < jsonNotes.length; i++) {
         var note = jsonNotes[i];
+        var content = note.content;
+        if (content.length > 87) {
+            content = content.substr(0, 80) + ' ...';
+        }
         if (userId === note.userId || userId === -1) {
             addRow(
                 note.title,
-                note.content,
+                content,
                 getDate(note.dateTime),
                 note.id);
         }
@@ -120,11 +126,11 @@ function filterAndShowNotes(userId) {
         newRaw.style.paddingLeft = 30;
         newRaw.style.paddingRight = 30;
         newRaw.onclick = function () {
-            window.location.href = 'note-os/home_note_detail.jsp?noteID=' + noteID;
+            window.location.href = getRootPath() + 'note-os/home_note_detail.jsp?noteID=' + noteID;
         };
 
         cell.innerHTML = "<h5><b>" + title + "</b></h5>" +
-            "<p><h5>&nbsp;&nbsp;&nbsp;&nbsp;" + content + "</h5></p>" +
+            "<p><h5 style='line-height: 20px'>&nbsp;&nbsp;&nbsp;&nbsp;" + content + "</h5></p>" +
             "<p class=\"text-right\" style='font-size: 0.65em;color: #bcbcbc'>" + date + "</p>";
     }
 }
@@ -349,7 +355,7 @@ function addRowClass(index, name) {
 }
 
 function isEmpty(str) {
-    return str === null || str === undefined || str === '' || str === 'null';
+    return str === null || str === undefined || str === '' || str === 'null' || str === "" || str.length === 0;
 }
 
 function isNull(obj) {
@@ -417,7 +423,7 @@ function getDate(data) {
 
 // 获得一个随机头像（图片）
 function getRandomAvatar() {
-    var rootPath = 'img/avatar/';
+    var rootPath = getRootPath() + 'img/avatar/';
     var avatars = [
         'avatar01.png',
         'avatar02.png',
@@ -657,6 +663,9 @@ function updatePageIndicator() {
     }
 }
 
+// 留言查询页显示标题的最大长度
+var titleMaxCharCount = 28;
+
 /**
  * 显示指定页
  * @param pageIndex 页下标
@@ -666,7 +675,6 @@ function showNotesWithPage(pageIndex) {
         return;
     }
 
-    // FIXME 翻页是选中状态将被清空
     cancelAllCheck();
 
     currentPageIndex = pageIndex;
@@ -687,12 +695,15 @@ function showNotesWithPage(pageIndex) {
             }
 
             name = user.name;
+            var title = jsonNotes[jsonIndex].title;
+            if (title.length >= titleMaxCharCount) {
+                title = title.substr(0, titleMaxCharCount - 3) + ' ...';
+            }
 
             modifyRow(
                 rowIndex,
                 jsonIndex + 1,
-                jsonNotes[jsonIndex].title,
-                jsonNotes[jsonIndex].content,
+                title,
                 time,
                 name,
                 jsonNotes[jsonIndex].id);
@@ -714,7 +725,7 @@ function showNotesWithPage(pageIndex) {
  * @param userName 用户名
  * @param noteId 留言 id
  */
-function modifyRow(rowIndex, No, title, content, time, userName, noteId) {
+function modifyRow(rowIndex, No, title, time, userName, noteId) {
     // 第一行被表头占据
     if (rowIndex < 1 || rowIndex > pageRate) {
         return;
@@ -766,7 +777,7 @@ function modifyRow(rowIndex, No, title, content, time, userName, noteId) {
     } else {
         var fontSize = '0.8em';
         if (noteState === 0) {
-            cellOpt.innerHTML = "<a style='font-size: " + fontSize + "' href='javaScript:modifyNote(" + noteId + "," + rowIndex + ",\"" + title + "\",\"" + content + "\",\"" + userName + "\",\"" + time + "\")'>编辑</a> | <a style='font-size: " + fontSize + "' href='javaScript:addNoteToRecycleBin(" + noteId + "," + rowIndex + ")'>删除</a>"
+            cellOpt.innerHTML = "<a style='font-size: " + fontSize + "' href='javaScript:modifyNote(" + noteId + "," + rowIndex + ")'>编辑</a> | <a style='font-size: " + fontSize + "' href='javaScript:addNoteToRecycleBin(" + noteId + "," + rowIndex + ")'>删除</a>"
         } else if (noteState === 1) {
             cellOpt.innerHTML = "<a style='font-size: " + fontSize + "' href='javaScript:restoreFromRecycleBin(" + noteId + "," + rowIndex + ")'>还原</a> | <a style='color: #cf3150;font-size: " + fontSize + "';' href='javaScript:deleteNote(" + noteId + "," + rowIndex + ")'>彻底删除</a>"
         }
@@ -787,15 +798,11 @@ function restoreFromRecycleBin(noteId, rowIndex) {
 }
 
 // TODO
-function modifyNote(noteId, rowIndex, title, content, userName, time) {
-    var src = getRootPath() + 'note-os/manage/manage_note_modify.jsp?' + encodeURIComponent(
-        'noteId=' + noteId +
-        '&title=' + title +
-        '&content=' + content +
-        '&userName=' + userName +
-        '&time=' + time);
+function modifyNote(noteId, rowIndex) {
+    var src = getRootPath() + 'note-os/manage/manage_note_modify.jsp?' +
+        'noteId=' + noteId;
 
-    showPopup(500, 450, src);
+    showPopup(500, 450, encodeURI(src));
     changeCheckState(rowIndex, false);
 }
 
@@ -881,6 +888,19 @@ function checkAll() {
 function cancelAllCheck() {
     changeAllRowCheckState(false);
 }
+
+// 获得指定的窗口，如果指定窗口不存在就返回当前窗口
+function getWindow(name) {
+    var frames = top.frames;
+    for (var i = 0; i < frames.length; i++) {
+        var w = frames[i];
+        if (name === w.name) {
+            return w;
+        }
+    }
+
+    return window;
+};
 
 /**
  * 修改所有行的选中状态
@@ -1057,7 +1077,15 @@ function addNote(userId) {
         alert('输入不规范或用户未正确登陆');
     } else {
         manipulateDataAsyn('noteControl.do?category=2',
-            '{"title": "' + encodeURIComponent(title) + '","content": "' + encodeURIComponent(content) + '","dateTime": "' + dateTime + '","userId": "' + userId + '"}',
+            '{' +
+            '"title": "' + encodeURIComponent(title) +
+            '","content": "' + encodeURIComponent(content) +
+            '","dateTime": "' + dateTime +
+            '","userId": "' + userId +
+            '","state": "' + 0 +
+            '"' +
+            '}',
+
             function (responseData) {
                 var json = JSON.parse(responseData);
                 if (json.code === 1) {

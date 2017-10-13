@@ -21,25 +21,25 @@
     <tr>
         <td style="text-align: center;vertical-align: middle"><span>标题</span></td>
         <td><input type="text" class="form-control" name="title" id="noteTitle" style="width: 100%"
-                   onfocus="clearInfo()" value="${param.title == null ? "标题获取出错" : param.title}"></td>
+                   onfocus="clearInfo()">
+        </td>
     </tr>
     <tr>
         <td style="text-align: center;vertical-align: middle"><span>内容</span></td>
         <td><textarea name="content" class="form-control" id="noteContent"
                       onfocus="clearInfo()"
-                      style="width: 100%;height: 130px;">${param.content == null ? "留言内容获取出错" : param.content}</textarea>
+                      style="width: 100%;height: 130px;"></textarea>
         </td>
     </tr>
     <tr>
         <td style="text-align: center;vertical-align: middle"><span>日期</span></td>
-        <td><span style="color: #7c7c7c;">
-            ${param.time}
+        <td><span style="color: #7c7c7c;" id="dateTime">
         </span>
         </td>
     </tr>
     <tr>
         <td style="text-align: center;vertical-align: middle"><span>留言人</span></td>
-        <td><span style="color: #7c7c7c;">${param.userName == null ? "用户名获取出错" : param.userName}</span>
+        <td><span style="color: #7c7c7c;" id="user"></span>
         </td>
     </tr>
     <tr>
@@ -51,11 +51,52 @@
         </td>
     </tr>
     <tr>
-        <td colspan="2" align="left"><span id="info" style="color: red;">&nbsp;</span></td>
+        <td colspan="2" align="left"><span id="info" style="color: red;">&nbsp;加载中...</span></td>
     </tr>
 </table>
 
 <script type="text/javascript">
+
+    loadData();
+
+    var noteTitle;
+    var noteContent;
+    var dateTime;
+    var user;
+    var info;
+
+    window.onload = function () {
+        noteTitle = document.getElementById('noteTitle');
+        noteContent = document.getElementById('noteContent');
+        dateTime = document.getElementById('dateTime');
+        user = document.getElementById('user');
+        info = document.getElementById('info');
+    }
+
+    function loadData() {
+        manipulateDataAsyn('dataObtain.do?category=3&noteId=' +${param.noteId}, null, function (data) {
+            if (data === null) {
+                info.innerHTML = '留言数据获取失败';
+            } else {
+                clearInfo();
+                var note = JSON.parse(data);
+                noteTitle.value = note.title;
+                noteContent.value = note.content;
+                dateTime.innerHTML = getDate(note.dateTime);
+
+                manipulateDataAsyn('dataObtain.do?category=4&userId=' + note.userId, null, function (data) {
+                    if (data === null) {
+                        info.innerHTML = '留言人获取失败';
+                    } else {
+                        clearInfo();
+                        var user_ = JSON.parse(data);
+                        user.innerHTML = user_.name;
+                    }
+                }, true);
+            }
+        }, true);
+    }
+
     function cancelModify() {
         resetInput();
         hidePopup();
@@ -63,41 +104,58 @@
     }
 
     function resetInput() {
-        var noteTitle = document.getElementById('noteTitle');
-        var noteContent = document.getElementById('noteContent');
         noteTitle.value = '';
         noteContent.value = '';
     }
 
     function saveModify() {
 
-        var noteTitle = document.getElementById('noteTitle');
-        var noteContent = document.getElementById('noteContent');
         var title = noteTitle.value;
         var content = noteContent.value;
 
+        var info = '';
+
         if (verifyContent(title, content)) {
-            // TODO 修改成功后关闭弹出框，刷新页面。
-            cancelModify();
+            manipulateDataAsyn('noteControl.do?category=5&noteId=' + ${param.noteId},
+                '{' +
+                '"title": "' + encodeURIComponent(title) +
+                '","content": "' + encodeURIComponent(content) + '"}',
+
+                function (data) {
+                    var json = JSON.parse(data);
+                    if (json.code != 1) {
+                        info = '修改失败：' + json.result;
+                        alert(info);
+
+                    } else {
+                        cancelModify();
+
+                        // 刷新页面，无法通过调用 refreshData 方法完成，因为当前 window 和 查询页面所在的
+                        // window 不是同一个 window，无法找到表格
+                        var win = getWindow('queryWindow');
+                        win.location.href = win.location.href;
+                    }
+
+                }, true);
         }
     }
 
     function verifyContent(title, content) {
-        var info = document.getElementById('info');
-        if (!isEmpty(title)) {
+        if (isEmpty(title)) {
             info.innerHTML = '标题不能为空';
+            splashInfo("info");
             return false;
         }
 
-        if (!isEmpty(content)) {
+        if (isEmpty(content)) {
             info.innerHTML = '内容不能为空';
+            splashInfo("info");
             return false;
         }
         return true;
     }
 
     function clearInfo() {
-        var info = document.getElementById('info');
         info.innerHTML = '&nbsp;';
     }
 

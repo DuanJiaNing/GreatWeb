@@ -10,101 +10,102 @@ import com.duan.greatweb.dao.mapping.Mapping;
 @Mapping("note")
 public class Note {
 
-	@Mapping("id")
-	private Integer id;
+    @Mapping("id")
+    private Integer id;
 
-	@Mapping("title")
-	private String title;
+    @Mapping("title")
+    private String title;
 
-	@Mapping("content")
-	private String content;
+    @Mapping("content")
+    private String content;
 
-	@Mapping("datetime")
-	private Long dateTime;
+    @Mapping("datetime")
+    private Long dateTime;
 
-	@Mapping("uid")
-	private Integer userId;
+    @Mapping("uid")
+    private Integer userId;
 
-	@Mapping("state")
-	private Integer state;
+    @Mapping("state")
+    private Integer state;
 
-	public Note(){}
-	
-	public Note(int id, String title, String content, long dateTime, int userId,int state) {
-		this.id = id;
-		this.title = title;
-		this.content = content;
-		this.dateTime = dateTime;
-		this.state = state;
-		this.userId = userId;
-	}
+    public Note() {
+    }
 
-	public Note(String title, String content, long dateTime, int userId,int state) {
-		this.title = title;
-		this.content = content;
-		this.dateTime = dateTime;
-		this.userId = userId;
-		this.state = state;
-	}
+    public Note(Integer id, String title, String content, Long dateTime, Integer userId, Integer state) {
+        this.id = id;
+        this.title = title;
+        this.content = content;
+        this.dateTime = dateTime;
+        this.state = state;
+        this.userId = userId;
+    }
 
-	public int getId() {
-		return id;
-	}
+    public Note(String title, String content, Long dateTime, Integer userId, Integer state) {
+        this.title = title;
+        this.content = content;
+        this.dateTime = dateTime;
+        this.userId = userId;
+        this.state = state;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public String getTitle() {
-		return title;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    public String getTitle() {
+        return title;
+    }
 
-	public String getContent() {
-		return content;
-	}
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-	public void setContent(String content) {
-		this.content = content;
-	}
+    public String getContent() {
+        return content;
+    }
 
-	public long getDateTime() {
-		return dateTime;
-	}
+    public void setContent(String content) {
+        this.content = content;
+    }
 
-	public void setDateTime(long dateTime) {
-		this.dateTime = dateTime;
-	}
+    public Long getDateTime() {
+        return dateTime;
+    }
 
-	public int getUserId() {
-		return userId;
-	}
+    public void setDateTime(Long dateTime) {
+        this.dateTime = dateTime;
+    }
 
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
+    public Integer getUserId() {
+        return userId;
+    }
 
-	public void setState(int state) {
-		this.state = state;
-	}
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
 
-	public int getState() {
-		return state;
-	}
+    public void setState(Integer state) {
+        this.state = state;
+    }
 
-	@Override
-	public String toString() {
-		return "Note{" +
-				"id=" + id +
-				", title='" + title + '\'' +
-				", content='" + content + '\'' +
-				", dateTime=" + dateTime +
-				", userId=" + userId +
-				", state=" + state +
-				'}';
-	}
+    public Integer getState() {
+        return state;
+    }
+
+    @Override
+    public String toString() {
+        return "Note{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", dateTime=" + dateTime +
+                ", userId=" + userId +
+                ", state=" + state +
+                '}';
+    }
 
 }

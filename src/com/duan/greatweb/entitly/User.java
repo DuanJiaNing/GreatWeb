@@ -23,7 +23,7 @@ public class User {
 	public User() {
 	}
 
-	public User(int id, String name, String password, int state, int age) {
+	public User(Integer id, String name, String password, Integer state, Integer age) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -32,7 +32,7 @@ public class User {
 		this.age = age;
 	}
 
-	public User(String name, String password, int state, int age) {
+	public User(String name, String password, Integer state, Integer age) {
 		super();
 		this.name = name;
 		this.password = password;
@@ -74,11 +74,11 @@ public class User {
 		return true;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -98,19 +98,19 @@ public class User {
 		this.password = password;
 	}
 
-	public int getState() {
+	public Integer getState() {
 		return state;
 	}
 
-	public void setState(int state) {
+	public void setState(Integer state) {
 		this.state = state;
 	}
 
-	public int getAge() {
+	public Integer getAge() {
 		return age;
 	}
 
-	public void setAge(int age) {
+	public void setAge(Integer age) {
 		this.age = age;
 	}
 

@@ -15,12 +15,6 @@
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
             + path + "/";
 
-    Object obj = session.getAttribute("user");
-    String name = "Unknow";
-    if (obj != null && obj instanceof User) {
-        name = ((User) obj).getName();
-    }
-
 %>
 
 <html>
@@ -53,7 +47,7 @@
     <div class="container top">
         <div class="row">
             <div class="col-xs-8 top-sub-container">
-                <h3 class="title"><b>管理系统</b>&nbsp;&nbsp;<small><c:out value="${user}" default="unknown"></c:out></small>
+                <h3 class="title"><b>管理系统</b>&nbsp;&nbsp;<small><c:out value="${user.name}" default="unknown"></c:out></small>
                 </h3>
             </div>
 

@@ -18,6 +18,10 @@
 </head>
 <body style="padding: 5px">
 
+<script type="text/javascript">
+    window.name = 'queryWindow';
+</script>
+
 <div class="btn-group" role="group" style="float: right">
     <button type="button" class="btn btn-default" disabled="disabled">添加文档</button>
     <button type="button" class="btn btn-default" disabled="disabled">我的文档</button>
@@ -48,11 +52,6 @@
         </tr>
     </table>
 </div>
-
-11<h1>${sessionScope.user.password}</h1>
-
-22<h1>${user['name']}</h1>
-
 
 <table class="table table-bordered" id="pageNotesTable">
     <tr style="background-color: #efefef">
