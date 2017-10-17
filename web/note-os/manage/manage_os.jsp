@@ -33,7 +33,7 @@
 <body>
 
 <%--模拟的弹出窗口 依赖于 css 和 之后的 contentWithPopupWindow--%>
-<div style="width: 100%; height: 100%" id="popupWindowContainer" onclick="hidePopup()">
+<div id="popupWindowContainer" onclick="hidePopup()">
     <div id="popupContent" class="panel panel-default">
         <div class="panel-heading">
             <h4><b>编辑留言&nbsp;&nbsp;</b>
@@ -50,7 +50,8 @@
     <div class="container top">
         <div class="row">
             <div class="col-xs-8 top-sub-container">
-                <h3 class="title"><b>管理系统</b>&nbsp;&nbsp;<small><c:out value="${user.name}" default="unknown"></c:out></small>
+                <h3 class="title"><b>管理系统</b>&nbsp;&nbsp;<small><c:out value="${user.name}"
+                                                                       default="unknown"></c:out></small>
                 </h3>
             </div>
 
@@ -73,11 +74,11 @@
         <div class="row">
             <div class="col-md-2 content">
                 <hr>
-                <div class="d1">
-                    <div class="d11">
-                        <p class="text-center"><b class="category">&nbsp;留言管理</b></p>
+                <div>
+                    <div class="category">
+                        &nbsp;留言管理
                     </div>
-                    <div class="d12">
+                    <div class="sub-category">
                         <ul>
                             <li>
                                 <a href="javaScript:switchIframe('manage_note_new.jsp')">新增留言</a>
@@ -91,11 +92,11 @@
                     </div>
                 </div>
 
-                <div class="d2">
-                    <div>
-                        <p class="text-center"><b class="category">&nbsp;用户管理</b></p>
+                <div>
+                    <div class="category">
+                        &nbsp;用户管理
                     </div>
-                    <div class="d22">
+                    <div class="sub-category">
                         <ul>
                             <li>
                                 <a href="javaScript:switchIframe('manage_user_add.jsp')">用户添加</a>
@@ -115,5 +116,44 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $().ready(function () {
+        var $categorys = $('div.category');
+        $categorys.each(function (index, value, array) {
+            var item = $(value);
+            var subItem = item.next('.sub-category');
+            subItem.get(0).dataset.shown = 'false';
+
+            item.click(function () {
+                var next = $(this).next('.sub-category');
+                var shown = next.get(0).dataset.shown;
+
+                if (shown === 'true') {
+                    next.slideUp();
+                    next.get(0).dataset.shown = 'false';
+                } else {
+                    hideIfHas(function () {
+                        next.slideDown('fast');
+                        next.get(0).dataset.shown = 'true';
+                    });
+                }
+            })
+
+        })
+
+    });
+
+    function hideIfHas(finish) {
+        $('div.sub-category').each(function (index, value, array) {
+            if (value.dataset.shown) {
+                $(value).slideUp('fast', function () {
+                    value.dataset.shown = 'false';
+                    finish();
+                });
+            }
+        })
+    }
+</script>
 </body>
 </html>

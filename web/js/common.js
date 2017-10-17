@@ -465,36 +465,39 @@ function getRootPath() {
 
 function showPopup(width, height, src) {
     var doc = window.parent.document;
-
-    var popUp = doc.getElementById("popupContent");
     var popUpContainer = doc.getElementById("popupWindowContainer");
-    var wWidth = window.parent.innerWidth;
-    var wHeight = window.parent.innerHeight;
-    var top = wHeight / 2 - height / 2;
-    var left = wWidth / 2 - width / 2;
-
-    popUp.style.top = top;
-    popUp.style.left = left;
-
-    popUp.style.width = width;
-    popUp.style.height = height;
+    doc.body.style.overflowY = 'hidden';
 
     var frame = doc.getElementById('popupFrame');
     frame.src = src;
 
-    popUp.style.visibility = "visible";
-    popUpContainer.style.visibility = "visible";
+    $(popUpContainer).fadeIn(function () {
+        var popUp = doc.getElementById("popupContent");
+
+        var wWidth = window.parent.innerWidth;
+        var wHeight = window.parent.innerHeight;
+        var top = wHeight / 2 - height / 2;
+        var left = wWidth / 2 - width / 2;
+
+        popUp.style.top = top;
+        popUp.style.left = left;
+
+        popUp.style.width = width;
+        popUp.style.height = height;
+
+        $(popUp).fadeIn('slow');
+
+    })
 
 }
 
 function hidePopup() {
     var doc = window.parent.document;
-
-    var popUp = doc.getElementById("popupContent");
     var popUpContainer = doc.getElementById("popupWindowContainer");
+    doc.body.style.overflowY = 'scroll';
 
-    popUp.style.visibility = "hidden";
-    popUpContainer.style.visibility = "hidden";
+    $(popUpContainer).fadeOut('fast');
+
 }
 
 //---------------------------------------------------------------------------note-os: manage_os
