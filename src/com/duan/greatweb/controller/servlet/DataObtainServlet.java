@@ -6,12 +6,15 @@ import com.duan.greatweb.dao.UserDao;
 import com.duan.greatweb.dao.UserDaoImpl;
 import com.duan.greatweb.entitly.Note;
 import com.duan.greatweb.entitly.User;
+import com.duan.greatweb.util.Utils;
 import com.google.gson.Gson;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.List;
 
 /**
- * 数据获取
+ * 数据获取，参数只能通过 ？ 号传递
  */
 public class DataObtainServlet extends DataManipulateAbstract {
 
@@ -26,14 +29,19 @@ public class DataObtainServlet extends DataManipulateAbstract {
     private static final int CATEGORY_ALL_USERS = 2;
 
     /**
-     * 获取指定笔记
+     * 获取指定笔记: noteId
      */
     private static final int CATEGORY_PARTICULAR_NOTE = 3;
 
     /**
-     * 获取指定用户
+     * 获取指定用户: userId
      */
     private static final int CATEGORY_PARTICULAR_USER = 4;
+
+    /**
+     * 获取（搜索）指定笔记: condition
+     */
+    private static final int CATEGORY_PARTICULAR_NOTE_WITH_KEY_WORDS = 5;
 
     private final NoteDao noteDao = new NoteDaoImpl();
     private final UserDao userDao = new UserDaoImpl();
@@ -72,6 +80,19 @@ public class DataObtainServlet extends DataManipulateAbstract {
                     int userId = getCode("userId");
                     if (userId != -1) {
                         data = queryUser(userId);
+                    }
+                    break;
+                }
+                case CATEGORY_PARTICULAR_NOTE_WITH_KEY_WORDS: {
+
+                    try {
+                        String str = getString("condition");
+                        String condition = URLDecoder.decode(str, "utf-8");
+                        Utils.log("条件 condition " + condition);
+                        //TODO 乱码
+
+                    } catch (UnsupportedEncodingException e) {
+                        e.printStackTrace();
                     }
                     break;
                 }

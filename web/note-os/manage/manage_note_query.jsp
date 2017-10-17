@@ -46,8 +46,8 @@
             </td>
             <td align="right" style="width: 30%;">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
-                    <span class="input-group-btn"><button class="btn btn-default" type="button"><span
+                    <input type="text" class="form-control" placeholder="搜索..." id="search-input">
+                    <span class="input-group-btn"><button class="btn btn-default" type="button" onclick="filterNote()"><span
                             class="glyphicon glyphicon-search" style="padding: 3px"></span></button></span>
                 </div><!-- /input-group -->
             </td>

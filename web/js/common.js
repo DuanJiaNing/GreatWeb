@@ -68,6 +68,7 @@ function showAllUsers() {
         var cellAvatar = newRaw.insertCell(0);
         var cellName = newRaw.insertCell(1);
         var cellCount = newRaw.insertCell(2);
+        $(newRaw).css('display', 'none');
 
         newRaw.onclick = function () {
             filterAndShowNotes(userId);
@@ -79,6 +80,8 @@ function showAllUsers() {
         if (!isNull(avatar)) {
             cellAvatar.innerHTML = "<img src='" + avatar + "' class='avatar'>";
         }
+
+        $(newRaw).fadeIn();
     }
 }
 
@@ -122,16 +125,19 @@ function filterAndShowNotes(userId) {
         var table = document.getElementById("notesTable");
         var newRaw = table.insertRow(table.rows.length);
         var cell = newRaw.insertCell(0);
+        $(newRaw).css('display', 'none');
 
         newRaw.style.paddingLeft = 30;
         newRaw.style.paddingRight = 30;
         newRaw.onclick = function () {
-            window.location.href = getRootPath() + 'note-os/home_note_detail.jsp?noteID=' + noteID;
+            window.location.href = getRootPath() + 'note-os/home_note_detail.jsp?noteId=' + noteID;
         };
 
         cell.innerHTML = "<h5><b>" + title + "</b></h5>" +
             "<p><h5 style='line-height: 20px'>&nbsp;&nbsp;&nbsp;&nbsp;" + content + "</h5></p>" +
             "<p class=\"text-right\" style='font-size: 0.65em;color: #bcbcbc'>" + date + "</p>";
+
+        $(newRaw).fadeIn();
     }
 }
 
@@ -471,7 +477,7 @@ function showPopup(width, height, src) {
     var frame = doc.getElementById('popupFrame');
     frame.src = src;
 
-    $(popUpContainer).fadeIn(function () {
+    $(popUpContainer).fadeIn('fast', function () {
         var popUp = doc.getElementById("popupContent");
 
         var wWidth = window.parent.innerWidth;
@@ -485,7 +491,7 @@ function showPopup(width, height, src) {
         popUp.style.width = width;
         popUp.style.height = height;
 
-        $(popUp).fadeIn('slow');
+        $(popUp).fadeIn();
 
     })
 
@@ -528,7 +534,11 @@ var noteState = 0;
  * @param show boolean 是否显示（false 时仅加载数数据）
  * @param pageIndex 显示的页下标（只在 show 为 true 时被使用）
  */
-function loadNotesAndUsersWithPage(initPage, noteState_, loadUser, show, pageIndex) {
+function loadNotesAndUsersWithPage(initPage,
+                                   noteState_,
+                                   loadUser,
+                                   show,
+                                   pageIndex) {
     manipulateDataAsyn('dataObtain.do?category=1&noteState=' + noteState_, null, function (jsonText) { // 异步获取留言
         jsonNotes = JSON.parse(jsonText);
         updateNotesCount(jsonNotes.length);
@@ -737,6 +747,7 @@ function modifyRow(rowIndex, No, title, time, userName, noteId) {
     var table = document.getElementById('pageNotesTable');
     var row = table.rows[rowIndex];
     row.dataset.noteId = noteId;
+    $(row).css('display', 'none');
 
     var cellNo_ = row.cells[0];
     var cellTitle = row.cells[1];
@@ -786,6 +797,7 @@ function modifyRow(rowIndex, No, title, time, userName, noteId) {
         }
     }
 
+    $(row).fadeIn();
 }
 
 function deleteNote(noteId, rowIndex) {
@@ -807,6 +819,17 @@ function modifyNote(noteId, rowIndex) {
 
     showPopup(500, 450, encodeURI(src));
     changeCheckState(rowIndex, false);
+}
+
+function filterNote() {
+    var input = $('#search-input');
+    var keyWords = input.val();
+    input.prop('placeholder', keyWords);
+
+    manipulateDataAsyn(encodeURI('dataObtain.do?category=5&condition=' + keyWords)
+        , null, function (result) {
+            alert(result);
+        }, true);
 }
 
 /**

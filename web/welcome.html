@@ -1,32 +1,91 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>welcome.html</title>
-<meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="css/common.css">
+    <title>welcome.html</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <script type="text/javascript" src="js/jQuery/jquery-1.11.0.js"></script>
+
+    <style>
+
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        td {
+            color: #000;
+            padding: 10px 32px;
+            background-color: transparent;
+        }
+
+        td:hover {
+            color: white;
+            font-weight: bolder;
+            background-color: dodgerblue;
+        }
+
+    </style>
+
+    <script type="text/javascript">
+        function click(url) {
+            location.href = url;
+        }
+
+        function caclBound() {
+            var mainTable = $('#main-table');
+            var left = window.top.innerWidth / 2 - (mainTable.width() / 2);
+            var top = window.top.innerHeight / 2 - (mainTable.height() / 2);
+            mainTable.css('position', 'absolute');
+            mainTable.css('left', left);
+            mainTable.css('top', top);
+        }
+
+        window.onresize = function () {
+            caclBound();
+        };
+
+        $().ready(function () {
+            caclBound();
+
+            $('tr').each(function (index, value, array) {
+                $(value).bind('click', function () {
+                    var url = $(this).attr('url');
+                    location.href = url;
+                })
+            })
+        })
+    </script>
 
 </head>
 
 <body>
-	<table>
-		<tr>
-			<td><a href="note-os/login.jsp">登录/注册</a></td>
-		</tr>
-		<tr>
-			<td><a href="user/user_management.jsp">用户管理</a></td>
-		</tr>
-		<tr>
-			<td><a href="note-os/home_page.jsp">留言系统</a></td>
-		</tr>
-		<tr>
-			<td><a href="patch.jsp">批量导入笔记</a></td>
-		</tr>
-		<tr>
-			<td><a href="test/test.jsp">测试</a></td>
-		</tr>
-		<tr>
-			<td><a href="note-os/manage/manage_os.jsp">直接进入留言管理系统主页</a></td>
-		</tr>
-	</table>
+<table id="main-table">
+    <thead>
+    <tr>
+        <th>
+            <h4>操作列表</h4>
+        </th>
+    </tr>
+    </thead>
+    <tr url="note-os/login.jsp">
+        <td>登录注册</td>
+    </tr>
+    <tr url="user/user_management.jsp">
+        <td>用户管理</td>
+    </tr>
+    <tr url="note-os/home_page.jsp">
+        <td>留言系统</td>
+    </tr>
+    <tr url="patch.jsp">
+        <td>批量导入笔记</td>
+    </tr>
+    <tr url="test/test.jsp">
+        <td>测试</td>
+    </tr>
+    <tr url="note-os/manage/manage_os.jsp">
+        <td>直接进入留言管理系统主页</td>
+    </tr>
+</table>
 </body>
 </html>

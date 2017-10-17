@@ -5,41 +5,13 @@
   Time: 20:13
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page import="com.duan.greatweb.entitly.Note" %>
-<%@ page import="com.duan.greatweb.dao.NoteDaoImpl" %>
-<%@ page import="com.duan.greatweb.util.Utils" %>
-<%@ page import="com.duan.greatweb.entitly.User" %>
-<%@ page import="com.duan.greatweb.dao.UserDaoImpl" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%
-    String str = request.getParameter("noteID");
-    int noteID = Utils.parseStringToInt(str);
-
-    String title = "标题";
-    String content = "留言内容";
-    String userName = "发表人";
-    String time = "";
-
-    if (noteID != -1){
-        Note note = new NoteDaoImpl().query(noteID);
-        if (note != null){
-            title = note.getTitle();
-            content = note.getContent();
-            time = Utils.getFormatedTime(note.getDateTime(),"YYYY-MM-dd-HH");
-
-            User user = new UserDaoImpl().query(note.getUserId());
-            if (user != null){
-                userName = user.getName();
-            }
-        }
-    }
-
-%>
 <html>
 <head>
     <title>留言详情</title>
     <link rel="stylesheet" href="../css/home_note_detail.css"/>
     <script type="text/javascript" src="../js/common.js"></script>
+    <script type="text/javascript" src="../js/jQuery/jquery-1.11.0.js"></script>
 
     <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -66,20 +38,25 @@
             <table width="850px">
                 <tr align="center"><br><br>
                     <td>
-                        <p class="lead"><u><%=title%></u></p>
+                        <p class="lead"><u>
+                        </u></p>
                     </td>
                 </tr>
 
                 <tr align="right">
                     <td>
-                    <h4><small>&nbsp;发表时间:<%=time%></small></h4>
+                        <h4>
+                            <small>&nbsp;发表时间:<span id="time"></span>
+                            </small>
+                        </h4>
                     </td>
                 </tr>
             </table>
 
             <blockquote>
-                <p><%=content%></p>
-                <footer>发表人: <cite ><%=userName%></cite></footer>
+                <p id="content">
+                </p>
+                <footer>发表人: <cite id="user"> </cite></footer>
             </blockquote>
 
         </div>
@@ -89,6 +66,33 @@
         <p>版权所有&copy;成都青春</p>
         <p>20160913java开发班</p>
     </div>
+
+    <script type="text/javascript">
+        $().ready(function () {
+            $.ajax({
+                type: 'post',
+                url: 'dataObtain.do?category=3&noteId=' +${param.noteId},
+                dataType: 'json',
+                success: function (json) {
+                    $('p.lead').html(json.title);
+                    $('#content').html(json.content);
+                    $('#time').html(getDate(json.dateTime));
+                    loadUser(json.userId);
+                },
+                error: function () {
+                    $('p.lead').html('获取内容出错');
+                    $('#content').html('获取内容出错');
+                }
+            });
+        })
+
+        function loadUser(userId) {
+            $.getJSON('dataObtain.do?category=4&userId=' + userId, function (json) {
+                $('#user').html(json.name);
+            })
+        }
+
+    </script>
 </div>
 </body>
 </html>

@@ -53,6 +53,13 @@ public abstract class DataManipulateAbstract extends HttpServlet {
         return -1;
     }
 
+    protected String getString(String name) {
+        if (request != null) {
+            return request.getParameter(name);
+        }
+        return null;
+    }
+
     protected abstract String handleManipulate();
 
     protected void LogErrorRequest(String msg) {

@@ -21,6 +21,8 @@
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <script type="text/javascript" charset="UTF-8" src="../js/common.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="../js/jQuery/jquery-1.11.0.js"></script>
+
     <title>首页</title>
 </head>
 
