@@ -32,7 +32,7 @@ final public class DBHelper {
 		try {
 			// FIXME 相对路径无法找到文件
 			InputStream in = new BufferedInputStream(
-					new FileInputStream("D:/workspace/eclipse/GreatWeb/src/dbConfig.properties"));
+					new FileInputStream("D:/workspace/idea/GreatWeb/src/dbConfig.properties"));
 
 			Properties pro = new Properties();
 			pro.load(in);

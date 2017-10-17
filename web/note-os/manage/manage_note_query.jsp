@@ -11,6 +11,8 @@
 <head>
     <title>查询留言</title>
     <script type="text/javascript" src="../../js/common.js"></script>
+    <script type="text/javascript" src="../../js/jQuery/jquery-1.11.0.js"></script>
+
     <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">

@@ -79,7 +79,7 @@ button.top-button {
 #popupWindowContainer {
     width: 100%;
     height: 100%;
-    visibility: hidden;
+    display: none;
     position: absolute;
     background-color: rgba(78, 78, 78, 0.22);
     overflow: hidden;
@@ -91,6 +91,7 @@ button.top-button {
     position: absolute;
     margin-left: 10%;
     margin-right: 10%;
+    display: none;
     top: 0;
     left: 0;
     z-index: 0;

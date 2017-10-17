@@ -1,5 +1,5 @@
-<%@ page import="com.duan.greatweb.entitly.User" %>
-<%@ page import="com.duan.greatweb.util.Utils" %><%--
+<%@ page import="com.duan.greatweb.util.Utils" %>
+<%--
   Created by IntelliJ IDEA.
   User: DuanJiaNing
   Date: 2017/10/9
@@ -7,15 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%
-
-    Object obj = session.getAttribute("user");
-    User user = null;
-    if (obj != null && obj instanceof User) {
-        user = (User) obj;
-    }
-
-%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>新增留言</title>
@@ -41,7 +33,8 @@
         </tr>
         <tr>
             <td><span>内容</span></td>
-            <td><textarea name="content" class="form-control" id="noteContent"  style="width: 90%;height: 100px;"></textarea></td>
+            <td><textarea name="content" class="form-control" id="noteContent"
+                          style="width: 90%;height: 100px;"></textarea></td>
         </tr>
         <tr>
             <td><span>日期</span></td>
@@ -50,13 +43,13 @@
         </tr>
         <tr>
             <td><span>留言人</span></td>
-            <td><%=user == null ? "用户名获取出错" : user.getName()%>
+            <td><c:out value="${sessionScope.user.name}" default="用户名获取出错"></c:out>
             </td>
         </tr>
         <tr>
             <td></td>
             <td><input type="reset" id="resetInput" value="清空">&nbsp;<input type="button" value="保存填写"
-                                                              onclick="addNote('<%=user == null ? -1 : user.getId()%>')">
+                                                                            onclick="addNote('<%=user == null ? -1 : user.getId()%>')">
             </td>
         </tr>
     </table>
