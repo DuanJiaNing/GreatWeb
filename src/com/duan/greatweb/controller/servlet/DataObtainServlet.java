@@ -87,9 +87,10 @@ public class DataObtainServlet extends DataManipulateAbstract {
 
                     try {
                         String str = getString("condition");
-                        String condition = URLDecoder.decode(str, "utf-8");
+//                        String condition = URLDecoder.decode(str, "utf-8");
+                        String condition = new String(str.getBytes("ISO-8859-1"), "UTF-8");
                         Utils.log("条件 condition " + condition);
-                        //TODO 乱码
+                        //FIXME 乱码
 
                     } catch (UnsupportedEncodingException e) {
                         e.printStackTrace();

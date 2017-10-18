@@ -5,8 +5,16 @@
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="GreatWeb" />
+          <element id="library" level="application" name="jquery-1.11.3" />
+          <element id="library" level="application" name="bootstrap" />
         </element>
-        <element id="directory" name="lib" />
+        <element id="directory" name="lib">
+          <element id="library" level="application" name="jdbc-mysql" />
+          <element id="library" level="application" name="gson-2.6.2" />
+          <element id="library" level="application" name="jstl" />
+          <element id="library" level="application" name="json" />
+          <element id="library" level="application" name="fileupload" />
+        </element>
       </element>
       <element id="javaee-facet-resources" facet="GreatWeb/web/Web" />
     </root>
