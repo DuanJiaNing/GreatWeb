@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>留言回收</title>
+
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+    <style type="text/css">
+        .clear{
+            clear: both;
+        }
+        #page{
+            width: 1400px;
+            height: 700px;
+            background-color: aqua;
+            margin: auto;
+        }
+        #top{
+            width: 100%;
+            height: 9%;
+            background-color: #85C75D
+        }
+        #top_left{
+            width: 20%;
+            height: 100%;
+            float: left;
+        }
+        #top_right{
+            width: 80%;
+            height: 100%;
+            float: left;
+            text-align: right;
+        }
+        #top_right a{
+            color: black;
+        }
+        #top_right span{
+            font-size: 10px;
+        }
+        #center{
+            width: 100%;
+            height: 0.7%;
+            background-color: #226411;
+            border-top: 1px solid #B4E687;
+        }
+        #bottom{
+            width: 100%;
+            height: 90.3%;
+        }
+        #bottom_left{
+            height: 100%;
+            width: 13%;
+            float: left;
+            background-color: #9AD075
+        }
+        #bottom_right{
+            height: 100%;
+            width: 87%;
+            float: left;
+            background-color: gray;
+        }
+        #bottom_left .d1{
+            width: 83%;
+            margin-top: 10px;
+            text-align: right;
+            margin-left:1px;
+        }
+        #bottom_left .d11{
+            background-color: #E7F692;
+            border-radius: 8% 5% 0% 0%;
+        }
+        #bottom_left .d2{
+            height:5%;
+            width: 83%;
+            background-color: #E7F692;
+            margin-top: 10px;
+            margin-left:1px;
+            border-radius: 8% 5% 0% 0%;
+            text-align: right;
+        }
+        .td1{
+            width: 100px;
+        }
+        .td2{
+            width: 50px;
+        }
+        .d1 img{
+            width: 20px;
+            height: 20px;
+        }
+        .d2 img{
+            width: 20px;
+            height: 20px;
+        }
+
+        .d12{
+            height: ;
+            width: ;
+            background-color: white;
+            display: none;
+        }
+        #bottom_left ul{
+            margin: 0px;
+            padding-top: 5px;
+            padding-left: 30px;
+        }
+        #bottom_left li{
+            line-height: 25px;
+            text-align:left;
+            list-style-type: square;
+            color: #B0CFFF;
+        }
+        #bottom_left a{
+            font-size: 14px;
+            text-decoration: none;
+            color: black;
+            font-weight: bolder;
+        }
+        .d12 img{
+            width: 12px;
+            height: 12px;
+        }
+        .img1{
+            margin-left: 35px;
+        }
+
+        .img2{
+            margin-left: 20px;
+        }
+        .d22{
+            height: 70px;
+            background-color: white;
+            display: none;
+        }
+
+        .d1:HOVER div{
+            display: block;
+        }
+        .d2:HOVER div{
+            display: block;
+        }
+
+        #bottom_right{
+            height: 99.8%;
+            width: 86.85%;
+            float: left;
+            background-color: white;
+            border: 1px solid #ccc;
+        }
+        #bottom_right_content{
+            height: 40%;
+            width: 97%;
+            margin-top: 10px;
+            margin-left: 20px;
+            background-color: #FAFAF1;
+        }
+        #tr1{
+            background-color: #D1DDAA;
+        }
+        #tr1 input{
+
+            background-color: #F1F8B4
+        }
+        #bottom_right_content form{
+            height: 100%;
+            width: 100%;
+        }
+        #table1{
+            height: 15%;
+        }
+        /* #bottom_right_content td{
+            text-align: center;
+        } */
+        #bottom_right_content table{
+            width: 100%;
+        }
+        #table2{
+            height: 60%;
+            margin-top: 5px;
+        }
+        #table2 td{
+            border: 1px solid #ccc;
+        }
+        #tr4{
+            height: 30%;
+        }
+        #table3{
+            height: 20%;
+            margin-top: 10px;
+        }
+        #tr5{
+            background-color: #EEF4EA;
+        }
+        #tr4{
+            background-color: #EEF4EA;
+        }
+        #tr2{
+            background-color: #E7E7E7;
+        }
+        .tdd{
+            text-align: left;
+            padding-left: 20px;
+        }
+        .tdt{
+            text-align: center;
+        }
+        .tdd input{
+            background-color: #EFF7D0;
+        }
+    </style>
+</head>
+
+<body>
+<div id="page">
+    <div id="top">
+        <div id="top_left">
+            <h2 style="margin-left: 8px; font-style: ">内容管理系统</h2>
+        </div>
+        <div id="top_right">
+				<span>您好：james,&nbsp;欢迎使用内容管理系统！[<a href="#">网站主页</a>]&nbsp;[<a
+                        href="#">修改密码</a>]&nbsp;[<a href="#">注销退出unknown</a>]</span>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="center"></div>
+
+    <div id="bottom">
+        <div id="bottom_left">
+            <div class="d1">
+                <div class="d11">
+                    <span>留言管理</span>
+                    <img src="img/0.png">
+                </div>
+                <div class="d12">
+                    <ul>
+                        <li><a href="新增留言.html">新增留言</a><img src="img/1.png" class="img1"></li>
+                        <li><a href="#">查询留言</a></li>
+                        <li><a href="留言回收.html">留言回收站</a><img src="img/2.png" class="img2"></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="d2">
+                <div class="d21">
+                    <span>用户管理</span>
+                    <img src="img/0.png">
+                </div>
+                <div class="d22">
+                    <ul>
+                        <li><a href="#">用户添加</a></li>
+                        <li><a href="#">修改密码</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="bottom_right">
+            <div id="bottom_right_content">
+
+                <form>
+                    <table id="table1">
+                        <tr id="tr1">
+                            <td class="tdt">
+                                <input type="submit" value="添加文档">
+                                <input type="submit" value="我的文档">
+                                <input type="submit" value="稿件审核">
+                                <input type="submit" value="栏目管理">
+                                <input type="submit" value="更新列表">
+                                <input type="submit" value="更新文档">
+                                <input type="submit" value="文章回收站">
+                            </td>
+                        </tr>
+                    </table>
+                    <table id="table2">
+                        <tr id="tr2">
+                            <td colspan="6" class="tdd"><span>文档列表</span></td>
+                        </tr>
+                        <tr>
+                            <td class="tdt"><span>ID</span></td>
+                            <td class="tdt"><span>选择</span></td>
+                            <td class="tdt"><span>文章标题</span></td>
+                            <td class="tdt"><span>录入时间</span></td>
+                            <td class="tdt"><span>发布人</span></td>
+                            <td class="tdt"><span>操作</span></td>
+                        </tr>
+                        <tr id="tr3">
+                            <td colspan="6" class="tdd">
+                                <input type="submit" value="全选">
+                                <input type="submit" value="取消">
+                                <input type="submit" value="更新">
+                                <input type="submit" value="批量删除">
+                            </td>
+                        </tr>
+                        <tr id="tr4">
+                            <td colspan="6"></td>
+                        </tr>
+                    </table>
+                    <table id="table3">
+                        <tr id="tr5">
+                            <td class="tdt">
+                                <span>搜索条件：</span>
+                                <select>
+                                    <option>选择类型...</option>
+                                </select>
+                                <span>关键字：</span>
+                                <input type="text">
+                                <select>
+                                    <option>排序...</option>
+                                </select>
+                                <input type="button" value="搜索" disabled="disabled">
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

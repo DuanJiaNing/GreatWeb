@@ -1,0 +1,84 @@
+.all {
+	width: 900px;
+	height: 650px;
+	background-color: #E5E5E5;
+	margin: auto;
+}
+
+.top_bottom {
+	width: 900px;
+	height: 30px;
+}
+
+.top_bottom input {
+	float: right;
+	margin-right: 10px;
+}
+
+.foot {
+	width: 900px;
+	height: 420px;
+}
+
+.foot_left {
+	/*background-color: #EFEFEF;*/
+	/*background-image: url("img\left.gif");*/
+	width: 25%;
+	height: 420px;
+	/*border: 1px #E4E4E4 solid;*/
+	float: left;
+	text-align: center;
+}
+
+.a {
+	/*background-image: url("../img/left_top.png");*/
+	height: 40px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	padding-top: 10px;
+	background-color: #f8f8f7;
+}
+
+.b {
+	background-image: url("../img/left.gif");
+	height: 360px;
+	overflow-y: scroll;
+}
+
+.c {
+	background-image: url("../img/left_bottom.gif");
+	height: 15px;
+}
+
+.foot_right {
+	float: right;
+	border: 1px #C3C3C3 solid;
+	background-color: #EFEFEF;
+	width: 73%;
+	height: 370px;
+	text-align: left;
+}
+
+.foot_right_bottom {
+	float: right;
+	border: 1px #C3C3C3 solid;
+	background-color: #EFEFEF;
+	width: 73%;
+	height: 70px;
+	text-align: center;
+	font-size: 5px;
+}
+
+.avatar-color {
+	float: left;
+	width: 60px;
+	height: 60px;
+	margin: 0 5px;
+	border-radius: 3px;
+	background-color: #337ab7;
+}
+
+img.avatar {
+	width: 30px;
+	height: 30px;
+}

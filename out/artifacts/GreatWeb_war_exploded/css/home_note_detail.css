@@ -1,0 +1,38 @@
+.all{
+	width: 900px;
+	height: 650px;
+	background-color: #E5E5E5;
+	margin: auto;
+}
+.top_buttom{
+	width: 900px;
+	height: 30px;
+}
+.top_buttom input{
+	float: right;
+	margin-right: 10px;
+}
+.content{
+	width: 900px;
+	height: 350px;
+	border: 1px #E4E4E4 solid;
+	background-color: #EFEFEF;
+}
+.content_top{
+	height: 30px;
+	width: 850px;
+	margin: auto;
+}
+.foot_right_botttom{
+	background-color: #EFEFEF;
+	width: 900px;
+	height: 70px;
+	text-align: center;
+	font-size: 3px;
+	padding: 5px 0px;
+}
+.content_bottom{
+
+	width: 850px;
+	margin: auto;
+}

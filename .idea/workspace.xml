@@ -1,0 +1,1534 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="GreatWeb:war exploded" />
+    </artifacts-to-build>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2dc2ac75-621b-4da7-bba6-cb5cd9aad994" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/classes/com/duan/greatweb/controller/servlet/DataManipulateAbstract.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/classes/com/duan/greatweb/controller/servlet/DataObtainServlet.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/classes/com/duan/greatweb/controller/servlet/IdentifyCodeServlet.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/classes/com/duan/greatweb/controller/servlet/LoginSuccess.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/classes/com/duan/greatweb/controller/servlet/NoteControlServlet.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/classes/com/duan/greatweb/controller/servlet/PatchImportNoteServlet.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/classes/com/duan/greatweb/controller/servlet/RegisterServlet.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/classes/com/duan/greatweb/controller/servlet/TestServlet$UserInfo.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/classes/com/duan/greatweb/controller/servlet/TestServlet.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/classes/com/duan/greatweb/controller/servlet/UploadServlet.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/classes/com/duan/greatweb/dao/Dao.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/classes/com/duan/greatweb/dao/NoteDao.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/classes/com/duan/greatweb/dao/NoteDaoImpl.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/classes/com/duan/greatweb/dao/UserDao.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/classes/com/duan/greatweb/dao/UserDaoImpl.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/classes/com/duan/greatweb/dao/db/DB.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/classes/com/duan/greatweb/dao/db/DBHelper.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/classes/com/duan/greatweb/dao/db/DataBase.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/classes/com/duan/greatweb/dao/mapping/FieldToken$FieldHolder.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/classes/com/duan/greatweb/dao/mapping/FieldToken.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/classes/com/duan/greatweb/dao/mapping/Mapping.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/classes/com/duan/greatweb/dao/mapping/TableToken.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/classes/com/duan/greatweb/dao/mapping/Token.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/classes/com/duan/greatweb/entitly/Note.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/classes/com/duan/greatweb/entitly/User.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/classes/com/duan/greatweb/other/DatabaseTable.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/classes/com/duan/greatweb/other/NoteTable.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/classes/com/duan/greatweb/other/Table.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/classes/com/duan/greatweb/other/UserTable.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/classes/com/duan/greatweb/test/Test$1.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/classes/com/duan/greatweb/test/Test$2.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/classes/com/duan/greatweb/test/Test$Tax.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/classes/com/duan/greatweb/test/Test.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/classes/com/duan/greatweb/test/UserController.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/classes/com/duan/greatweb/util/Utils.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/classes/com/duan/greatweb/util/filter/EncodingFilter.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/classes/com/duan/greatweb/util/filter/LoginFilter.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/classes/com/duan/greatweb/util/filter/RootFilter.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/classes/com/duan/greatweb/util/listener/ApplicationListener.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/classes/com/duan/greatweb/util/listener/AttributeListener.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/classes/com/duan/greatweb/util/listener/RequestListener.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/classes/com/duan/greatweb/util/listener/SessionListener.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/lib/commons-beanutils-1.7.0.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/lib/commons-collections-3.2.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/lib/commons-fileupload-1.3.1.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/lib/commons-io-2.4.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/lib/commons-lang-2.4.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/lib/commons-logging-1.1.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/lib/ezmorph-1.0.4.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/lib/gson-2.6.2.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/lib/json-lib-2.2.2-jdk15.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/lib/jstl.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/lib/mysql-connector-java-5.1.44-bin.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/lib/standard.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/img/0.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/img/1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/img/2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/img/avatar/avatar01.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/img/avatar/avatar02.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/img/avatar/avatar03.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/img/avatar/avatar04.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/img/avatar/avatar05.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/img/avatar/avatar06.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/img/avatar/avatar07.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/img/avatar/avatar08.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/img/avatar/avatar09.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/img/avatar/avatar10.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/img/avatar/avatar11.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/img/avatar/avatar12.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/img/avatar/avatar13.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/img/avatar/avatar14.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/img/dl.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/img/header.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/img/left.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/img/left_bottom.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/img/left_top.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/img/login_03.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/img/login_04.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/img/login_06.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/img/login_07.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/img/login_08.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/img/login_09.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/img/man.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/img/right.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GreatWeb/com/duan/greatweb/controller/servlet/DataManipulateAbstract.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GreatWeb/com/duan/greatweb/controller/servlet/DataObtainServlet.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GreatWeb/com/duan/greatweb/controller/servlet/IdentifyCodeServlet.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GreatWeb/com/duan/greatweb/controller/servlet/LoginSuccess.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GreatWeb/com/duan/greatweb/controller/servlet/NoteControlServlet.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GreatWeb/com/duan/greatweb/controller/servlet/PatchImportNoteServlet.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GreatWeb/com/duan/greatweb/controller/servlet/RegisterServlet.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GreatWeb/com/duan/greatweb/controller/servlet/TestServlet$UserInfo.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GreatWeb/com/duan/greatweb/controller/servlet/TestServlet.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GreatWeb/com/duan/greatweb/controller/servlet/UploadServlet.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GreatWeb/com/duan/greatweb/dao/Dao.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GreatWeb/com/duan/greatweb/dao/NoteDao.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GreatWeb/com/duan/greatweb/dao/NoteDaoImpl.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GreatWeb/com/duan/greatweb/dao/UserDao.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GreatWeb/com/duan/greatweb/dao/UserDaoImpl.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GreatWeb/com/duan/greatweb/dao/db/DB.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GreatWeb/com/duan/greatweb/dao/db/DBHelper.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GreatWeb/com/duan/greatweb/dao/db/DataBase.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GreatWeb/com/duan/greatweb/dao/mapping/FieldToken$FieldHolder.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GreatWeb/com/duan/greatweb/dao/mapping/FieldToken.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GreatWeb/com/duan/greatweb/dao/mapping/Mapping.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GreatWeb/com/duan/greatweb/dao/mapping/TableToken.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GreatWeb/com/duan/greatweb/dao/mapping/Token.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GreatWeb/com/duan/greatweb/entitly/Note.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GreatWeb/com/duan/greatweb/entitly/User.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GreatWeb/com/duan/greatweb/other/DatabaseTable.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GreatWeb/com/duan/greatweb/other/NoteTable.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GreatWeb/com/duan/greatweb/other/Table.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GreatWeb/com/duan/greatweb/other/UserTable.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GreatWeb/com/duan/greatweb/test/Test$1.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GreatWeb/com/duan/greatweb/test/Test$2.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GreatWeb/com/duan/greatweb/test/Test$Tax.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GreatWeb/com/duan/greatweb/test/Test.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GreatWeb/com/duan/greatweb/test/UserController.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GreatWeb/com/duan/greatweb/util/Utils.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GreatWeb/com/duan/greatweb/util/filter/EncodingFilter.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GreatWeb/com/duan/greatweb/util/filter/LoginFilter.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GreatWeb/com/duan/greatweb/util/filter/RootFilter.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GreatWeb/com/duan/greatweb/util/listener/ApplicationListener.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GreatWeb/com/duan/greatweb/util/listener/AttributeListener.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GreatWeb/com/duan/greatweb/util/listener/RequestListener.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GreatWeb/com/duan/greatweb/util/listener/SessionListener.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources/c136b6b7-d0e4-4533-bad1-8bd9b56a24e8.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mysql/great_web.sql" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/META-INF/MANIFEST.MF" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/classes/dbConfig.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/classes/http_cdn.bootcss.com_bootstrap_3.3.7_js_bootstrap.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/classes/http_hovertree.com_ziyuan_jquery_jquery-1.11.3.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/WEB-INF/web.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/css/common.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/css/home_note_detail.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/css/home_page.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/css/login.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/css/manage/manage_note_home.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/css/manage/manage_os.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/css/manage/manage_user_add.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/css/manage/manage_user_modify.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/error_404.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/info.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/js/common.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/js/jQuery/jPages.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/js/jQuery/jquery-1.11.0.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/js/jQuery/jquery.datetimepicker.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/js/jQuery/jquery.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/js/jQuery/jquery.pagination.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/note-os/home_note_detail.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/note-os/home_page.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/note-os/login.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/note-os/manage/manage_note_home.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/note-os/manage/manage_note_modify.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/note-os/manage/manage_note_new.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/note-os/manage/manage_note_query.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/note-os/manage/manage_note_recycle_bin.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/note-os/manage/manage_os.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/note-os/manage/manage_user_add.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/note-os/manage/manage_user_modify.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/patch.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/register.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/test/Demo1.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/test/Demo2.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/test/Demo4.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/test/Demo5.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/test/Demo6.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/test/Demo7.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/test/test.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/test/test1.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/upload.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/user/user_management.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/user/user_score_check.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/user/user_score_modify.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/GreatWeb_war_exploded/welcome.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/GreatWeb/dbConfig.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/duan/greatweb/test/Test.java" afterPath="$PROJECT_DIR$/src/com/duan/greatweb/test/Test.java" />
+    </list>
+    <ignored path="$PROJECT_DIR$/out/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_TABLE_DETAILS" value="true" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <expand>
+      <path>
+        <item name="" type="eadb38e5:DatabaseStructure$Root" />
+        <item name="root" type="e3449647:DbNodeDescriptor" />
+      </path>
+      <path>
+        <item name="" type="eadb38e5:DatabaseStructure$Root" />
+        <item name="root" type="e3449647:DbNodeDescriptor" />
+        <item name="great_web" type="e3449647:DbNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+      <file leaf-file-name="Test.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/duan/greatweb/test/Test.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="984">
+              <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/duan/greatweb/test/UserController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="216">
+              <caret line="16" column="12" lean-forward="false" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="web.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="47" column="48" lean-forward="false" selection-start-line="47" selection-start-column="48" selection-end-line="47" selection-end-column="48" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EncodingFilter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/duan/greatweb/util/filter/EncodingFilter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Jsp File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>d21</find>
+      <find>notesObtain</find>
+      <find>dataObtain.do\?category</find>
+      <find>noteState</find>
+      <find>Color</find>
+      <find>int</find>
+      <find>long</find>
+      <find>pageNotesTable</find>
+      <find>&lt;td&gt;(.*?)&gt;</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GradleLocalSettings">
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/web/note-os/user_modify.jsp" />
+        <option value="$PROJECT_DIR$/web/note-os/manage_note_new.jsp" />
+        <option value="$PROJECT_DIR$/web/note-os/manage_os.jsp" />
+        <option value="$PROJECT_DIR$/web/css/manage/manage_note_new.css" />
+        <option value="$PROJECT_DIR$/web/test/Demo6.html" />
+        <option value="$PROJECT_DIR$/web/css/manage/manage_note_recycle_bin.css" />
+        <option value="$PROJECT_DIR$/web/note-os/manage/manage_user_add.jsp" />
+        <option value="$PROJECT_DIR$/web/note-os/manage/manage_user_modify.jsp" />
+        <option value="$PROJECT_DIR$/web/note-os/login.jsp" />
+        <option value="$PROJECT_DIR$/web/note-os/manage/manage_note_home.jsp" />
+        <option value="$PROJECT_DIR$/web/css/manage/manage_note_query.css" />
+        <option value="$PROJECT_DIR$/src/com/duan/greatweb/controller/servlet/DateManipulateAbstract.java" />
+        <option value="$PROJECT_DIR$/src/com/duan/greatweb/controller/servlet/NoteController.java" />
+        <option value="$PROJECT_DIR$/src/com/duan/greatweb/controller/servlet/NoteControllerServlet.java" />
+        <option value="$PROJECT_DIR$/src/com/duan/greatweb/controller/servlet/LoginSuccess.java" />
+        <option value="$PROJECT_DIR$/src/com/duan/greatweb/util/listener/ApplicationListener.java" />
+        <option value="$PROJECT_DIR$/src/com/duan/greatweb/util/listener/AttributeListener.java" />
+        <option value="$PROJECT_DIR$/src/com/duan/greatweb/util/listener/RequestListener.java" />
+        <option value="$PROJECT_DIR$/src/com/duan/greatweb/util/listener/SessionListener.java" />
+        <option value="$PROJECT_DIR$/src/com/duan/greatweb/util/filter/LoginFilter.java" />
+        <option value="$PROJECT_DIR$/src/com/duan/greatweb/controller/servlet/PatchImportNoteServlet.java" />
+        <option value="$PROJECT_DIR$/src/com/duan/greatweb/dao/Dao.java" />
+        <option value="$PROJECT_DIR$/src/com/duan/greatweb/controller/servlet/NotesObtainServlet.java" />
+        <option value="$PROJECT_DIR$/src/com/duan/greatweb/dao/db/DataBase.java" />
+        <option value="$USER_HOME$/AppData/Local/Temp/a.json.url" />
+        <option value="$USER_HOME$/AppData/Local/Temp/screenshort_query.jpg.url" />
+        <option value="$PROJECT_DIR$/web/css/common.css" />
+        <option value="$PROJECT_DIR$/web/note-os/manage/manage_note_recycle_bin.jsp" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/src/com/duan/greatweb/entitly/User.java" />
+        <option value="$PROJECT_DIR$/src/com/duan/greatweb/entitly/Note.java" />
+        <option value="$PROJECT_DIR$/src/com/duan/greatweb/dao/NoteDao.java" />
+        <option value="$PROJECT_DIR$/src/com/duan/greatweb/dao/NoteDaoImpl.java" />
+        <option value="$PROJECT_DIR$/src/com/duan/greatweb/controller/servlet/NoteControlServlet.java" />
+        <option value="$PROJECT_DIR$/web/test/test.jsp" />
+        <option value="$PROJECT_DIR$/src/com/duan/greatweb/util/Utils.java" />
+        <option value="$PROJECT_DIR$/web/note-os/manage/manage_note_new.jsp" />
+        <option value="$PROJECT_DIR$/src/com/duan/greatweb/dao/db/DBHelper.java" />
+        <option value="$PROJECT_DIR$/web/note-os/manage/manage_note_modify.jsp" />
+        <option value="$PROJECT_DIR$/web/css/manage/manage_os.css" />
+        <option value="$PROJECT_DIR$/web/note-os/manage/manage_os.jsp" />
+        <option value="$PROJECT_DIR$/web/welcome.html" />
+        <option value="$PROJECT_DIR$/web/note-os/home_page.jsp" />
+        <option value="$PROJECT_DIR$/web/note-os/home_note_detail.jsp" />
+        <option value="$PROJECT_DIR$/web/note-os/manage/manage_note_query.jsp" />
+        <option value="$PROJECT_DIR$/src/com/duan/greatweb/controller/servlet/DataManipulateAbstract.java" />
+        <option value="$PROJECT_DIR$/web/js/common.js" />
+        <option value="$PROJECT_DIR$/src/com/duan/greatweb/controller/servlet/DataObtainServlet.java" />
+        <option value="$PROJECT_DIR$/src/com/duan/greatweb/test/TestA.java" />
+        <option value="$PROJECT_DIR$/src/com/duan/greatweb/test/Test.java" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand />
+      <select />
+    </treeState>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="500" />
+    <option name="width" value="1153" />
+    <option name="height" value="1080" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>ECMAScript 6 migration aidsJavaScript</id>
+          </State>
+          <State>
+            <id>General</id>
+          </State>
+          <State>
+            <id>JavaScript</id>
+          </State>
+          <State>
+            <id>Kotlin</id>
+          </State>
+          <State>
+            <id>Plugin DevKit</id>
+          </State>
+          <State>
+            <id>Redundant constructsKotlin</id>
+          </State>
+          <State>
+            <id>Spelling</id>
+          </State>
+          <State>
+            <id>Style issuesKotlin</id>
+          </State>
+          <State>
+            <id>XPath</id>
+          </State>
+          <State>
+            <id>XSLT</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>Android &gt; Lint &gt; Performance</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="AndroidView" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="GreatWeb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GreatWeb" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GreatWeb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GreatWeb" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GreatWeb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GreatWeb" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GreatWeb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="android.sdk.path" value="$PROJECT_DIR$/../../Android/sdk" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="last_opened_file_path" value="D:/Duan/source/fileupload/commons-io-2.4.jar!/" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\JetBrains\IdeaProjects\GreatWeb\web\js\jQuery" />
+      <recent name="D:\JetBrains\IdeaProjects\GreatWeb\web\WEB-INF\lib" />
+      <recent name="D:\JetBrains\IdeaProjects\GreatWeb\web\note-os\manage" />
+      <recent name="D:\JetBrains\IdeaProjects\GreatWeb" />
+      <recent name="D:\JetBrains\IdeaProjects\GreatWeb\web\css" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.duan.greatweb.test" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\JetBrains\IdeaProjects\GreatWeb\web\WEB-INF\lib" />
+      <recent name="D:\JetBrains\IdeaProjects\GreatWeb\lib" />
+      <recent name="D:\JetBrains\IdeaProjects\GreatWeb\web\note-os\manage" />
+      <recent name="D:\JetBrains\IdeaProjects\GreatWeb\web\css\manage" />
+      <recent name="D:\JetBrains\IdeaProjects\GreatWeb\web\note-os" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Tomcat Server.tomcat-7.0.77">
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.duan.greatweb.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="com.duan.greatweb.test.Test" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="GreatWeb" />
+      <envs />
+    </configuration>
+    <configuration name="Tomcat 7.0.77" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 7.0.77" ALTERNATIVE_JRE_ENABLED="false">
+      <deployment />
+      <server-settings />
+      <predefined_log_file id="Tomcat" enabled="true" />
+      <predefined_log_file id="Tomcat Catalina" enabled="true" />
+      <predefined_log_file id="Tomcat Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Host Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <module />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file id="idea.log" enabled="true" />
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+    </configuration>
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
+      <module name="" />
+      <option name="DEPLOY" value="true" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
+        <option name="SUPPORT_LIB_ENABLED" value="true" />
+        <option name="INSTRUMENTATION_ENABLED" value="true" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <method />
+    </configuration>
+    <configuration name="tomcat-7.0.77" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 7.0.77" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="BROWSER_ID" value="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" />
+      <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
+      <option name="UPDATE_CLASSES_ON_FRAME_DEACTIVATION" value="true" />
+      <deployment>
+        <artifact name="GreatWeb:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_GreatWeb" />
+      </server-settings>
+      <predefined_log_file id="Tomcat" enabled="true" />
+      <predefined_log_file id="Tomcat Catalina" enabled="true" />
+      <predefined_log_file id="Tomcat Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Host Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="49967" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method>
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="GreatWeb:war exploded" />
+        </option>
+      </method>
+    </configuration>
+    <list size="3">
+      <item index="0" class="java.lang.String" itemvalue="Tomcat Server.tomcat-7.0.77" />
+      <item index="1" class="java.lang.String" itemvalue="Tomcat Server.Tomcat 7.0.77" />
+      <item index="2" class="java.lang.String" itemvalue="Application.Test" />
+    </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="Application.Test" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="StructureViewFactory">
+    <option name="AUTOSCROLL_MODE" value="false" />
+    <option name="ACTIVE_ACTIONS" value=",HIDE_INHERITED,ALPHA_COMPARATOR" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2dc2ac75-621b-4da7-bba6-cb5cd9aad994" name="Default" comment="" />
+      <created>1507510925913</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1507510925913</updated>
+      <workItem from="1507510932505" duration="13164000" />
+      <workItem from="1507529223639" duration="22327000" />
+      <workItem from="1507596507516" duration="377000" />
+      <workItem from="1507596941932" duration="343000" />
+      <workItem from="1507597331875" duration="6744000" />
+      <workItem from="1507604489689" duration="7662000" />
+      <workItem from="1507615594841" duration="13249000" />
+      <workItem from="1507629823952" duration="8816000" />
+      <workItem from="1507683183847" duration="11027000" />
+      <workItem from="1507701840103" duration="22518000" />
+      <workItem from="1507769059228" duration="264000" />
+      <workItem from="1507769954801" duration="36988000" />
+      <workItem from="1507855953269" duration="10417000" />
+      <workItem from="1507870292623" duration="17797000" />
+      <workItem from="1507888731543" duration="180000" />
+      <workItem from="1508114704985" duration="1365000" />
+      <workItem from="1508121302746" duration="145000" />
+      <workItem from="1508128148510" duration="772000" />
+      <workItem from="1508143024452" duration="83000" />
+      <workItem from="1508144620256" duration="21000" />
+      <workItem from="1508204863070" duration="1788000" />
+      <workItem from="1508215587433" duration="6117000" />
+      <workItem from="1508227735410" duration="115000" />
+      <workItem from="1508232686319" duration="166000" />
+      <workItem from="1508235316470" duration="8236000" />
+      <workItem from="1508288573029" duration="1284000" />
+      <workItem from="1508316691616" duration="6862000" />
+      <workItem from="1509327745634" duration="641000" />
+    </task>
+    <task id="LOCAL-00001" summary="modify web.xml">
+      <created>1507519452011</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1507519452011</updated>
+    </task>
+    <task id="LOCAL-00002" summary="modify web.xml">
+      <created>1507525843516</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1507525843552</updated>
+    </task>
+    <task id="LOCAL-00003" summary="complete home page">
+      <created>1507548271117</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1507548271117</updated>
+    </task>
+    <task id="LOCAL-00004" summary="update">
+      <created>1507552280310</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1507552280310</updated>
+    </task>
+    <task id="LOCAL-00005" summary="add note-os manage dir">
+      <created>1507607983442</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1507607983442</updated>
+    </task>
+    <task id="LOCAL-00006" summary="complete note-os manager_note_*.jsp page">
+      <created>1507613327156</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1507613327156</updated>
+    </task>
+    <task id="LOCAL-00007" summary="work on manager_note_query.jsp page">
+      <created>1507628910594</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1507628910594</updated>
+    </task>
+    <task id="LOCAL-00008" summary="work on manager_note_query.jsp page">
+      <created>1507638665050</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1507638665050</updated>
+    </task>
+    <task id="LOCAL-00009" summary="work on manager_note_query.jsp page with patch delete">
+      <created>1507693943866</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1507693943866</updated>
+    </task>
+    <task id="LOCAL-00010" summary="work on manager_note_new.jsp page with new note">
+      <created>1507724520011</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1507724520011</updated>
+    </task>
+    <task id="LOCAL-00011" summary="work on manager_note_new.jsp page with new note">
+      <created>1507724663018</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1507724663018</updated>
+    </task>
+    <task id="LOCAL-00012" summary="work on manager_note_new.jsp page with new note">
+      <created>1507724932492</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1507724932492</updated>
+    </task>
+    <task id="LOCAL-00013" summary="work on note os on recycle bin page">
+      <created>1507780296070</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1507780296070</updated>
+    </task>
+    <task id="LOCAL-00014" summary="add screen short picture">
+      <created>1507799871120</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1507799871121</updated>
+    </task>
+    <task id="LOCAL-00015" summary="add screen short picture">
+      <created>1507799930116</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1507799930116</updated>
+    </task>
+    <task id="LOCAL-00016" summary="add manage_note_modify.jsp">
+      <created>1507811179415</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1507811179415</updated>
+    </task>
+    <task id="LOCAL-00017" summary="lean el and jstl">
+      <created>1507866755866</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1507866755866</updated>
+    </task>
+    <task id="LOCAL-00018" summary="finish note modify page">
+      <created>1507885946554</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1507885946554</updated>
+    </task>
+    <task id="LOCAL-00019" summary="modify doc">
+      <created>1507888445708</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1507888445708</updated>
+    </task>
+    <task id="LOCAL-00020" summary="modify doc">
+      <created>1508206662055</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1508206662055</updated>
+    </task>
+    <task id="LOCAL-00021" summary="add animation on manage_os page">
+      <created>1508221713075</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1508221713075</updated>
+    </task>
+    <task id="LOCAL-00022" summary="work on search function">
+      <created>1508243551426</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1508243551426</updated>
+    </task>
+    <task id="LOCAL-00023" summary="reset jar structure">
+      <created>1508319785206</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1508319785206</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="199468000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="500" y="0" width="1153" height="1080" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32960895" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292683" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292683" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292683" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292683" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.56651884" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6357296" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39666358" sideWeight="0.48669624" order="6" side_tool="false" content_ui="combo" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23910615" sideWeight="0.51330376" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17877094" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26413345" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4512195" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Key Promoter X" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32960895" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24972068" sideWeight="0.5" order="9" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29268292" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Mybatis datasource" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5531915" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="CheckStyle" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5243902" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292683" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292683" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="modify web.xml" />
+    <MESSAGE value="complete home page" />
+    <MESSAGE value="update" />
+    <MESSAGE value="add note-os manage dir" />
+    <MESSAGE value="complete note-os manager_note_*.jsp page" />
+    <MESSAGE value="work on manager_note_query.jsp page" />
+    <MESSAGE value="work on manager_note_query.jsp page with patch delete" />
+    <MESSAGE value="work on manager_note_new.jsp page with new note" />
+    <MESSAGE value="work on note os on recycle bin page" />
+    <MESSAGE value="add screen short picture" />
+    <MESSAGE value="add manage_note_modify.jsp" />
+    <MESSAGE value="lean el and jstl" />
+    <MESSAGE value="finish note modify page" />
+    <MESSAGE value="modify doc" />
+    <MESSAGE value="add animation on manage_os page" />
+    <MESSAGE value="work on search function" />
+    <MESSAGE value="reset jar structure" />
+    <option name="LAST_COMMIT_MESSAGE" value="reset jar structure" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+      <option name="time" value="35" />
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
+        <watch expression="valueBuilder.toString()" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="das://table:/ab3fb9c6/c136b6b7-d0e4-4533-bad1-8bd9b56a24e8/great_web.note">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/duan/greatweb/dao/NoteDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="21" column="8" lean-forward="false" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/duan/greatweb/dao/NoteDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="606">
+          <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/duan/greatweb/dao/db/DataBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="426">
+          <caret line="392" column="0" lean-forward="true" selection-start-line="392" selection-start-column="0" selection-end-line="392" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/test/test.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="25" column="10" lean-forward="true" selection-start-line="25" selection-start-column="10" selection-end-line="25" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/src.zip!/java/util/StringTokenizer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="102" column="6" lean-forward="false" selection-start-line="102" selection-start-column="6" selection-end-line="102" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/src.zip!/java/time/LocalTime.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="426">
+          <caret line="1080" column="50" lean-forward="true" selection-start-line="1080" selection-start-column="50" selection-end-line="1080" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/src.zip!/java/time/Year.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-21876">
+          <caret line="136" column="0" lean-forward="true" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/src.zip!/java/time/temporal/TemporalUnit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4140">
+          <caret line="96" column="17" lean-forward="false" selection-start-line="96" selection-start-column="17" selection-end-line="96" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/src.zip!/java/time/temporal/ChronoField.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-14388">
+          <caret line="101" column="0" lean-forward="true" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/src.zip!/java/time/format/DateTimeFormatter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-39228">
+          <caret line="480" column="19" lean-forward="false" selection-start-line="480" selection-start-column="19" selection-end-line="480" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/src.zip!/java/util/regex/ASCII.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="138" column="46" lean-forward="true" selection-start-line="138" selection-start-column="46" selection-end-line="138" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/src.zip!/java/text/NumberFormat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-23724">
+          <caret line="181" column="22" lean-forward="false" selection-start-line="181" selection-start-column="22" selection-end-line="181" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/src.zip!/java/math/RoundingMode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="492">
+          <caret line="348" column="42" lean-forward="true" selection-start-line="348" selection-start-column="42" selection-end-line="348" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/src.zip!/java/io/File.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="588">
+          <caret line="2237" column="9" lean-forward="true" selection-start-line="2237" selection-start-column="9" selection-end-line="2237" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/src.zip!/org/w3c/dom/css/Counter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="50" column="17" lean-forward="false" selection-start-line="50" selection-start-column="17" selection-end-line="50" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/src.zip!/org/w3c/dom/DOMImplementationSource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-156">
+          <caret line="53" column="17" lean-forward="false" selection-start-line="53" selection-start-column="17" selection-end-line="53" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/jQuery/jPages.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="485">
+          <caret line="497" column="30" lean-forward="true" selection-start-line="497" selection-start-column="30" selection-end-line="497" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/note-os/manage/manage_note_home.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="38" column="126" lean-forward="true" selection-start-line="38" selection-start-column="126" selection-end-line="38" selection-end-column="126" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/note-os/manage/manage_note_recycle_bin.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="70" column="76" lean-forward="false" selection-start-line="70" selection-start-column="76" selection-end-line="70" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/note-os/manage/manage_user_add.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/note-os/manage/manage_user_modify.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/duan/greatweb/dao/db/DBHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="566">
+          <caret line="50" column="46" lean-forward="true" selection-start-line="50" selection-start-column="46" selection-end-line="50" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/note-os/manage/manage_note_modify.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/note-os/manage/manage_os.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="798">
+          <caret line="153" column="13" lean-forward="false" selection-start-line="153" selection-start-column="13" selection-end-line="153" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/css/manage/manage_os.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="792">
+          <caret line="33" column="17" lean-forward="false" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/css/common.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="97" column="0" lean-forward="true" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/welcome.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="39" column="40" lean-forward="true" selection-start-line="39" selection-start-column="40" selection-end-line="39" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/jQuery/jquery.datetimepicker.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1796">
+          <caret line="138" column="21" lean-forward="true" selection-start-line="138" selection-start-column="21" selection-end-line="138" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/duan/greatweb/entitly/Note.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="22" column="26" lean-forward="true" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/note-os/home_page.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1182">
+          <caret line="78" column="18" lean-forward="false" selection-start-line="78" selection-start-column="18" selection-end-line="78" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/note-os/home_note_detail.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="81" column="36" lean-forward="true" selection-start-line="81" selection-start-column="36" selection-end-line="81" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/duan/greatweb/util/Utils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="339">
+          <caret line="62" column="23" lean-forward="false" selection-start-line="62" selection-start-column="23" selection-end-line="62" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/src.zip!/java/net/URLDecoder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="77" column="13" lean-forward="false" selection-start-line="77" selection-start-column="13" selection-end-line="77" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/duan/greatweb/controller/servlet/NoteControlServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="180" column="37" lean-forward="false" selection-start-line="180" selection-start-column="37" selection-end-line="180" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/duan/greatweb/controller/servlet/DataManipulateAbstract.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="59" column="20" lean-forward="true" selection-start-line="59" selection-start-column="20" selection-end-line="59" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/note-os/manage/manage_note_new.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1224">
+          <caret line="51" column="90" lean-forward="false" selection-start-line="51" selection-start-column="90" selection-end-line="51" selection-end-column="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/duan/greatweb/controller/servlet/DataObtainServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="93" column="0" lean-forward="false" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/note-os/manage/manage_note_query.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="24">
+          <caret line="49" column="108" lean-forward="false" selection-start-line="49" selection-start-column="108" selection-end-line="49" selection-end-column="108" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/common.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="826" column="40" lean-forward="false" selection-start-line="826" selection-start-column="40" selection-end-line="826" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Duan/source/fileupload/commons-fileupload-1.3.1.jar!/org/apache/commons/fileupload/FileItem.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="14" column="17" lean-forward="false" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.ideaLibSources/commons-fileupload-1.3.1-sources.jar!/org/apache/commons/fileupload/FileItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="30" column="66" lean-forward="true" selection-start-line="30" selection-start-column="66" selection-end-line="30" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.ideaLibSources/commons-fileupload-1.3.1-sources.jar!/org/apache/commons/fileupload/FileUploadException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/patch.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="35" column="67" lean-forward="false" selection-start-line="35" selection-start-column="67" selection-end-line="35" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/duan/greatweb/controller/servlet/PatchImportNoteServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GreatWeb.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="744">
+          <caret line="31" column="9" lean-forward="true" selection-start-line="31" selection-start-column="2" selection-end-line="31" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/duan/greatweb/test/TestA.java" />
+    <entry file="file://$PROJECT_DIR$/src/com/duan/greatweb/test/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="984">
+          <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/duan/greatweb/test/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="16" column="12" lean-forward="false" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/duan/greatweb/util/filter/EncodingFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="47" column="48" lean-forward="false" selection-start-line="47" selection-start-column="48" selection-end-line="47" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <last-edited>GreatWeb:war exploded</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>Web (GreatWeb)|Web</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>fileupload</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>GreatWeb</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>json</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

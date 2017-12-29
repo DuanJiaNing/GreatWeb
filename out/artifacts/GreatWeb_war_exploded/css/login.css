@@ -1,0 +1,82 @@
+.all {
+	width: 862px;
+	height: 608px;
+	background-image: url("../img/login_03.gif");
+	margin: auto;
+}
+
+span.info_danger {
+	font-size: 0.65em;
+	color: red;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.top {
+	background-image: url("../img/login_04.gif");
+	width: 862px;
+	height: 266px;
+}
+
+.content {
+	width: 862px;
+	height: 95px;
+}
+
+.content_left {
+	background-image: url("../img/login_06.gif");
+	width: 424px;
+	height: 95px;
+	float: left;
+}
+
+.content_center {
+	background-image: url("../img/login_07.gif");
+	width: 183px;
+	height: 95px;
+	float: left;
+}
+
+.content_right {
+	background-image: url("../img/login_08.gif");
+	width: 255px;
+	height: 95px;
+	float: left;
+}
+
+.bottom {
+	background-image: url("../img/login_09.gif");
+	width: 862px;
+	height: 247px;
+}
+
+table tr td {
+	font-size: 5px;
+	color: #89AE5A;
+}
+
+table tr td input {
+	width: 100px;
+}
+
+#val {
+	width: 50px;
+}
+
+.r {
+	border: 0px;
+	outline-style: none;
+	width: 40px;
+	font-size: 1.0em;
+	background-color: transparent;
+}
+
+.r:hover {
+	color: red;
+	background-color: #d4d4d4;
+}
+
+.login_button_info {
+    background-color: rgba(255, 255, 255, 0.44);
+    padding: 5px;
+}

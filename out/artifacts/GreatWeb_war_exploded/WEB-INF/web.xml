@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         id="WebApp_ID" version="3.1">
+    <display-name>GreatWeb</display-name>
+    <welcome-file-list>
+        <welcome-file>welcome.html</welcome-file>
+        <welcome-file>index.html</welcome-file>
+        <welcome-file>index.htm</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>default.html</welcome-file>
+        <welcome-file>default.htm</welcome-file>
+        <welcome-file>default.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!--<error-page>-->
+    <!--<error-code></error-code>-->
+    <!--<location>/error_404.jsp</location>-->
+    <!--</error-page>-->
+
+    <!--配置监听器 -->
+    <listener>
+        <listener-class>com.duan.greatweb.util.listener.SessionListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>com.duan.greatweb.util.listener.ApplicationListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>com.duan.greatweb.util.listener.AttributeListener</listener-class>
+    </listener>
+    <!--配置监听器 -->
+
+    <!-- 配置过滤器 过滤器链顺序由这里的顺序决定 -->
+    <filter>
+        <filter-name>encodingFilter</filter-name>
+        <filter-class>com.duan.greatweb.util.filter.EncodingFilter</filter-class>
+        <init-param>
+            <param-name>charset</param-name>
+            <param-value>utf-8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>enable</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>encodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <filter>
+        <filter-name>loginFilter</filter-name>
+        <filter-class>com.duan.greatweb.util.filter.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>loginFilter</filter-name>
+        <url-pattern>/login.do</url-pattern>
+    </filter-mapping>
+    <!-- 配置过滤器 过滤器链顺序由这里的顺序决定 -->
+
+    <!-- 配置 servlet，url-pattern 统一小写开头 -->
+    <servlet>
+        <servlet-name>LoginSuccess</servlet-name>
+        <servlet-class>com.duan.greatweb.controller.servlet.LoginSuccess</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginSuccess</servlet-name>
+        <url-pattern>/login.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>TestServlet</servlet-name>
+        <servlet-class>com.duan.greatweb.controller.servlet.TestServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TestServlet</servlet-name>
+        <url-pattern>/testServlet.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>com.duan.greatweb.controller.servlet.RegisterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/register.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UploadServlet</servlet-name>
+        <servlet-class>com.duan.greatweb.controller.servlet.UploadServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UploadServlet</servlet-name>
+        <url-pattern>/upload.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>IdentifyCodeServlet</servlet-name>
+        <servlet-class>com.duan.greatweb.controller.servlet.IdentifyCodeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>IdentifyCodeServlet</servlet-name>
+        <url-pattern>/identifyCode.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>PatchImportNoteServlet</servlet-name>
+        <servlet-class>com.duan.greatweb.controller.servlet.PatchImportNoteServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DataObtainServlet</servlet-name>
+        <servlet-class>com.duan.greatweb.controller.servlet.DataObtainServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>PatchImportNoteServlet</servlet-name>
+        <url-pattern>/patchImportNote.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DataObtainServlet</servlet-name>
+        <url-pattern>/dataObtain.do</url-pattern>
+        <url-pattern>/note-os/dataObtain.do</url-pattern>
+        <url-pattern>/note-os/manage/dataObtain.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>NoteControlServlet</servlet-name>
+        <servlet-class>com.duan.greatweb.controller.servlet.NoteControlServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>NoteControlServlet</servlet-name>
+        <url-pattern>/noteControl.do</url-pattern>
+        <url-pattern>/note-os/manage/noteControl.do</url-pattern>
+    </servlet-mapping>
+    <!-- 配置 servlet -->
+
+</web-app>
